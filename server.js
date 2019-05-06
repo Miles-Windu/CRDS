@@ -4,10 +4,10 @@ const mongoose = require('mongoose');
 // const passport = require('passport');
 const bodyParser = require('body-parser');
 // const morgan = require('morgan');
-// const path = require('path');
+const path = require('path');
 
 // establish port on 3000 
-let PORT = process.env.PORT || 3000; 
+let PORT = process.env.PORT || 1993; 
 
 // dependency methods
 let app = express();
@@ -24,6 +24,10 @@ db.on("error", console.error.bind(console, "MongoDB connection error:"));
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 // app.use(logger("dev"));
+
+app.get("*", function(req, res) {
+  res.sendFile(path.join(__dirname, "./client/public/index.html"));
+});
 
 
 app.listen(PORT, function() {

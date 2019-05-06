@@ -1,12 +1,13 @@
 import React, {Component} from "react";
 import "../css/network.css";
+import Image from "../images/Crds_white.png";
 
 class Network extends Component {
     render(){
         return (
             <nav className="navbar navbar-expand-lg navbar-light navbar-fixed-top">
             <div className="container justify-content-center">
-                <a href="index.html" className="pull-left"><img src="images/Crds_white.png" /></a>  
+                <a href="index.html" className="pull-left"><img alt="" src={Image} /></a>  
                     <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#myNavbar" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
                         <span className="navbar-toggler-icon"></span>
                     </button>

@@ -1,0 +1,9 @@
+.btn{
+    background-color: brown;
+    color: green;
+}
+
+body, h1, h2, h3, p {
+    font-family: 'Work Sans', sans-serif;
+    font-weight: 300;
+}

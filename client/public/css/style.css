@@ -1,0 +1,104 @@
+.navbar-light .navbar-brand, .navbar-light .navbar-nav .nav-link, .navbar-light .navbar-nav .active .nav-link {
+    color: white;
+}
+
+.navbar {
+    background-color: #6e363f;
+}
+
+#marketing {
+    background-color: #bba084;
+    color: #fbfbf6;
+}
+
+body {
+    background-color: #fbfbf6;
+}
+
+p, h1, h2 {
+    color: #565656;
+    font-family: 'Work Sans', sans-serif;
+    font-weight: 300;
+}
+
+.featurette-divider {
+    margin: 2.5rem;
+}
+
+br {
+    margin: 2.5rem;
+}
+
+.jumbotron {
+    background-color: white;
+}
+
+.png {
+    height: auto;
+}
+
+.activator {
+    width: 100%;
+}
+
+/* Contact US CSS */
+* {
+    box-sizing: border-box;
+  }
+  
+  /* Style inputs */
+  input[type=text], select, textarea {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ccc;
+    margin-top: 6px;
+    margin-bottom: 16px;
+    resize: vertical;
+  }
+  
+  input[type=submit] {
+    background-color: #4CAF50;
+    color: white;
+    padding: 12px 20px;
+    border: none;
+    cursor: pointer;
+  }
+  
+  input[type=submit]:hover {
+    background-color: #45a049;
+  }
+  
+  /* Create two columns that float next to eachother */
+  .column {
+    float: left;
+    width: 50%;
+    margin-top: 6px;
+    padding: 20px;
+  }
+  
+  /* Clear floats after the columns */
+  .row:after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+
+  iframe {
+      width: 500px;
+      height: 400px;
+  }
+  
+  /* Responsive layout - when the screen is less than 600px wide, make the two columns stack on top of each other instead of next to each other */
+  @media screen and (max-width: 600px) {
+    .column, input[type=submit] {
+      width: 100%;
+      margin-top: 0;
+    }
+  }
+
+
+/* FOOTER */
+
+#github {
+    float: right;
+}

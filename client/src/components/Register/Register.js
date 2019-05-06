@@ -1,7 +1,9 @@
 import React, {Component} from "react";
+import "react-bootstrap";
 import "../css/register.css";
 import CRDS from "../images/Crds_white.png";
 // import "./index";
+import floatingCards from "../images/floating-diagonal.png"
 
 class Register extends Component {
 
@@ -72,7 +74,7 @@ class Register extends Component {
 
     {/* <!-- PNG FLOATING CARDS --> */}
         <div id="lp-pom-image-1">
-            <img className="float-right" src="../images/floating-diagonal.png" alt="floating-diagonal"/>
+            <img className="float-right" src={floatingCards} alt="floating-diagonal"/>
         </div>
             
             </div>
