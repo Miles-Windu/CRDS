@@ -9,6 +9,11 @@ const path = require('path');
 // establish port on 3000 
 let PORT = process.env.PORT || 1993; 
 
+// Serve up static assets (usually on heroku)
+if (process.env.NODE_ENV === "production") {
+  app.use(express.static("client/build"));
+}
+
 // dependency methods
 let app = express();
 let db = mongoose.connection;
