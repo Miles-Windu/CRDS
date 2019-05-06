@@ -1,7 +1,7 @@
 // require dependencies
 const express = require('express');
 const mongoose = require('mongoose');
-// const passport = require('passport');
+const passport = require('passport');
 const bodyParser = require('body-parser');
 // const morgan = require('morgan');
 const path = require('path');
@@ -29,6 +29,15 @@ db.on("error", console.error.bind(console, "MongoDB connection error:"));
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 // app.use(logger("dev"));
+
+// Session authentication
+app.use(session({
+  secret: "CRDS",
+  resave: true,
+  saveUninitialized: true
+}));
+app.use(passport.initialize());
+app.use(passport.session());
 
 app.get("*", function(req, res) {
   res.sendFile(path.join(__dirname, "./client/public/index.html"));
