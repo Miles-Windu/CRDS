@@ -12,7 +12,7 @@ class Register extends Component {
             <div>
             <nav className="navbar navbar-expand-lg navbar-light navbar-fixed-top">
          <div className="container justify-content-center">
-             <a href="index.html" className="pull-left"><img alt="" src={CRDS} /></a>  
+             <a href="/" className="pull-left"><img alt="" src={CRDS} /></a>  
                  <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#myNavbar" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
                      <span className="navbar-toggler-icon"></span>
                  </button>
@@ -35,7 +35,7 @@ class Register extends Component {
         <div className="row justify-content-center align-items-center">      
             <div className="card col-lg-4 mx-auto ">
                 <br />
-                <h4 className="text-center">Register For an Account</h4>
+                <h5 className="text-center">Register For an Account</h5>
                 <div className="form-group">
                     {/* Name */}
                     <label for="nameInput">Name</label>

@@ -13,7 +13,7 @@ class User extends Component {
             <div>
             <nav className="navbar navbar-expand-lg navbar-light navbar-fixed-top">
         <div className="container justify-content-center">
-            <a href="index.html" className="pull-left"><img alt="" src={CRDS} /></a>  
+            <a href="/" className="pull-left"><img alt="" src={CRDS} /></a>  
                 <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#myNavbar" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
                     <span className="navbar-toggler-icon"></span>
                 </button>
@@ -21,10 +21,10 @@ class User extends Component {
                     <div className="collapse navbar-collapse" id="myNavbar">
                         <ul className="navbar-nav mr-auto">
                             <li className="nav-item">
-                                <a className="nav-link" id="myBtn" href="./network.html">My Networks</a>
+                                <a className="nav-link" id="myBtn" href="/network">My Networks</a>
                             </li>
                             <li className="nav-item">
-                                <a className="nav-link" id="myBtn" href="./user.html">Edit My CRDS</a>
+                                <a className="nav-link" id="myBtn" href="/user">Edit My CRDS</a>
                             </li>
                          </ul>
                     <ul className="nav navbar-nav flex-fill  justify-content-end">
@@ -82,7 +82,7 @@ class User extends Component {
                 <label for="skillInput">Skills</label>
                 <input type="text" className="form-control" id="skillInput" placeholder="Example:JavaScript,MySQL..." required />
                 {/* <!-- SUBMIT --> */}
-                <a type="submit" href="./network.html" className="btn">Create your card</a>
+                <a type="submit" href="/user/network" className="btn">Create your card</a>
                
             </div>
             <br />
