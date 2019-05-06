@@ -1,0 +1,65 @@
+body {
+  font-family: 'Work Sans', sans-serif;
+  font-weight: 300;
+  background-color: #bba084;
+}
+
+#register {
+  font-family: 'Work Sans', sans-serif;
+  font-weight: 300;
+}
+
+.form-group {
+  padding: 1rem;
+  margin-bottom: 1rem;
+}
+
+#lp-pom-image-1 { 
+  display:none; 
+}
+
+
+/* The Modal (background) */
+#myModal {
+  font-family: 'Work Sans', sans-serif;
+  font-weight: 300;
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  padding-top: 150px; /* Location of the box */
+  width: 100%; /* Full width */
+  height: 100%;
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+
+.modal {
+  height: 100%;
+}
+
+/* Modal Content */
+.modal-content {
+  background-color: #fefefe;
+  margin: auto;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 40%;
+  font-family: 'Work Sans', sans-serif;
+  font-weight: 300;
+}
+
+/* The Close Button */
+.close {
+  color: #aaaaaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: #000;
+  text-decoration: none;
+  cursor: pointer;
+}
