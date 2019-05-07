@@ -12,55 +12,59 @@ import image8 from "../images/icons8-circled-user-male-skin-type-5-96.png";
 class Landing extends Component {
     render(){
         return (
-            <div>
-            <nav className="navbar navbar-expand-lg navbar-light navbar-fixed-top">
-        <div className="container justify-content-center">
-            <a href="/" className="pull-left"><img src={image} alt=""/></a>  
-                <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#myNavbar" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
-                    <span className="navbar-toggler-icon"></span>
-                </button>
-                <div className="collapse navbar-collapse" id="myNavbar">
-                    <ul className="navbar-nav mr-auto">
-                        <li className="nav-item">
-                            <a className="nav-link" href="#section1"> About Us <span className="sr-only">(current)</span></a>
-                        </li>
-                        <li className="nav-item">
-                            <a className="nav-link" href="#section2"> Our Crds</a>
-                        </li>
-                        <li className="nav-item">
-                            <a className="nav-link" href="#section3"> Contact Us </a>
-                        </li>
-                    </ul>
-                    <ul className="nav navbar-nav flex-fill  justify-content-end">
-                        <div className="login">
+    <div>
+    {/* NAV BAR */}
+        <nav className="navbar navbar-expand-lg navbar-light navbar-fixed-top">
+            <div className="container justify-content-center">
+                <a href="/" className="pull-left"><img src={image} alt=""/></a>  
+                    <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#myNavbar" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+                        <span className="navbar-toggler-icon"></span>
+                    </button>
+                    <div className="collapse navbar-collapse" id="myNavbar">
+                        <ul className="navbar-nav mr-auto">
                             <li className="nav-item">
-                                <button className="btn btn-outline-info  my-2 my-sm-0 mr-sm-2 " href="/user" tabindex="-1"> Login </button>
+                                <a className="nav-link" href="#section1"> About Us <span className="sr-only">(current)</span></a>
                             </li>
-                        </div>
-                    </ul>
-                </div>
-        </div>
-    </nav> 
+                            <li className="nav-item">
+                                <a className="nav-link" href="#section2"> Our Crds</a>
+                            </li>
+                            <li className="nav-item">
+                                <a className="nav-link" href="#section3"> Contact Us </a>
+                            </li>
+                        </ul>
+                        <ul className="nav navbar-nav flex-fill  justify-content-end">
+                            <div className="login">
+                                <li className="nav-item">
+                                    <button className="btn btn-outline-info  my-2 my-sm-0 mr-sm-2 " href="/user" tabindex="-1"> Login </button>
+                                </li>
+                            </div>
+                        </ul>
+                    </div>
+            </div>
+        </nav> 
 
     {/* Jumbotron */}
-    
     <div id="root">
-         <div className="container justify-content-center">
-            <div className="row">
-                <div className="col-lg-6 col-sm-12">
-                    <h1 className="display-4">Welcome to CRDS</h1>
-                  <p className="lead">Lets make memorable connections</p>
-                  
-                    <p>Connections and social networks without the Social Media</p>
+        <div className="jumbotron">
+            <div className="container justify-content-center">
+                <div className="row">
+                    <div className="col-lg-6 col-sm-12">
+                        <h1 className="display-4">Welcome to CRDS</h1>
+                    <p className="lead">Lets make memorable connections</p>
+                    
+                        <p>We want to get rid of the distractions of "feeds" and spam messages that
+                        are associated with social media. Entrust in putting your contact information on your business card
+                        and not an online profile where your information is leaked to marketers and sales reps.
+                        Connections and social networks without the Social Media</p>
 
-                    <a className="btn btn-info btn-lg" href="/register" role="button">Sign Up!</a>
-                </div>
-                <div className="col-lg-6 col-sm-12">
-                    <img src={image2} alt="floating-cards" />
+                        <a className="btn btn-info btn-lg" href="/register" role="button">Sign Up!</a>
+                    </div>
+                    <div className="col-lg-6 col-sm-12">
+                        <img src={image2} alt="floating-cards" />
+                    </div>
                 </div>
             </div>
-        </div>
-        
+        </div> 
     </div>
     <br />
 
@@ -133,7 +137,6 @@ class Landing extends Component {
     </div>
 
     {/* <!-- CONTAINER MARKETING - WHY'S --> */}
-
     <div id="marketing">
         <hr className="featurette-divider" />
         <div className="container marketing text-center justify-content-center">
@@ -178,7 +181,6 @@ class Landing extends Component {
     </div>
 
     {/* <!-- CONTACT --> */}
-
     <div id="section3" className="container">
         <div style={{textAlign: "center"}}>
             <h2>Contact Us</h2>
