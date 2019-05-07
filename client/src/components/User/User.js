@@ -82,7 +82,7 @@ class User extends Component {
                 <label for="skillInput">Skills</label>
                 <input type="text" className="form-control" id="skillInput" placeholder="Example: JavaScript, MySQL, HTML..." required />
                 {/* <!-- SUBMIT --> */}
-                <a type="submit" href="/user/network" className="btn" color="green">Create your card</a>
+                <a type="submit" href="/user/network" className="btn">Create your card</a>
                
             </div>
             <br />

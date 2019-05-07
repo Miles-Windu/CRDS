@@ -79,7 +79,7 @@ class Network extends Component {
                                     </div>
                                     {/* <!-- RESPONSIVE ASPECT OF CARD --> */}
                                     <div className="card-reveal">
-                                    <span className="card-title grey-text text-darken-4">John Doe<i className="material-icons right">close</i></span>
+                                    <span className="card-title grey-text text-darken-4">Ferat Imrak<i className="material-icons right">close</i></span>
                                         <p className="card-text"><small className="text-muted">Proficient in: HTML, CSS, Javascript, React.js, Node.js, mongoDB
                                         </small></p>
                                         <p className="card-text"> Phone Number: 1 (708) 123-4567</p>
@@ -102,7 +102,7 @@ class Network extends Component {
                                     </div>
                                     {/* <!-- RESPONSIVE ASPECT OF CARD --> */}
                                     <div className="card-reveal">
-                                    <span className="card-title grey-text text-darken-4">John Doe<i className="material-icons right">close</i></span>
+                                    <span className="card-title grey-text text-darken-4">Diego M.S<i className="material-icons right">close</i></span>
                                         <p className="card-text"><small className="text-muted">Proficient in: HTML, CSS, Javascript, React.js, Node.js, mongoDB
                                         </small></p>
                                         <p className="card-text"> Phone Number: 1 (708) 123-4567</p>
@@ -125,7 +125,7 @@ class Network extends Component {
                                     </div>
                                     {/* <!-- RESPONSIVE ASPECT OF CARD --> */}
                                     <div className="card-reveal">
-                                    <span className="card-title grey-text text-darken-4">John Doe<i className="material-icons right">close</i></span>
+                                    <span className="card-title grey-text text-darken-4">Miles Windu<i className="material-icons right">close</i></span>
                                         <p className="card-text"><small className="text-muted">Proficient in: HTML, CSS, Javascript, React.js, Node.js, mongoDB
                                         </small></p>
                                         <p className="card-text"> Phone Number: 1 (708) 123-4567</p>
@@ -134,16 +134,33 @@ class Network extends Component {
                                         </div>
                                     </div>
                                 </div>
-                            <div>  
+                            <div> 
+                            {/* <!-- CATEGORY TITLE --> */}
+                            <h3 id="list-item-1">Household/Carpentry</h3>
                             <p> Anywhere from Carpentry to interior design projects and home rennovation. Have a small moving business? or something similar to 1800-GOT-JUNK</p>
+                            {/* INSERT CARDS HERE */}
+
+                             {/* <!-- CATEGORY TITLE --> */}
                             <h3 id="list-item-4">Law/Legal</h3>
                             <p> Legal advice is always needed, but legal advice from a mutual friend/contact is guaranteed more helpful than getting billed by the minute to talk to a big lawfirm</p>
+                            {/* INSERT CARDS HERE */}
+
+                             {/* <!-- CATEGORY TITLE --> */}
                             <h3 id="list-item-5">Medical/Health</h3>
                             <p> Medical advice? or Freelance medical specialists? Having a contact in the field of medicie is almost like having an on-demand PubMed </p>
+                            {/* INSERT CARDS HERE */}
+
+                             {/* <!-- CATEGORY TITLE --> */}
                             <h3 id="list-item-6">Accounting/Finance</h3>
                             <p> Taxes.. and financial responsibity is tough, make it easier by sharing your CPA's info with other's to help out </p>
+                            {/* INSERT CARDS HERE */}
+
+                             {/* <!-- CATEGORY TITLE --> */}
                             <h3 id="list-item-7">Food/Service</h3>
                             <p> Having restaruant contact's is important! Especially for corporate catering and events! </p>
+                            {/* INSERT CARDS HERE */}
+
+                        
                             </div>  
                             </div>
                         </div>
