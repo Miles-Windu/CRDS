@@ -1,4 +1,6 @@
 import React, {Component} from "react";
+import { Helmet } from "react-helmet";
+import { FacebookShareButton } from "react-share";
 import "../css/network.css";
 import Image from "../images/Crds_white.png";
 import image2 from "../images/Crds_black.png";
@@ -85,6 +87,12 @@ class Network extends Component {
                                         <p class="card-text"> Phone Number: 1 (708) 123-4567</p>
                                         <p class="card-text"> 405 Church St, Evanston, IL 60201</p>
                                         <a href="https://github.com/jiro1/Project-3">Check out my website!</a>
+                                        
+                                        
+                                        <div class="addthis_inline_share_toolbox_e8kh"></div>
+            
+						
+            
                                     </div>
                                 </div>
                             </div>
