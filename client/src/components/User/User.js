@@ -46,10 +46,10 @@ class User extends Component {
                 {/* <!-- USER PHOTO UPLOAD --> */}
                 <div className="user-photo text-center">
                     <form className="mx-auto">
-                        <img src={Placeholder} alt="Place Holder" />
+                        <img src={Placeholder} alt="Place Holder" height="200" width="200"/>
                         <div className="text-center" >
                             <label for="userPhoto">Upload User Photo</label>
-                            <input type="file" className="form-control-file  justify-content-center" id="userPhoto" />
+                            <input type="file" className="form-control-file content-center" id="userPhoto" />
                         </div>
                     </form>
                 </div>
@@ -66,7 +66,7 @@ class User extends Component {
                 <input type="tel" className="form-control" id="phoneInput" placeholder="3121112233" pattern="[0-9]{3}[0-9]{3}[0-9]{4}" required />
                 {/* <!-- POSITION TITLE --> */}
                 <label for="titleInput">Title</label>
-                <input type="text" className="form-control" id="titleInput" placeholder="Example:Web developer" required />
+                <input type="text" className="form-control" id="titleInput" placeholder="Example: Web developer, UX/UI, Graphic Designer" required placeholderTextColor/>
                 {/* <!-- CATEGORY --> */}
                 <label for="titleInput">Category</label>
                 <select className="form-control" id="sel1" required>
@@ -80,9 +80,9 @@ class User extends Component {
                       </select >
                 {/* <!-- SKILLS --> */}
                 <label for="skillInput">Skills</label>
-                <input type="text" className="form-control" id="skillInput" placeholder="Example:JavaScript,MySQL..." required />
+                <input type="text" className="form-control" id="skillInput" placeholder="Example: JavaScript, MySQL, HTML..." required />
                 {/* <!-- SUBMIT --> */}
-                <a type="submit" href="/user/network" className="btn">Create your card</a>
+                <a type="submit" href="/user/network" className="btn" color="green">Create your card</a>
                
             </div>
             <br />

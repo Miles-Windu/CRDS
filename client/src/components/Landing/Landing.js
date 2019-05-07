@@ -51,7 +51,10 @@ class Landing extends Component {
                     <h1 className="display-4">Welcome to CRDS</h1>
                   <p className="lead">Lets make memorable connections</p>
                   
-                    <p>Connections and social networks without the Social Media</p>
+                    <p>We want to get rid of the distractions of "feeds" and spam messages that
+                     are associated with social media. Entrust in putting your contact information on your business card
+                     and not an online profile where your information is leaked to marketers and sales reps.
+                     Connections and social networks without the Social Media</p>
 
                     <a className="btn btn-info btn-lg" href="/register" role="button">Sign Up!</a>
                 </div>
