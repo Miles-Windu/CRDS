@@ -3,7 +3,7 @@ import "react-bootstrap";
 import "../css/register.css";
 import CRDS from "../images/Crds_white.png";
 // import "./index";
-import floatingCards from "../images/floating-diagonal.png"
+import floatingCards from "../images/floating-diagonal.png";
 
 class Register extends Component {
 
@@ -20,7 +20,7 @@ class Register extends Component {
                      <ul className="nav navbar-nav flex-fill  justify-content-end">
                          <div className="login">
                              <li className="nav-item">
-                                 <button id="myBtn" type="button" className="btn btn-outline-info  my-2 my-sm-0 mr-sm-2 " href="/user" tabindex="-1"> Login </button>
+                                 <button id="myBtn" type="button" className="btn btn-outline-info  my-2 my-sm-0 mr-sm-2 " data-target="#myModal" data-toggle="modal"> Login </button>
                              </li>
                          </div>
                      </ul>
@@ -51,11 +51,14 @@ class Register extends Component {
                     <button type="submit" id="submit-btn" className="btn btn-primary">Submit</button>
                 </div>       
             </div>
-            {/* <!-- Trigger/Open The Modal --> */}
+        </div>
+    </form>
+
+    {/* <!-- Trigger/Open The Modal --> */}
             {/* <!-- <button id="myBtn">Open Modal</button> --> */}
 
             {/* <!-- The Modal --> */}
-            <div id="myModal" className="modal row justify-content-center align-items-center">
+            <div id="myModal" className="modal fade row justify-content-center align-items-center">
                 {/* <!-- Modal content --> */}
                 <div className="modal-content card col-lg-4 mx-auto">
                     <span className="close text-right">X</span>
@@ -69,8 +72,6 @@ class Register extends Component {
                     <a href="/user" type="login" className="btn btn-primary">Login</a>
                 </div>
             </div>
-        </div>
-    </form>
 
     {/* <!-- PNG FLOATING CARDS --> */}
         <div id="lp-pom-image-1">
