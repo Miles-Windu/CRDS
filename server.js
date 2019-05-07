@@ -30,7 +30,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 // app.use(logger("dev"));
 
-// Session authentication
+// Session authentication 
 app.use(session({
   secret: "CRDS",
   resave: true,

@@ -1,7 +1,7 @@
 const path = require("path");
 const passport = require("passport");
 const router = require("express").Router();
-const apiRoutes = require("./api");
+const apiRoutes = require("./apiRoutes");
 
 // Authentication from index
 router.post("/", passport.authenticate('local',{
