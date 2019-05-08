@@ -16,7 +16,7 @@ handleSubmit = (event) => {
     const email = $(findDOMNode(this.refs.email)).val()
     const password = $(findDOMNode(this.refs.password)).val()
     console.log(name + email + password)
-    $(findDOMNode(this.refs.name)).empty()
+
 }
 
     render(){
