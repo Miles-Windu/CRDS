@@ -42,7 +42,7 @@ class Landing extends Component {
                     </div>
             </div>
         </nav> 
-            <div id="myModal" className="modal fade row justify-content-center align-items-center">
+            <div id="myModal" className="modal full row justify-content-center align-items-center">
                 {/* <!-- Modal content --> */}
                 <div className="modal-content card col-lg-4 mx-auto">
                     <span className="close text-right">X</span>

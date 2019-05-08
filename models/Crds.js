@@ -62,6 +62,6 @@ const crdSchema = new Schema({
   date: { type: Date, default: Date.now }
 });
 
-const Crds = mongoose.model("Crd", crdSchema);
+const Crds = mongoose.model("Crds", crdSchema);
 
 module.exports = Crds;
