@@ -1,5 +1,3 @@
-var $ = require('jquery')
-
 var name = $('#nameInput').val();
 var email = $("#emailInput").val();
 

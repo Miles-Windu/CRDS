@@ -1,6 +1,4 @@
 import React, {Component} from "react";
-import { Helmet } from "react-helmet";
-import { FacebookShareButton } from "react-share";
 import "../css/fullprofile.css";
 import Image from "../images/Crds_white.png";
 import image2 from "../images/Crds_black.png";

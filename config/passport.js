@@ -1,5 +1,5 @@
-const db = require("../models");
-const passport = require("passport");
+const user = require("../models/User");
+let passport = require("passport");
 const LocalStrategy = require("passport-local");
 // Middleware to encrypt password
 const bcrypt = require("bcrypt");
