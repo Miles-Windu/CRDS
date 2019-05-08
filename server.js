@@ -7,7 +7,11 @@ const session = require('express-session')
 // const morgan = require('morgan');
 const path = require('path');
 
-// establish port on 3000 
+const crds = require('./routes/apiRoutes/crds.js');
+const users = require('./routes/apiRoutes/user.js');
+
+
+// establish port on 1993 
 let PORT = process.env.PORT || 1993; 
 
 // Serve up static assets (usually on heroku)
@@ -15,9 +19,13 @@ if (process.env.NODE_ENV === "production") {
   app.use(express.static("client/build"));
 }
 
+
 // dependency methods
 let app = express();
 let db = mongoose.connection;
+
+app.use('/api/users', users)
+app.use('/api/crds', crds)
 
 // Connect to the Mongo DB
 mongoose.connect("mongodb://localhost/crdsDB", { useNewUrlParser: true }); 
