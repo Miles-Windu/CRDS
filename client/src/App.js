@@ -4,6 +4,7 @@ import Register from "./components/Register/Register.js"
 import User from "./components/User/User";
 import Network from './components/Network/Network.js';
 import Landing from "./components/Landing/Landing.js"
+import fullprofile from './components/FullProfile/fullprofile.js';
 
 function App() {
 
@@ -13,6 +14,7 @@ function App() {
         <Route path="/user" component={User} />
         <Route path="/network" component={Network} />
         <Route path="/register" component={Register} />
+        <Route path="/fullprofile" component={fullprofile} />
       </Router>
     </div>
     
