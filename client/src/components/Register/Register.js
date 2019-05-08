@@ -4,8 +4,20 @@ import "../css/register.css";
 import CRDS from "../images/Crds_white.png";
 // import "./index";
 import floatingCards from "../images/floating-diagonal.png";
+import { findDOMNode } from "react-dom";
+import $ from "jquery";
+import axios from "axios";
 
 class Register extends Component {
+   
+handleSubmit = (event) => {
+    event.preventDefault()
+    const name = $(findDOMNode(this.refs.name)).val()
+    const email = $(findDOMNode(this.refs.email)).val()
+    const password = $(findDOMNode(this.refs.password)).val()
+    console.log(name + email + password)
+
+}
 
     render(){
         return (
@@ -38,17 +50,17 @@ class Register extends Component {
                 <h5 className="text-center">Register For an Account</h5>
                 <div className="form-group">
                     {/* Name */}
-                    <label for="nameInput">Name</label>
-                    <input type="name" className="form-control" id="nameInput" aria-describedby="emailHelp" placeholder="Full Name" required/>
+                    <label  for="nameInput">Name</label>
+                    <input type="name" className="form-control" ref="name" id="nameInput" aria-describedby="emailHelp" placeholder="Full Name" required/>
                     {/* <!-- EMAIL --> */}
                     <label for="emailInput">Email</label>
-                    <input type="email" className="form-control" id="emailInput" aria-describedby="emailHelp" placeholder="Enter email" required/>
+                    <input type="email" className="form-control" ref="email" aria-describedby="emailHelp" placeholder="Enter email" required/>
                     {/* <!-- PASSWORD --> */}
                     <label for="passwordInput">Password</label>
-                    <input type="password" className="form-control" id="passwordInput" placeholder="Password" required/>
+                    <input type="password" className="form-control" ref="password" placeholder="Password" required />
                     {/* <!-- SUBMIT --> */}
                     <br />
-                    <button type="submit" id="submit-btn" className="btn btn-primary">Submit</button>
+                    <button onClick={this.handleSubmit} type="submit" id="submit-btn" className="btn btn-primary">Submit</button>
                 </div>       
             </div>
         </div>

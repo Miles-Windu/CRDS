@@ -35,13 +35,27 @@ class Landing extends Component {
                         <ul className="nav navbar-nav flex-fill  justify-content-end">
                             <div className="login">
                                 <li className="nav-item">
-                                    <button className="btn btn-outline-info  my-2 my-sm-0 mr-sm-2 " href="/user" tabindex="-1"> Login </button>
+                                <button id="myBtn" type="button" className="btn btn-outline-info  my-2 my-sm-0 mr-sm-2 " data-target="#myModal" data-toggle="modal"> Login </button>
                                 </li>
                             </div>
                         </ul>
                     </div>
             </div>
         </nav> 
+            <div id="myModal" className="modal fade row justify-content-center align-items-center">
+                {/* <!-- Modal content --> */}
+                <div className="modal-content card col-lg-4 mx-auto">
+                    <span className="close text-right">X</span>
+                    <h3 className="text-center">Log In</h3>
+                    <div className="form-group">
+                        <label for="exampleInputEmail1">Email</label>
+                        <input type="email" className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email"/>
+                        <label for="exampleInputPassword1">Password</label>
+                        <input type="password" className="form-control" id="exampleInputPassword1" placeholder="Password"/>
+                    </div>
+                    <a href="/user" type="login" className="btn btn-primary">Login</a>
+                </div>
+            </div>
 
     {/* Jumbotron */}
     <div id="root">
