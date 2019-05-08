@@ -1,6 +1,6 @@
 const db = require("../models/User");
 
-// Defining methods for the CrdsController
+// Defining methods for the UserController
 module.exports = {
   findAll: function(req, res) {
     db.User

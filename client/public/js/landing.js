@@ -1,5 +1,3 @@
-var $ = require('jquery')
-
 console.log('this is working')
 
 $(document).ready(function(){

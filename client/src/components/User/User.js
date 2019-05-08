@@ -1,12 +1,102 @@
 import React, {Component} from "react";
 import "../css/user.css";
-import CRDS from "../images/Crds_white.png"
-import Placeholder from "../images/image-placeholder.png"
+import CRDS from "../images/Crds_white.png";
+import Placeholder from "../images/image-placeholder.png";
+import axios from "axios";
 
 
 class User extends Component {
+    constructor(props) {
+        super(props);
 
+        this.onChangeName = this.onChangeName.bind(this);
+        this.onChangeEmail = this.onChangeEmail.bind(this);
+        this.onChangePhone = this.onChangePhone.bind(this);
+        this.onChangeTitle = this.onChangeTitle.bind(this);
+        this.onChangeCategory = this.onChangeCategory.bind(this);
+        this.onChangeSkills = this.onChangeSkills.bind(this);
+        this.onSubmit = this.onSubmit.bind(this);
+        
+        this.state = {
+            name: '',
+            email: '',
+            phone: '',
+            title: '',
+            category: '',
+            skills: ''
+        };
+    };
 
+    onChangeName(e) {
+        this.setState({
+            name: e.target.value
+        });
+    };
+
+    onChangeEmail(e) {
+        this.setState({
+            email: e.target.value
+        });
+    };
+
+    onChangePhone(e) {
+        this.setState({
+            phone: e.target.value
+        });
+    };
+
+    onChangeTitle(e) {
+        this.setState({
+            title: e.target.value
+        });
+    };
+
+    onChangeCategory(e) {
+        this.setState({
+            category: e.target.value
+        });
+    };
+
+    onChangeSkills(e) {
+        this.setState({
+            skills: e.target.value
+        });
+    };
+
+    onSubmit(e) {
+        e.preventDefault();
+
+        // console log the forms
+        console.log('Form Submitted:');
+        console.log(`Name: ${this.state.name}`);
+        console.log(`Email: ${this.state.email}`);
+        console.log(`Phone Number: ${this.state.phone}`);
+        console.log(`Title: ${this.state.titel}`);
+        console.log(`Category: ${this.state.category}`);
+        console.log(`Skills Include: ${this.state.skills}`);
+
+        const newCrd = {
+            name: this.state.name,
+            email: this.state.email,
+            phone: this.state.phone,
+            title: this.state.title,
+            category: this.state.category,
+            skills: this.state.skills
+        }
+
+        axios.post('http://localhost:3000/api/crds/add', newCrd)
+            .then(res => console.log(res.data));
+
+        this.setState({
+            name: '',
+            email: '',
+            phone: '',
+            title: '',
+            category: '',
+            skills: ''
+        })
+        
+    }
 
     render(){
         return (
@@ -55,42 +145,43 @@ class User extends Component {
                 </div>
                 {/* <!-- INPUT FIELDS --> */}
             <div className="container">
+                <form onSubmit={this.onSubmit}>
                 {/* <!-- NAME --> */}
                 <label for="nameInput">Name</label>
-                <input type="name" className="form-control" id="nameInput" aria-describedby="nameHelp" placeholder="Full Name" required />
+                <input onChange={this.onChangeName} name="name" type="name" className="form-control" value={this.state.name} aria-describedby="nameHelp" placeholder="Full Name" required />
                 {/* <!-- EMAIL --> */}
                 <label for="emailInput">Email address</label>
-                <input type="email" className="form-control" id="emailInput" aria-describedby="emailHelp" placeholder="Enter email" required />
+                <input onChange={this.onChangeEmail} name="email" type="email" className="form-control" value={this.state.email} aria-describedby="emailHelp" placeholder="Enter email" required />
                 {/* <!-- PHONE --> */}
                 <label for="phoneInput">Phone Number</label>
-                <input type="tel" className="form-control" id="phoneInput" placeholder="3121112233" pattern="[0-9]{3}[0-9]{3}[0-9]{4}" required />
+                <input onChange={this.onChangePhone} name="phone" type="tel" className="form-control" value={this.state.phone} placeholder="3121112233" pattern="[0-9]{3}[0-9]{3}[0-9]{4}" required />
                 {/* <!-- POSITION TITLE --> */}
                 <label for="titleInput">Title</label>
-                <input type="text" className="form-control" id="titleInput" placeholder="Example: Web developer, UX/UI, Graphic Designer" required placeholderTextColor/>
+                <input onChange={this.onChangeTitle} name="title" type="text" className="form-control" value={this.state.title} placeholder="Example: Web developer, UX/UI, Graphic Designer" required placeholderTextColor/>
                 {/* <!-- CATEGORY --> */}
                 <label for="titleInput">Category</label>
-                <select className="form-control" id="sel1" required>
-                        <option>Web/Technology</option>
-                        <option>Media/Marketing</option>
-                        <option>Household</option>
-                        <option>Law/Legal</option>
-                        <option>Medical/Health</option>
-                        <option>Accounting/Finance</option>
-                        <option>Food/Service</option>
+                <select  name="category" className="form-control"  required>
+                        <option onChange={this.onChangeCategory} value={this.state.category}>Web/Technology</option>
+                        <option onChange={this.onChangeCategory} value={this.state.category}>Media/Marketing</option>
+                        <option onChange={this.onChangeCategory} value={this.state.category}>Household</option>
+                        <option onChange={this.onChangeCategory} value={this.state.category}>Law/Legal</option>
+                        <option onChange={this.onChangeCategory} value={this.state.category}>Medical/Health</option>
+                        <option onChange={this.onChangeCategory} value={this.state.category}>Accounting/Finance</option>
+                        <option onChange={this.onChangeCategory} value={this.state.category}>Food/Service</option>
                       </select >
                 {/* <!-- SKILLS --> */}
                 <label for="skillInput">Skills</label>
-                <input type="text" className="form-control" id="skillInput" placeholder="Example: JavaScript, MySQL, HTML..." required />
+                <input onChange={this.onChangeSkills} name="skills" type="text" className="form-control" value={this.state.skill} placeholder="Example: JavaScript, MySQL, HTML..." required />
                 {/* <!-- SUBMIT --> */}
-                <a type="submit" href="/user/network" className="btn">Create your card</a>
-               
+                <input type="submit" value="Your Card" className="btn" />
+               </form> 
             </div>
             <br />
         </div>
     </div>
             </div>
         );
-    }
-}
+    };
+};
 
 export default User
