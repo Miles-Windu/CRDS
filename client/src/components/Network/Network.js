@@ -11,9 +11,9 @@ class Network extends Component {
             <nav className="navbar navbar-expand-lg navbar-light navbar-fixed-top">
             <div className="container justify-content-center">
                 <a href="/" className="pull-left"><img src={Image} alt="" /></a>  
-                    <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#myNavbar" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+                    <a className="navbar-toggler" type="a" data-toggle="collapse" data-target="#myNavbar" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
                         <span className="navbar-toggler-icon"></span>
-                    </button>
+                    </a>
                     <div className="collapse navbar-collapse" id="myNavbar">
                         <div className="collapse navbar-collapse" id="myNavbar">
                             <ul className="navbar-nav mr-auto">
@@ -27,7 +27,7 @@ class Network extends Component {
                         <ul className="nav navbar-nav flex-fill  justify-content-end">
                             <div className="login">
                                 <li className="nav-item">
-                                    <button id="myBtn" type="button" className="btn btn-outline-info  my-2 my-sm-0 mr-sm-2 " href="/user" tabindex="-1"> Logout </button>
+                                    <a id="myBtn" type="a" className="btn btn-outline-info  my-2 my-sm-0 mr-sm-2 " href="/user" tabindex="-1"> Logout </a>
                                 </li>
                             </div>
                         </ul>
@@ -77,6 +77,7 @@ class Network extends Component {
                                         <div className="card-content">
                                         <span className="card-title activator grey-text text-darken-4">Ferat Imrak</span>
                                         <p>Full-Stack Web developer</p>
+                                        <a className="btn btn-info btn-lg" href="/fullprofile" role="button">See Full Profile</a>
                                         </div>
                                         {/* <!-- RESPONSIVE ASPECT OF CARD --> */}
                                         <div className="card-reveal">
@@ -100,9 +101,10 @@ class Network extends Component {
                                         <img className="activator" src={image2} alt="" style={{width: "100px", height: "100px"}} />
                                         </div>
                                         <hr />
-                                        <div className="card-content">
+                                         <div className="card-content">
                                         <span className="card-title activator grey-text text-darken-4">Diego M.S</span>
                                         <p>React and API Specialist</p>
+                                        <a className="btn btn-info btn-lg" href="/fullprofile" role="button">See Full Profile</a>
                                         </div>
                                         {/* <!-- RESPONSIVE ASPECT OF CARD --> */}
                                         <div className="card-reveal">
@@ -129,6 +131,7 @@ class Network extends Component {
                                         <div className="card-content">
                                         <span className="card-title activator grey-text text-darken-4">Miles Windu</span>
                                         <p>Jedi and React Master</p>
+                                        <a className="btn btn-info btn-lg" href="/fullprofile" role="button">See Full Profile</a>
                                         </div>
                                         {/* <!-- RESPONSIVE ASPECT OF CARD --> */}
                                         <div className="card-reveal">
@@ -162,6 +165,7 @@ class Network extends Component {
                                     <div className="card-content">
                                     <span className="card-title activator grey-text text-darken-4">Estevan Cruz</span>
                                     <p>Photographer and Social Media Specialist</p>
+                                    <a className="btn btn-info btn-lg" href="/fullprofile" role="button">See Full Profile</a>
                                     </div>
                                     {/* <!-- RESPONSIVE ASPECT OF CARD --> */}
                                     <div className="card-reveal">
