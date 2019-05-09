@@ -82,7 +82,7 @@ class Register extends Component {
                      <ul className="nav navbar-nav flex-fill  justify-content-end">
                          <div className="login">
                              <li className="nav-item">
-                                 <button id="myBtn" type="button" className="btn btn-outline-info  my-2 my-sm-0 mr-sm-2 " data-target="#myModal" data-toggle="modal"> Login </button>
+                                 <button id="myBtn" type="button" className="btn btn-outline-info  my-2 my-sm-0 mr-sm-2"> Login </button>
                              </li>
                          </div>
                      </ul>
