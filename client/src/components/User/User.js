@@ -120,7 +120,7 @@ class User extends Component {
                     <ul className="nav navbar-nav flex-fill  justify-content-end">
                         <div className="login">
                             <li className="nav-item">
-                                <button id="myBtn" type="button" className="btn btn-outline-info  my-2 my-sm-0 mr-sm-2 " href="/user" tabindex="-1"> Logout </button>
+{/* data-target="#myModal" data-toggle="modal" */} <a id="myBtn" role="button" href="/" className="btn btn-outline-info my-2 my-sm-0 mr-sm-2"> Logout </a>
                             </li>
                         </div>
                     </ul>
@@ -137,9 +137,9 @@ class User extends Component {
                 <div className="user-photo text-center">
                     <form className="mx-auto">
                         <img src={Placeholder} alt="Place Holder" height="200" width="200"/>
-                        <div className="text-center" >
+                        <div className="text-center " >
                             <label for="userPhoto">Upload User Photo</label>
-                            <input type="file" className="form-control-file content-center" id="userPhoto" />
+                            <input type="file" className="form-control-file text-center" id="userPhoto" />
                         </div>
                     </form>
                 </div>

@@ -7,11 +7,11 @@ class Network extends Component {
 
     render(){
         return (
-            <div>
-            <nav className="navbar navbar-expand-lg navbar-light navbar-fixed-top">
+    <div>
+        <nav className="navbar navbar-expand-lg navbar-light navbar-fixed-top">
             <div className="container justify-content-center">
                 <a href="/" className="pull-left"><img src={Image} alt="" /></a>  
-                    <a className="navbar-toggler" type="a" data-toggle="collapse" data-target="#myNavbar" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+                    <a className="navbar-toggler" type="a" href="..." data-toggle="collapse" data-target="#myNavbar" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
                         <span className="navbar-toggler-icon"></span>
                     </a>
                     <div className="collapse navbar-collapse" id="myNavbar">
@@ -21,7 +21,7 @@ class Network extends Component {
                                     <a className="nav-link" id="myBtn" href="/network">My Networks</a>
                                 </li>
                                 <li className="nav-item">
-                                    <a className="nav-link" id="myBtn" href="/user">Edit My CRDS</a>
+                                    <a className="nav-link" id="myBtn" href="/user/update/">Edit My CRDS</a>
                                 </li>
                             </ul>
                         <ul className="nav navbar-nav flex-fill  justify-content-end">
