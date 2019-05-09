@@ -31,7 +31,8 @@ db.on("error", console.error.bind(console, "MongoDB connection error:"));
 // ========================================================================================
 const router = express.Router();
 let Crds = require('./models/Crds');
-let User = require('./models/User'); 
+let User = require('./models/User');
+let Sesh = require('./models/userSession') 
 
 // Card Routes
 router.route('/crds').get(function(req, res) {
@@ -98,8 +99,8 @@ router.route('/users').get(function(req, res) {
 });
 
 router.route('/users/:id').get(function(req, res) {
+  let id = req.params.id;
   User.findById(id, function(err, users) {
-    let id = req.params.id;
     res.json(users)
   });
 });
@@ -137,6 +138,42 @@ router.route('/users/update/:id').post(function(req, res) {
     })
   })
 })
+
+// User Session route
+router.route('/session').get(function(req, res) {
+  Sesh.find(function(err, sesh) {
+    if (err) {
+      console.log(err)
+    } else {
+      res.json(sesh)
+    }
+  });
+});
+
+router.route('/session/add').post(function(req, res) {
+  let sesh = new Sesh(req.body);
+  sesh.save()
+    .then(sesh => {
+      console.log(sesh)
+      res.status(200).json({'user': 'Session added successfully!'})
+    })
+    .catch(err => {
+      console.log(err)
+      res.status(400).send('adding user failed... you are a failure')
+    })
+});
+
+router.route('/session/:id').get(function(req, res) {
+  let id = req.params.id;
+  Sesh.findById(id, function(err, sesh) {
+    if (err) {
+      console.log(err)
+    } else {
+      res.json(sesh)
+    }
+    
+  });
+});
 
 app.use('/api', router)
 
