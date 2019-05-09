@@ -4,27 +4,27 @@ const Schema = mongoose.Schema;
 const crdSchema = new Schema({
   name: {
     type: String,
-    required: false,
+    
   },
   email: {
     type: String, 
-    required: false, 
+    
   },
   phone: {
     type: Number, 
-    required: false
+    // required: false
   },
   title: {
     type: String, 
-    required: false
+    // required: false
   },
   category: {
     type: String,
-    required: false
+    // required: false
   },
   skills: {
     type: String,
-    required: false 
+    // required: false 
   }
 
 });
