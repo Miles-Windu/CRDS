@@ -6,28 +6,19 @@ import CRDS from "../images/Crds_white.png";
 import floatingCards from "../images/floating-diagonal.png";
 import axios from "axios";
 
-class Register extends Component {
+class Login extends Component {
    
     constructor(props){
         super(props);
-
-        this.onChangeName = this.onChangeName.bind(this)
         this.onChangeEmail = this.onChangeEmail.bind(this)
         this.onChangePassword = this.onChangePassword.bind(this)
         this.onSubmit = this.onSubmit.bind(this)
 
         this.state = {
-            fullName: '',
             email: '',
             password: '',
             isDeleted: false
         }
-    }
-
-    onChangeName(e){
-        this.setState({
-            fullName: e.target.value
-        })
     }
 
     onChangeEmail(e){
@@ -47,22 +38,14 @@ class Register extends Component {
 
         // console log form
         console.log('Form Submitted:')
-        console.log(`Name: ${this.state.fullName}`)
         console.log(`Email: ${this.state.email}`)
         console.log(`Password: ${this.state.password}`)
 
-        const newUser = {
-            fullName: this.state.fullName,
-            email: this.state.email,
-            password: this.state.password,
-            isDeleted: false
-        }
-
-        axios.post('http://localhost:3000/api/users/add', newUser)
+        axios.get('http://localhost:3000/api/users')
             .then(res => console.log(res.data));
         
         this.setState({
-            fullName: '',
+            name: '',
             email: '',
             password: '',
             isDeleted: false
@@ -78,15 +61,6 @@ class Register extends Component {
                  <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#myNavbar" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
                      <span className="navbar-toggler-icon"></span>
                  </button>
-                 <div className="collapse navbar-collapse" id="myNavbar">
-                     <ul className="nav navbar-nav flex-fill  justify-content-end">
-                         <div className="login">
-                             <li className="nav-item">
-{/* data-target="#myModal" data-toggle="modal" */} <a id="myBtn" role="button" href="/login" className="btn btn-outline-info  my-2 my-sm-0 mr-sm-2 "> Login </a>
-                             </li>
-                         </div>
-                     </ul>
-                 </div>
          </div>
     </nav> 
     <br />
@@ -97,13 +71,9 @@ class Register extends Component {
         <div className="row justify-content-center align-items-center">      
             <div className="card col-lg-4 mx-auto ">
                 <br />
-                <h5 className="text-center">Register For an Account</h5>
+                <h5 className="text-center">Login Here!</h5>
                 <div className="form-group">
                 <form onSubmit={this.onSubmit}>
-                    {/* Name */}
-                    <label  for="nameInput">Name</label>
-                    <input onChange={this.onChangeName} value={this.state.fullName} className="form-control"  id="nameInput" aria-describedby="emailHelp" placeholder="Full Name" required/>
-                    {/* <!-- EMAIL --> */}
                     <label for="emailInput">Email</label>
                     <input onChange={this.onChangeEmail} value={this.state.email} className="form-control"  aria-describedby="emailHelp" placeholder="Enter email" required/>
                     {/* <!-- PASSWORD --> */}
@@ -111,7 +81,7 @@ class Register extends Component {
                     <input onChange={this.onChangePassword} value={this.state.password} type="password" className="form-control"  placeholder="Password" required />
                     {/* <!-- SUBMIT --> */}
                     <br />
-                    <button type="submit" id="submit-btn" className="btn btn-primary">Submit</button>
+                    <button type="submit" id="submit-btn" className="btn btn-primary">Login</button>
                 </form>
                 </div>       
             </div>
@@ -147,4 +117,4 @@ class Register extends Component {
     }
 }
 
-export default Register
+export default Login

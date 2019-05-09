@@ -106,12 +106,14 @@ router.route('/users/:id').get(function(req, res) {
 });
 
 router.route('/users/add').post(function(req, res) {
-  let user = new User(req.body);
+  console.log(req)
+  let user = new User(req.body); 
   user.save()
-    .then(users => {
-      res.status(200).json({'user': 'user added successfully!'})
-    })
+    .then(users => { 
+      res.status(200).json(users)
+    }) 
     .catch(err => {
+      console.log(err)
       res.status(400).send('adding user failed... you are a failure')
     })
 });
@@ -155,7 +157,7 @@ router.route('/session/add').post(function(req, res) {
   sesh.save()
     .then(sesh => {
       console.log(sesh)
-      res.status(200).json({'user': 'Session added successfully!'})
+      res.status(200).json(sesh)
     })
     .catch(err => {
       console.log(err)

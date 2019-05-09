@@ -35,15 +35,18 @@ class Landing extends Component {
                         <ul className="nav navbar-nav flex-fill  justify-content-end">
                             <div className="login">
                                 <li className="nav-item">
-                                <button id="myBtn" type="button" className="btn btn-outline-info  my-2 my-sm-0 mr-sm-2 " data-target="#myModal" data-toggle="modal"> Login </button>
+{/* data-target="#myModal" data-toggle="modal" */} <a id="myBtn" role="button" href="/login" className="btn btn-outline-info  my-2 my-sm-0 mr-sm-2 "> Login </a>
                                 </li>
+                                
                             </div>
                         </ul>
                     </div>
             </div>
         </nav> 
-            <div id="myModal" className="modal full row justify-content-center align-items-center">
-                {/* <!-- Modal content --> */}
+        
+        
+            {/* <div id="myModal" className="modal full row justify-content-center align-items-center">
+                
                 <div className="modal-content card col-lg-4 mx-auto">
                     <span className="close text-right">X</span>
                     <h3 className="text-center">Log In</h3>
@@ -55,7 +58,7 @@ class Landing extends Component {
                     </div>
                     <a href="/user" type="login" className="btn btn-primary">Login</a>
                 </div>
-            </div>
+            </div> */}
 
     {/* Jumbotron */}
     <div id="root">

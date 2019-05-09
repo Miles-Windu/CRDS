@@ -1,8 +1,8 @@
-var name = $('#nameInput').val();
-var email = $("#emailInput").val();
+// var name = $('#nameInput').val();
+// var email = $("#emailInput").val();
 
 
-$('#submit-btn').on('click', function(){
-    console.log(name + email);
-})
+// $('#submit-btn').on('click', function(){
+//     console.log(name + email);
+// })
 

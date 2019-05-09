@@ -6,15 +6,18 @@ const { Schema } = mongoose;
 const userSchema = new Schema({
     fullName: {
         type: String,
-        default: ""
+        // required: true
+        default: " "
     },
     email: {
         type: String,
-        default: ""
+        // required: true 
+        default: " "
     },
     password: {
         type: String,
-        default: ""
+        // required: true
+        default: " "
     },
     isDeleted: {
         type: Boolean,
