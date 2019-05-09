@@ -8,6 +8,9 @@ const morgan = require('morgan');
 const path = require('path');
 // const logger = require('logger')
 
+// dependency methods
+let app = express();
+
 // establish port on 1993 
 let PORT = process.env.PORT || 1993; 
 
@@ -16,8 +19,7 @@ if (process.env.NODE_ENV === "production") {
   app.use(express.static("client/build"));
 }
 
-// dependency methods
-let app = express();
+
 let db = mongoose.connection;
 
 // Connect to the Mongo DB

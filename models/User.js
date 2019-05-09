@@ -7,21 +7,21 @@ const userSchema = new Schema({
     fullName: {
         type: String,
         // required: true
-        default: " "
+        // default: " "
     },
     email: {
         type: String,
         // required: true 
-        default: " "
+        // default: " "
     },
     password: {
         type: String,
         // required: true
-        default: " "
+        // default: " "
     },
     isDeleted: {
         type: Boolean,
-        default: false
+        // default: false
     }
 
 });
