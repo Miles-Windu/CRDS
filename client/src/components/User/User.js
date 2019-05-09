@@ -173,7 +173,7 @@ class User extends Component {
                 <label for="skillInput">Skills</label>
                 <input onChange={this.onChangeSkills} name="skills" type="text" className="form-control" value={this.state.skill} placeholder="Example: JavaScript, MySQL, HTML..." required />
                 {/* <!-- SUBMIT --> */}
-                <input type="submit" value="Your Card" className="btn" />
+                <button type="submit" value="Your Card" className="btn">Create Your Card!</button>
                </form> 
             </div>
             <br />

@@ -4,20 +4,70 @@ import "../css/register.css";
 import CRDS from "../images/Crds_white.png";
 // import "./index";
 import floatingCards from "../images/floating-diagonal.png";
-import { findDOMNode } from "react-dom";
-import $ from "jquery";
 import axios from "axios";
 
 class Register extends Component {
    
-handleSubmit = (event) => {
-    event.preventDefault()
-    const name = $(findDOMNode(this.refs.name)).val()
-    const email = $(findDOMNode(this.refs.email)).val()
-    const password = $(findDOMNode(this.refs.password)).val()
-    console.log(name + email + password)
+    constructor(props){
+        super(props);
 
-}
+        this.onChangeName = this.onChangeName.bind(this)
+        this.onChangeEmail = this.onChangeEmail.bind(this)
+        this.onChangePassword = this.onChangePassword.bind(this)
+        this.onSubmit = this.onSubmit.bind(this)
+
+        this.state = {
+            fullName: '',
+            email: '',
+            password: '',
+            isDeleted: false
+        }
+    }
+
+    onChangeName(e){
+        this.setState({
+            fullName: e.target.value
+        })
+    }
+
+    onChangeEmail(e){
+        this.setState({
+            email: e.target.value
+        })
+    }
+
+    onChangePassword(e){
+        this.setState({
+            password: e.target.value
+        })
+    }
+
+    onSubmit(e){
+        e.preventDefault();
+
+        // console log form
+        console.log('Form Submitted:')
+        console.log(`Name: ${this.state.name}`)
+        console.log(`Email: ${this.state.email}`)
+        console.log(`Password: ${this.state.password}`)
+
+        const newUser = {
+            name: this.state.name,
+            email: this.state.email,
+            password: this.state.password,
+            isDeleted: false
+        }
+
+        axios.post('http://localhost:3000/api/users/add', newUser)
+            .then(res => console.log(res.data));
+        
+        this.setState({
+            name: '',
+            email: '',
+            password: '',
+            isDeleted: false
+        })
+    }
 
     render(){
         return (
@@ -49,18 +99,20 @@ handleSubmit = (event) => {
                 <br />
                 <h5 className="text-center">Register For an Account</h5>
                 <div className="form-group">
+                <form onSubmit={this.onSubmit}>
                     {/* Name */}
                     <label  for="nameInput">Name</label>
-                    <input type="name" className="form-control" ref="name" id="nameInput" aria-describedby="emailHelp" placeholder="Full Name" required/>
+                    <input onChange={this.onChangeName} value={this.state.name} className="form-control"  id="nameInput" aria-describedby="emailHelp" placeholder="Full Name" required/>
                     {/* <!-- EMAIL --> */}
                     <label for="emailInput">Email</label>
-                    <input type="email" className="form-control" ref="email" aria-describedby="emailHelp" placeholder="Enter email" required/>
+                    <input onChange={this.onChangeEmail} value={this.state.email} className="form-control"  aria-describedby="emailHelp" placeholder="Enter email" required/>
                     {/* <!-- PASSWORD --> */}
                     <label for="passwordInput">Password</label>
-                    <input type="password" className="form-control" ref="password" placeholder="Password" required />
+                    <input onChange={this.onChangePassword} value={this.state.password} type="password" className="form-control"  placeholder="Password" required />
                     {/* <!-- SUBMIT --> */}
                     <br />
-                    <button onClick={this.handleSubmit} type="submit" id="submit-btn" className="btn btn-primary">Submit</button>
+                    <button type="submit" id="submit-btn" className="btn btn-primary">Submit</button>
+                </form>
                 </div>       
             </div>
         </div>

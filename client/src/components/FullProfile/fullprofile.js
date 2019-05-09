@@ -18,7 +18,7 @@ class fullprofile extends Component {
                         <div className="collapse navbar-collapse" id="myNavbar">
                             <ul className="navbar-nav mr-auto">
                                 <li className="nav-item">
-                                    <a className="nav-link" id="myBtn" href="/user">My Networks</a>
+                                    <a className="nav-link" id="myBtn" href="/network">My Networks</a>
                                 </li>
                                 <li className="nav-item">
                                     <a className="nav-link" id="myBtn" href="/user">Edit My CRDS</a>
