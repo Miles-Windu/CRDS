@@ -29,13 +29,29 @@ db.once("open", () => console.log("connected to the database successfully!"));
 // checks if connection with the database is successful
 db.on("error", console.error.bind(console, "MongoDB connection error:"));
 
+// Session authentication 
+// app.use(session({
+//   secret: "CRDS",
+//   resave: true,
+//   saveUninitialized: true
+// }));
+// app.use(passport.initialize());
+// app.use(passport.session());
+
+
 // ROUTES
 // ========================================================================================
+// Middleware
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json());
+// app.use(logger("dev"));
+
 const router = express.Router();
 let Crds = require('./models/Crds');
 let User = require('./models/User');
 let Sesh = require('./models/userSession') 
 
+app.use('/api', router)
 // Card Routes
 router.route('/crds').get(function(req, res) {
   Crds.find(function(err, crds) {
@@ -54,12 +70,14 @@ router.route('/crds/:id').get(function(req, res) {
   });
 });
 
-router.route('/crds/add').post(function(req, res) {
+router.route('/crds').post(function(req, res) {
+  console.log(req)
   let crd = new Crds(req.body);
+  
   crd.save()
     .then(crd => {
       console.log(crd)
-      res.status(200).json({'crd': 'crd added successfully!'})
+      res.status(200).json(crd)
     })
     .catch(err => {
       console.log(err)
@@ -107,8 +125,8 @@ router.route('/users/:id').get(function(req, res) {
   });
 });
 
-router.route('/users/add').post(function(req, res) {
-  console.log(req)
+router.route('/users').post(function(req, res) {
+  console.log(req.body)
   let user = new User(req.body); 
   user.save()
     .then(users => { 
@@ -154,7 +172,7 @@ router.route('/session').get(function(req, res) {
   });
 });
 
-router.route('/session/add').post(function(req, res) {
+router.route('/session').post(function(req, res) {
   let sesh = new Sesh(req.body);
   sesh.save()
     .then(sesh => {
@@ -179,33 +197,11 @@ router.route('/session/:id').get(function(req, res) {
   });
 });
 
-app.use('/api', router)
-
-
 // END ROUTES
 // =========================================================================================
-
-
-
-
-// Middleware
-app.use(bodyParser.urlencoded({ extended: false }));
-app.use(bodyParser.json());
-// app.use(logger("dev"));
-
-// Session authentication 
-app.use(session({
-  secret: "CRDS",
-  resave: true,
-  saveUninitialized: true
-}));
-app.use(passport.initialize());
-app.use(passport.session());
-
 app.get("*", function(req, res) {
   res.sendFile(path.join(__dirname, "./client/public/index.html"));
 });
-
 
 app.listen(PORT, function() {
     console.log(`🌎 ==> API server now on port ${PORT}!`);
