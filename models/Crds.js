@@ -12,19 +12,19 @@ const crdSchema = new Schema({
   },
   phone: {
     type: Number, 
-    // required: false
+
   },
   title: {
     type: String, 
-    // required: false
+  
   },
   category: {
     type: String,
-    // required: false
+  
   },
   skills: {
     type: String,
-    // required: false 
+    
   }
 
 });
