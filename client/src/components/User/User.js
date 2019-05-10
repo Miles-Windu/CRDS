@@ -71,7 +71,7 @@ class User extends Component {
         console.log(`Name: ${this.state.name}`);
         console.log(`Email: ${this.state.email}`);
         console.log(`Phone Number: ${this.state.phone}`);
-        console.log(`Title: ${this.state.titel}`);
+        console.log(`Title: ${this.state.title}`);
         console.log(`Category: ${this.state.category}`);
         console.log(`Skills Include: ${this.state.skills}`);
 
@@ -84,7 +84,7 @@ class User extends Component {
             skills: this.state.skills
         }
 
-        axios.post('http://localhost:3000/api/crds/add', newCrd)
+        axios.post('http://localhost:3000/api/crds', newCrd)
             .then(res => console.log(res.data));
 
         this.setState({
