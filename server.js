@@ -51,7 +51,7 @@ let Crds = require('./models/Crds');
 let User = require('./models/User');
 let Sesh = require('./models/userSession') 
 
-app.use('/api', router)
+
 // Card Routes
 router.route('/crds').get(function(req, res) {
   Crds.find(function(err, crds) {
@@ -71,13 +71,13 @@ router.route('/crds/:id').get(function(req, res) {
 });
 
 router.route('/crds').post(function(req, res) {
-  console.log(req)
+  console.log(req.body)
   let crd = new Crds(req.body);
   
   crd.save()
-    .then(crd => {
-      console.log(crd)
-      res.status(200).json(crd)
+    .then(crds => {
+      console.log(crds)
+      res.status(200).json(crds)
     })
     .catch(err => {
       console.log(err)
@@ -196,6 +196,8 @@ router.route('/session/:id').get(function(req, res) {
     
   });
 });
+
+app.use('/api', router)
 
 // END ROUTES
 // =========================================================================================

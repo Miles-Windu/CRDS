@@ -58,7 +58,7 @@ class Register extends Component {
             isDeleted: false
         }
 
-        axios.post('http://localhost:3000/api/users/add', newUser)
+        axios.post('http://localhost:3000/api/users', newUser)
             .then(res => console.log(res.data));
         
         this.setState({
