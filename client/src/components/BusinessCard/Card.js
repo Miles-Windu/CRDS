@@ -12,17 +12,18 @@ function Card(props) {
                     </div>
                         <hr />
                     <div className="card-content">
-                        <span className="card-title activator grey-text text-darken-4">Ferat Imrak</span>
-                        <p>Full-Stack Web developer</p>
+                        <span className="card-title activator grey-text text-darken-4" valus={props.name} >{props.name}</span>
+                        <p value={props.title}>{props.title}</p>
                     </div>
                     {/* <!-- RESPONSIVE ASPECT OF CARD --> */}
                     <div className="card-reveal">
-                        <span className="card-title grey-text text-darken-4">John Doe<i className="material-icons right">close</i></span>
-                        <p className="card-text"><small className="text-muted">Proficient in: HTML, CSS, Javascript, React.js, Node.js, mongoDB
+                        <span className="card-title grey-text text-darken-4">{props.name}
+                        <i className="material-icons right">close</i></span>
+                        <p className="card-text"><small className="text-muted">Proficient in: {props.skills}
                         </small></p>
-                        <p className="card-text"> Phone Number: 1 (708) 123-4567</p>
-                        <p className="card-text"> 405 Church St, Evanston, IL 60201</p>
-                        <a href="https://github.com/jiro1/Project-3">Check out my website!</a>
+                        <p className="card-text" > Phone Number: {props.phone}</p>
+                        <p className="card-text"> {props.address}</p>
+                        <a href={props.site}>{props.site}</a>
                     </div>
                 </div>
             </div>
