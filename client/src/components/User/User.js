@@ -171,7 +171,11 @@ class User extends Component {
                 </select >
                 {/* <!-- SKILLS --> */}
                 <label for="skillInput">Skills</label>
-                <input onChange={this.onChangeSkills} name="skills" type="text" className="form-control" value={this.state.skills} placeholder="Example: JavaScript, MySQL, HTML..." required />
+
+                <input onChange={this.onChangeSkills} name="skills" type="text" className="form-control" value={this.state.skill} placeholder="Example: JavaScript, MySQL, HTML..." required />
+                 {/* <!-- ADDRESS--> */}
+                 <label for="titleInput">Address</label>
+                <input onChange={this.onChangeAddress} name="title" type="text" className="form-control" value={this.state.address} placeholder="Street address, City / Town, State, Zip" required placeholderTextColor/>
                 {/* <!-- SUBMIT --> */}
                 <button type="submit" value="Your Card" className="btn">Create Your Card!</button>
                </form> 

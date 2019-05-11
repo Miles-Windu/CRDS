@@ -134,8 +134,8 @@ class Landing extends Component {
 
                         <a className="btn btn-info btn-lg" href="/register" role="button">Sign Up!</a>
                     </div>
-                    <div className="col-lg-6 col-sm-12">
-                        <img src={image2} alt="floating-cards" />
+                    <div className="col-lg-6 col-sm-12 col-xs-12">
+                        <img src={image2} alt="floating-cards" className="img-fluid"/>
                     </div>
                 </div>
             </div>
@@ -160,8 +160,10 @@ class Landing extends Component {
                         <br /> - The Connectors
                     </p>
                 </div>
-                <div className="col-lg-5 col-sm-12">
-                   <img className="animation-element slide-left testimonial" src={image3} alt="macbook-on-desk.jpg" />
+                <div className="col-lg-5 col-sm-12 col-xs-12">
+                    {/* original animated image */}
+                    {/* <img className="animation-element slide-left testimonial" src={image3} alt="macbook-on-desk.jpg" /> */}
+                   <img className="img-fluid" src={image3} alt="macbook-on-desk.jpg" />
                 </div>
             </div>
             </div>
@@ -266,7 +268,7 @@ class Landing extends Component {
                 <div id="map-container-google-11" className="z-depth map-container-2" >
                     <br />
                     <iframe src="https://maps.google.com/maps?q=chicago&t=&z=13&ie=UTF8&iwloc=&output=embed"
-                    frameborder="0" style={{border: "0"}} title="Google-Map" allowfullscreen></iframe>
+                    frameborder="0" style={{border: "0"}} title="Google-Map" allowfullscreen className="img-fluid"></iframe>
                 </div>
             </div>
             <div className="col-lg-5">
