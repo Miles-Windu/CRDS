@@ -7,6 +7,7 @@ import fullprofile from './components/FullProfile/fullprofile.js';
 // import Card from "./components/BusinessCard/Card";
 import Landing from "./components/Landing/Landing"
 import Login from './components/Login/Login.js';
+import Public from './components/Public/public.js'
 
 class App extends Component {
 
@@ -19,6 +20,7 @@ class App extends Component {
         <Route path="/network" component={Network} />
         <Route path="/register" component={Register} />
         <Route path="/fullprofile" component={fullprofile} />
+        <Route path="/public" component={Public} />
       </Router>
     </div>
   }

@@ -50,6 +50,9 @@ class Network extends Component {
                                     <a className="nav-link" id="myBtn" href="/network">My Networks</a>
                                 </li>
                                 <li className="nav-item">
+                                    <a className="nav-link" id="myBtn" href="/public">Public Network</a>
+                                </li>
+                                <li className="nav-item">
                                     <a className="nav-link" id="myBtn" href="/user/update/">Edit My CRDS</a>
                                 </li>
                             </ul>
