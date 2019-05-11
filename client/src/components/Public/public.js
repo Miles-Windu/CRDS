@@ -10,6 +10,7 @@ import Finance from "../Network/Categories/Finance";
 import Food from "../Network/Categories/Food_Service";
 import Media from "../Network/Categories/Media_Marketing";
 import Card from "../BusinessCard/Card";
+import publicCard from "../BusinessCard/publicCard"
 import axios from "axios";
 
 class Public extends Component {
@@ -82,17 +83,15 @@ class Public extends Component {
                     <input class="form-control" type="text" placeholder="Search" aria-label="Search"></input>
                 </div>
             </div>
-
-
-            <div className="row">
+       
              {/* <!-- CARD CONTAINER--> */}
                 {this.state.crdInfo.map(crd => 
-                    <Card 
+                    <publicCard
                     key={crd.id}
-                    name={crd.name}/>
+                    name={crd.name} />
                     
                     )}
-            </div>
+
         </div>
     </div>
 </div>
