@@ -25,7 +25,7 @@ location
 and summarize the specific need/value of business!
 
 ## Deployment
-This app is deployed using Heroku. Click here to check out our app!
+This app is deployed using Heroku(https://crds.herokuapp.com/). Click here to check out our app!
 
 ## Tools/Technologies Used
 * React.js

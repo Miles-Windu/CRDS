@@ -10,3 +10,8 @@ body, h1, h2, h3, p {
 ::placeholder {
     opacity: 40%;
 }
+
+#userPhoto {
+    margin-left: 375px;
+    
+}
