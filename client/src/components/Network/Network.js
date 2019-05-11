@@ -27,7 +27,7 @@ class Network extends Component {
                         <ul className="nav navbar-nav flex-fill  justify-content-end">
                             <div className="login">
                                 <li className="nav-item">
-                                    <a id="myBtn" type="a" className="btn btn-outline-info  my-2 my-sm-0 mr-sm-2 " href="/user" tabindex="-1"> Logout </a>
+                                    <a id="myBtn" type="a" className="btn btn-outline-info  my-2 my-sm-0 mr-sm-2 " href="/" tabindex="-1"> Logout </a>
                                 </li>
                             </div>
                         </ul>

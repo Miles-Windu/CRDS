@@ -30,13 +30,13 @@ db.once("open", () => console.log("connected to the database successfully!"));
 db.on("error", console.error.bind(console, "MongoDB connection error:"));
 
 // Session authentication 
-// app.use(session({
-//   secret: "CRDS",
-//   resave: true,
-//   saveUninitialized: true
-// }));
-// app.use(passport.initialize());
-// app.use(passport.session());
+app.use(session({
+  secret: "CRDS",
+  resave: true,
+  saveUninitialized: true
+}));
+app.use(passport.initialize());
+app.use(passport.session());
 
 
 // ROUTES
@@ -49,7 +49,8 @@ app.use(bodyParser.json());
 const router = express.Router();
 let Crds = require('./models/Crds');
 let User = require('./models/User');
-let Sesh = require('./models/userSession') 
+let Sesh = require('./models/userSession');
+let Message = require('./models/Message') 
 
 
 // Card Routes
@@ -196,6 +197,31 @@ router.route('/session/:id').get(function(req, res) {
     
   });
 });
+
+// Card Routes
+router.route('/message').get(function(req, res) {
+  Message.find(function(err, message) {
+    if (err) {
+      console.log(err)
+    } else {
+      res.json(message)
+    }
+  });
+});
+
+router.route('/message').post(function(req, res) {
+  let message = new Message(req.body);
+  message.save()
+    .then(msg => {
+      console.log(msg)
+      res.status(200).json(msg)
+    })
+    .catch(err => {
+      console.log(err)
+      res.status(400).send('adding user failed... you are a failure')
+    })
+});
+
 
 app.use('/api', router)
 
