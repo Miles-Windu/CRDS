@@ -22,10 +22,7 @@ const crdSchema = new Schema({
     type: String,
   
   },
-  skills: {
-    type: String,
-    
-  }
+  skills: []
 
 });
 

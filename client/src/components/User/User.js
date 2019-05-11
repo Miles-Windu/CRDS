@@ -23,7 +23,7 @@ class User extends Component {
             phone: '',
             title: '',
             category: '',
-            skills: ''
+            skills: []
         };
     };
 
@@ -81,7 +81,7 @@ class User extends Component {
             phone: this.state.phone,
             title: this.state.title,
             category: this.state.category,
-            skills: this.state.skills
+            skills: this.state.skills.split(", ")
         }
 
         axios.post('http://localhost:3000/api/crds', newCrd)
@@ -96,6 +96,10 @@ class User extends Component {
             skills: ''
         })
         
+    }
+
+    pushToSkillArray(e) {
+
     }
 
     render(){
