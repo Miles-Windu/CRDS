@@ -1,7 +1,7 @@
 import React, {Component} from "react";
 import "../css/user.css";
 import CRDS from "../images/Crds_white.png";
-import Placeholder from "../images/image-placeholder.png";
+// import Placeholder from "../images/image-placeholder.png";
 import axios from "axios";
 
 
@@ -23,7 +23,9 @@ class User extends Component {
             phone: '',
             title: '',
             category: '',
+
             skills: []
+
         };
     };
 
@@ -63,6 +65,13 @@ class User extends Component {
         });
     };
 
+    onChangeImg(e) {
+        this.setState({
+            imgpath: e.target.value
+        });
+    };
+
+
     onSubmit(e) {
         e.preventDefault();
 
@@ -81,6 +90,10 @@ class User extends Component {
             phone: this.state.phone,
             title: this.state.title,
             category: this.state.category,
+
+        
+            imgpath: 'public/cardImg/',
+
             skills: this.state.skills.split(", ")
         }
 
@@ -93,7 +106,8 @@ class User extends Component {
             phone: '',
             title: '',
             category: '',
-            skills: ''
+            skills: '',
+            imgpath:'',
         })
         
     }
@@ -135,14 +149,15 @@ class User extends Component {
                 <h3 className="text-center">Create a Business Card</h3>
                 {/* <!-- USER PHOTO UPLOAD --> */}
                 <div className="user-photo text-center">
-                    <form className="mx-auto">
-                        <img src={Placeholder} alt="Place Holder" height="200" width="200"/>
-                        <div className="text-center " >
-                            <label for="userPhoto">Upload User Photo</label>
-                            <input type="file" className="form-control-file text-center" id="userPhoto" />
-                        </div>
-                    </form>
-                </div>
+                {/* <!-- SUBMIT PHOTO TO A DIFFERENT FOLDER --> */}
+                   <form className="mx-auto" encType="multipart/form-data" action="/cardPics" method="POST">
+                       <img src={this.state.imgpath} alt="Place Holder" height="200" width="200"/>
+                       <div className="text-center " >
+                           <label for="userPhoto">Upload User Photo</label>
+                           <input type="file" className="form-control-file text-center" id="userPhoto" name="image"/>
+                       </div>
+                   </form>
+               </div>
                 {/* <!-- INPUT FIELDS --> */}
             <div className="container">
                 <form onSubmit={this.onSubmit}>
