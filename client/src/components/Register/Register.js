@@ -99,7 +99,7 @@ class Register extends Component {
                 <br />
                 <h5 className="text-center">Register For an Account</h5>
                 <div className="form-group">
-                <form onSubmit={this.onSubmit}>
+                <form onSubmit={this.onSubmit} action="/api/uers/add" method="POST">
                     {/* Name */}
                     <label  for="nameInput">Name</label>
                     <input onChange={this.onChangeName} value={this.state.fullName} className="form-control"  id="nameInput" aria-describedby="emailHelp" placeholder="Full Name" required/>
