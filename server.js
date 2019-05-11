@@ -6,6 +6,10 @@ const bodyParser = require('body-parser');
 const session = require('express-session')
 const morgan = require('morgan');
 const path = require('path');
+const fs = require('file-system');
+const multer = require('multer');
+const uuid = require('uuid/v4');
+
 // const logger = require('logger')
 
 // dependency methods
@@ -28,6 +32,17 @@ db.once("open", () => console.log("connected to the database successfully!"));
 // checks if connection with the database is successful
 db.on("error", console.error.bind(console, "MongoDB connection error:"));
 
+// Multer config
+const storage = multer.diskStorage({
+  destination: path.join(__dirname, 'client/public/cardImg'),
+  filename: (req, file, cb, filename) => {
+    console.log(file);
+    cb(null, uuid() + path.extname(file.originalname));
+  }
+});
+app.use(multer({storage}).single('image'));
+
+
 // Session authentication 
 app.use(session({
   secret: "CRDS",
@@ -41,8 +56,8 @@ app.use(passport.session());
 // ROUTES
 // ========================================================================================
 // Middleware
-app.use(bodyParser.urlencoded({ extended: false }));
-app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ limit: "500mb", extended: false }));
+app.use(bodyParser.json({limit: "500mb"}));
 // app.use(logger("dev"));
 
 const router = express.Router();
