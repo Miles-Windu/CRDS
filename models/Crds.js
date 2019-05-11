@@ -29,6 +29,10 @@ const crdSchema = new Schema({
     //required: false
   },
 
+  address: {
+    type: String
+  },
+
   skills: []
 
 
