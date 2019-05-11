@@ -9,8 +9,30 @@ import Medical from "./Categories/Medical";
 import Finance from "./Categories/Finance";
 import Food from "./Categories/Food_Service";
 import Media from "./Categories/Media_Marketing";
+import Card from "../BusinessCard/Card";
+import axios from "axios";
 
 class Network extends Component {
+
+    constructor(props){
+        super(props)
+
+        this.state = {
+            crdInfo: []
+        }
+    }
+
+    componentDidMount() {
+        axios.get('http://localhost:3000/api/crds')
+            .then(response => {
+                this.setState({
+                    crdInfo: response.data
+                });
+            })
+            .catch(function (error){
+                console.log(error)
+            })
+    }
 
     render(){
         return (
@@ -63,128 +85,36 @@ class Network extends Component {
                         <a className="list-group-item list-group-item-action" href="#list-item-7">Food/Service</a>
                     </div>
                 </div>
-                {/* <!-- CARD CONTAINER--> */}
+
+             {/* <!-- CARD CONTAINER--> */}
+
                 <div className="col-sm-9">
                     <div className="overflow-auto">
                         <div data-spy="scroll" data-target="#list-example" data-offset="0" className="scrollspy">
-                           {/* Web/Technology category */} <Web />
+                             <Web />
                             <div className="row">
                             {/* INSERT CARDS HERE ***************************************************/}
-                                {/* <!-- CARD 1 DUMMY CARD --> */}
-                                <div className=" col-lg-4 col-xl-6" id="user-card">
-                                    <div className="card" style={{maxWidth: "600px"}}>
-                                        <div className="col-md-4 justify-content-center card-image waves-effect waves-block waves-light">
-                                        <br />
-                                        <img className="activator" src={image2} alt="" style={{width: "100px", height: "100px"}} />
-                                        </div>
-                                        <hr />
-                                        <div className="card-content">
-                                        <span className="card-title activator grey-text text-darken-4">Ferat Imrak</span>
-                                        <p>Full-Stack Web developer</p>
-                                        <a className="btn btn-info btn-lg" href="/fullprofile" role="button">See Full Profile</a>
-                                        </div>
-                                        {/* <!-- RESPONSIVE ASPECT OF CARD --> */}
-                                        <div className="card-reveal">
-                                        <span className="card-title grey-text text-darken-4">Ferat Imrak<i className="material-icons right">close</i></span>
-                                            <p className="card-text"><small className="text-muted">Proficient in: HTML, CSS, Javascript, React.js, Node.js, mongoDB
-                                            </small></p>
-                                            <p className="card-text"> Phone Number: 1 (708) 123-4567</p>
-                                            <p className="card-text"> 405 Church St, Evanston, IL 60201</p>
-                                            <a href="https://github.com/jiro1/Project-3">Check out my website!</a>
-                                            {/* SHARE */}
-                                            <p>SHARING OPTIONS BELOW:</p>
-                                            <div class="addthis_inline_share_toolbox_e8kh"></div>
-                                        </div>
-                                    </div>
-                                </div>
-                                {/* <!-- CARD 2 DUMMY CARD --> */}
-                                <div className=" col-lg-4 col-xl-6" id="user-card">
-                                    <div className="card" style={{maxWidth: "600px"}}>
-                                        <div className="col-md-4 justify-content-center card-image waves-effect waves-block waves-light">
-                                        <br />
-                                        <img className="activator" src={image2} alt="" style={{width: "100px", height: "100px"}} />
-                                        </div>
-                                        <hr />
-                                         <div className="card-content">
-                                        <span className="card-title activator grey-text text-darken-4">Diego M.S</span>
-                                        <p>React and API Specialist</p>
-                                        <a className="btn btn-info btn-lg" href="/fullprofile" role="button">See Full Profile</a>
-                                        </div>
-                                        {/* <!-- RESPONSIVE ASPECT OF CARD --> */}
-                                        <div className="card-reveal">
-                                        <span className="card-title grey-text text-darken-4">Diego M.S<i className="material-icons right">close</i></span>
-                                            <p className="card-text"><small className="text-muted">Proficient in: HTML, CSS, Javascript, React.js, Node.js, mongoDB
-                                            </small></p>
-                                            <p className="card-text"> Phone Number: 1 (708) 123-4567</p>
-                                            <p className="card-text"> 405 Church St, Evanston, IL 60201</p>
-                                            <a href="https://github.com/jiro1/Project-3">Check out my website!</a>
-                                            {/* SHARE */}
-                                            <p>SHARING OPTIONS BELOW:</p>
-                                            <div class="addthis_inline_share_toolbox_e8kh"></div>
-                                        </div>
-                                    </div>
-                                </div>
-                                {/* <!-- CARD 3 DUMMY CARD --> */}
-                                <div className=" col-lg-4 col-xl-6" id="user-card">
-                                    <div className="card" style={{maxWidth: "600px"}}>
-                                        <div className="col-md-4 justify-content-center card-image waves-effect waves-block waves-light">
-                                        <br />
-                                        <img className="activator" src={image2} alt="" style={{width: "100px", height: "100px"}} />
-                                        </div>
-                                        <hr />
-                                        <div className="card-content">
-                                        <span className="card-title activator grey-text text-darken-4">Miles Windu</span>
-                                        <p>Jedi and React Master</p>
-                                        <a className="btn btn-info btn-lg" href="/fullprofile" role="button">See Full Profile</a>
-                                        </div>
-                                        {/* <!-- RESPONSIVE ASPECT OF CARD --> */}
-                                        <div className="card-reveal">
-                                        <span className="card-title grey-text text-darken-4">Miles Windu<i className="material-icons right">close</i></span>
-                                            <p className="card-text"><small className="text-muted">Proficient in: HTML, CSS, Javascript, React.js, Node.js, mongoDB
-                                            </small></p>
-                                            <p className="card-text"> Phone Number: 1 (708) 123-4567</p>
-                                            <p className="card-text"> 405 Church St, Evanston, IL 60201</p>
-                                            <a href="https://github.com/jiro1/Project-3">Check out my website!</a>
-                                            {/* SHARE */}
-                                            <p>SHARING OPTIONS BELOW:</p>
-                                            <div class="addthis_inline_share_toolbox_e8kh"></div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                <div> 
 
-                             <Media />
-                             
+                            {this.state.crdInfo.map(crd => 
+                            <Card 
+                            key={crd.id}
+                            name={crd.name}
+                            title={crd.title}
+                            skills={crd.skills.map(skill => skill.split(","))}
+                            phone={crd.phone}
+                            site={crd.site}
+                            address={crd.address}
+                            id={crd.id}
+                            />)}
+
+                            </div>
+
+                            <Media />
+
                             <div className="row">
                             {/* INSERT CARDS HERE ***************************************************/}
-                                {/* <!-- CARD 3 DUMMY CARD --> */}
-                                <div className=" col-lg-4 col-xl-6" id="user-card">
-                                <div className="card" style={{maxWidth: "600px"}}>
-                                    <div className="col-md-4 justify-content-center card-image waves-effect waves-block waves-light">
-                                    <br />
-                                    <img className="activator" src={image2} alt="" style={{width: "100px", height: "100px"}} />
-                                    </div>
-                                    <hr />
-                                    <div className="card-content">
-                                    <span className="card-title activator grey-text text-darken-4">Estevan Cruz</span>
-                                    <p>Photographer and Social Media Specialist</p>
-                                    <a className="btn btn-info btn-lg" href="/fullprofile" role="button">See Full Profile</a>
-                                    </div>
-                                    {/* <!-- RESPONSIVE ASPECT OF CARD --> */}
-                                    <div className="card-reveal">
-                                    <span className="card-title grey-text text-darken-4">Estevan Cruz<i className="material-icons right">close</i></span>
-                                        <p className="card-text"><small className="text-muted">Skilled in Lifestyle, e-commerce, and event-based photography</small></p>
-                                        <p className="card-text"> Phone Number: 1 (708) 123-4567</p>
-                                        <p className="card-text"> 405 Church St, Evanston, IL 60201</p>
-                                        <p className="card-text"> I also run social media accounts and do social media take-over's</p>
-                                        <a href="https://github.com/jiro1/Project-3">Check out my website!</a>
-                                         {/* SHARE */}
-                                         <p>SHARING OPTIONS BELOW:</p>
-                                        <div class="addthis_inline_share_toolbox_e8kh"></div>
-                                        </div>
-                                    </div>
-                                </div>
                             </div>
+                            
                             <Construction />
                             
                             <div className="row">
@@ -216,14 +146,12 @@ class Network extends Component {
 
                         
                             </div>  
-                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
         );
     }
 }
