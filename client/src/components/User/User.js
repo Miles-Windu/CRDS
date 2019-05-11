@@ -23,8 +23,9 @@ class User extends Component {
             phone: '',
             title: '',
             category: '',
-            skills: '',
-            imgpath: "../images/image-placeholder.png"
+
+            skills: []
+
         };
     };
 
@@ -89,8 +90,11 @@ class User extends Component {
             phone: this.state.phone,
             title: this.state.title,
             category: this.state.category,
-            skills: this.state.skills,
+
+        
             imgpath: 'public/cardImg/',
+
+            skills: this.state.skills.split(", ")
         }
 
         axios.post('http://localhost:3000/api/crds', newCrd)
@@ -171,18 +175,22 @@ class User extends Component {
                 <input onChange={this.onChangeTitle} name="title" type="text" className="form-control" value={this.state.title} placeholder="Example: Web developer, UX/UI, Graphic Designer" required placeholderTextColor/>
                 {/* <!-- CATEGORY --> */}
                 <label for="titleInput">Category</label>
-                <select  name="category" className="form-control"  required>
-                        <option onChange={this.onChangeCategory} value={this.state.category}>Web/Technology</option>
-                        <option onChange={this.onChangeCategory} value={this.state.category}>Media/Marketing</option>
-                        <option onChange={this.onChangeCategory} value={this.state.category}>Household</option>
-                        <option onChange={this.onChangeCategory} value={this.state.category}>Law/Legal</option>
-                        <option onChange={this.onChangeCategory} value={this.state.category}>Medical/Health</option>
-                        <option onChange={this.onChangeCategory} value={this.state.category}>Accounting/Finance</option>
-                        <option onChange={this.onChangeCategory} value={this.state.category}>Food/Service</option>
-                      </select >
+                <select onChange={this.onChangeCategory} value={this.state.category} name="category" className="form-control"  required>
+                        <option >Web/Technology</option>
+                        <option>Media/Marketing</option>
+                        <option>Household</option>
+                        <option>Law/Legal</option>
+                        <option>Medical/Health</option>
+                        <option>Accounting/Finance</option>
+                        <option>Food/Service</option>
+                </select >
                 {/* <!-- SKILLS --> */}
                 <label for="skillInput">Skills</label>
+
                 <input onChange={this.onChangeSkills} name="skills" type="text" className="form-control" value={this.state.skill} placeholder="Example: JavaScript, MySQL, HTML..." required />
+                 {/* <!-- ADDRESS--> */}
+                 <label for="titleInput">Address</label>
+                <input onChange={this.onChangeAddress} name="title" type="text" className="form-control" value={this.state.address} placeholder="Street address, City / Town, State, Zip" required placeholderTextColor/>
                 {/* <!-- SUBMIT --> */}
                 <button type="submit" value="Your Card" className="btn">Create Your Card!</button>
                </form> 

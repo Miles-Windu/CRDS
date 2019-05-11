@@ -7,9 +7,67 @@ import image4 from "../images/Crds_black.png";
 import image5 from "../images/icons8-circled-user-female-skin-type-6-96.png";
 import image6 from "../images/icons8-circled-user-male-skin-type-3-96.png";
 import image7 from "../images/icons8-circled-user-female-skin-type-5-96.png";
-import image8 from "../images/icons8-circled-user-male-skin-type-5-96.png"; 
-
+import image8 from "../images/icons8-circled-user-male-skin-type-5-96.png";
+import axios from "axios";
+ 
 class Landing extends Component {
+
+    constructor(props){
+        super(props)
+
+        this.onChangeName = this.onChangeName.bind(this)
+        this.onChangeEmail = this.onChangeEmail.bind(this)
+        this.onChangeMessage = this.onChangeMessage.bind(this)
+        this.onSubmit = this.onSubmit.bind(this)
+
+        this.state = {
+            name: '',
+            email: '',
+            message: ''
+        }
+    }
+
+    onChangeName(event) {
+        this.setState({
+            name: event.target.value
+        });
+    };
+
+    onChangeEmail(event) {
+        this.setState({
+            email: event.target.value
+        });
+    };
+
+    onChangeMessage(event) {
+        this.setState({
+            message: event.target.value
+        });
+    }
+
+    onSubmit(event) {
+        event.preventDefault();
+
+        console.log(`Message: ${this.state.message}`)
+
+        const newMessage = {
+            name: this.state.name,
+            email: this.state.email,
+            message: this.state.message
+        }
+        
+        axios.post('http://localhost:3000/api/message', newMessage)
+            .then(res => console.log(res.data));
+
+        this.setState({
+            name: '',
+            email: '',
+            message: ''
+            
+        })
+
+    }
+
     render(){
         return (
     <div>
@@ -76,8 +134,8 @@ class Landing extends Component {
 
                         <a className="btn btn-info btn-lg" href="/register" role="button">Sign Up!</a>
                     </div>
-                    <div className="col-lg-6 col-sm-12">
-                        <img src={image2} alt="floating-cards" />
+                    <div className="col-lg-6 col-sm-12 col-xs-12">
+                        <img src={image2} alt="floating-cards" className="img-fluid"/>
                     </div>
                 </div>
             </div>
@@ -102,8 +160,10 @@ class Landing extends Component {
                         <br /> - The Connectors
                     </p>
                 </div>
-                <div className="col-lg-5 col-sm-12">
-                   <img className="animation-element slide-left testimonial" src={image3} alt="macbook-on-desk.jpg" />
+                <div className="col-lg-5 col-sm-12 col-xs-12">
+                    {/* original animated image */}
+                    {/* <img className="animation-element slide-left testimonial" src={image3} alt="macbook-on-desk.jpg" /> */}
+                   <img className="img-fluid" src={image3} alt="macbook-on-desk.jpg" />
                 </div>
             </div>
             </div>
@@ -208,18 +268,18 @@ class Landing extends Component {
                 <div id="map-container-google-11" className="z-depth map-container-2" >
                     <br />
                     <iframe src="https://maps.google.com/maps?q=chicago&t=&z=13&ie=UTF8&iwloc=&output=embed"
-                    frameborder="0" style={{border: "0"}} title="Google-Map" allowfullscreen></iframe>
+                    frameborder="0" style={{border: "0"}} title="Google-Map" allowfullscreen className="img-fluid"></iframe>
                 </div>
             </div>
             <div className="col-lg-5">
-            <form action="/action_page.php">
-                <label for="fname">First Name</label>
-                <input type="text" id="fname" name="firstname" placeholder="Your name.." />
-                <label for="lname">Last Name</label>
-                <input type="text" id="lname" name="lastname" placeholder="Your last name.." />
+            <form onSubmit={this.onSubmit} action="/action_page.php">
+                <label for="fname">Name</label>
+                <input value={this.state.name} onChange={this.onChangeName} type="text" id="fname" name="firstname" placeholder="Your name.." />
+                <label for="lname">Email</label>
+                <input value={this.state.email} onChange={this.onChangeEmail} type="text" id="lname" name="lastname" placeholder="Your email.." />
                 <label for="subject">Subject</label>
-                <textarea id="subject" name="subject" placeholder="Write something.." style={{height: "170px"}}></textarea>
-                <input type="submit" value="Submit" />
+                <textarea value={this.state.message} onChange={this.onChangeMessage} id="subject" name="subject" placeholder="Write something.." style={{height: "170px"}}></textarea>
+                <button type="submit">submit</button>
             </form>
             </div>
         </div>

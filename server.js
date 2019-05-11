@@ -44,13 +44,13 @@ app.use(multer({storage}).single('image'));
 
 
 // Session authentication 
-// app.use(session({
-//   secret: "CRDS",
-//   resave: true,
-//   saveUninitialized: true
-// }));
-// app.use(passport.initialize());
-// app.use(passport.session());
+app.use(session({
+  secret: "CRDS",
+  resave: true,
+  saveUninitialized: true
+}));
+app.use(passport.initialize());
+app.use(passport.session());
 
 
 // ROUTES
@@ -63,9 +63,10 @@ app.use(bodyParser.json({limit: "500mb"}));
 const router = express.Router();
 let Crds = require('./models/Crds');
 let User = require('./models/User');
-let Sesh = require('./models/userSession') 
+let Sesh = require('./models/userSession');
+let Message = require('./models/Message') 
 
-app.use('/api', router)
+
 // Card Routes
 router.route('/crds').get(function(req, res) {
   Crds.find(function(err, crds) {
@@ -85,13 +86,13 @@ router.route('/crds/:id').get(function(req, res) {
 });
 
 router.route('/crds').post(function(req, res) {
-  console.log(req)
+  console.log(req.body)
   let crd = new Crds(req.body);
   
   crd.save()
-    .then(crd => {
-      console.log(crd)
-      res.status(200).json(crd)
+    .then(crds => {
+      console.log(crds)
+      res.status(200).json(crds)
     })
     .catch(err => {
       console.log(err)
@@ -105,9 +106,9 @@ router.route('/crds/update/:id').post(function(req, res) {
       res.status(404).send('Data is not found')
     } else {
       crds.name = req.body.name;
-      crds.emial = req.body.emial;
+      crds.email = req.body.email;
       crds.phone = req.body.phone;
-      crds.titel = req.body.title;
+      crds.title = req.body.title;
       crds.category = req.body.category;
       crds.skills = req.body.skills
     }
@@ -159,9 +160,9 @@ router.route('/users/update/:id').post(function(req, res) {
       res.status(404).send('Data is not found')
     } else {
       users.name = req.body.name;
-      users.emial = req.body.emial;
+      users.email = req.body.email;
       users.phone = req.body.phone;
-      users.titel = req.body.title;
+      users.title = req.body.title;
       users.category = req.body.category;
       users.skills = req.body.skills
     }
@@ -211,10 +212,37 @@ router.route('/session/:id').get(function(req, res) {
   });
 });
 
+// Card Routes
+router.route('/message').get(function(req, res) {
+  Message.find(function(err, message) {
+    if (err) {
+      console.log(err)
+    } else {
+      res.json(message)
+    }
+  });
+});
+
+router.route('/message').post(function(req, res) {
+  let message = new Message(req.body);
+  message.save()
+    .then(msg => {
+      console.log(msg)
+      res.status(200).json(msg)
+    })
+    .catch(err => {
+      console.log(err)
+      res.status(400).send('adding user failed... you are a failure')
+    })
+});
+
+
+app.use('/api', router)
+
 // END ROUTES
 // =========================================================================================
 app.get("*", function(req, res) {
-  res.sendFile(path.join(__dirname, "./client/public/index.html"));
+  res.sendFile(path.join(__dirname, "./client/build/index.html"));
 });
 
 app.listen(PORT, function() {

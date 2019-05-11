@@ -10,7 +10,9 @@
     "express": "^4.16.4",
     "express-session": "^1.16.1",
     "express-sessions": "^1.0.6",
+
     "file-system": "^2.2.2",
+
     "if-env": "^1.0.4",
     "logger": "^0.0.1",
     "mongoose": "^5.5.5",
@@ -32,7 +34,7 @@
     "start:dev": "concurrently \"nodemon --ignore 'client/*'\" \"npm run client\"",
     "client": "cd client && npm run start",
     "seed": "node scripts/seedDB.js",
-    "install": "cd client && npm install",
+    "install": "cd client && yarn install",
     "build": "cd client && npm run build",
     "heroku-postbuild": "cd client && npm install && npm run build",
     "test": "echo \"Error: no test specified\" && exit 1"

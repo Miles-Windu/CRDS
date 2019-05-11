@@ -51,7 +51,7 @@ class fullprofile extends Component {
                             <div className="row">
                             {/* INSERT CARDS HERE ***************************************************/}
                                 {/* <!-- CARD 1 DUMMY CARD --> */}
-                                <div className=" col-lg-12 col-xl-12" id="user-card">
+                                {/* <div className=" col-lg-12 col-xl-12" id="user-card">
                                     <div className="card" style={{maxWidth: "600px"}}>
                                         <div className="col-md-4 justify-content-center card-image waves-effect waves-block waves-light">
                                         <br />
@@ -59,11 +59,11 @@ class fullprofile extends Component {
                                         </div>
                                         <hr />
                                         <div className="card-content">
-                                            {/* NAME */}
+                                            
                                             <h3 className=" grey-text text-darken-4" id="name">Ferat Imrak</h3>
-                                            {/* TITLE */}
+                                            
                                             <p className="card-title" id="title">Full-Stack Web developer</p>
-                                            {/* SKILLSETS */}
+                                            
                                             <h7 className="h7"> Skill set: </h7>
                                                 <ul>
                                                     <li id="skill1">
@@ -82,13 +82,13 @@ class fullprofile extends Component {
                                                     <p>React.js</p>
                                                     </li>
                                                 </ul>
-                                            {/* PHONE */}
+                                            
                                             <h7 className="h7"> Phone Number: </h7>
                                             <p className="card-text" id="phone"> 1 (708) 123-4567</p>
-                                            {/* ADDRESS */}
+                                            
                                             <h7 className="h7"> Address: </h7>
                                             <p className="card-text" id="address"> 405 Church St, Evanston, IL 60201</p>
-                                            {/* WEB LINK */}
+                                            
                                             <h7 className="h7" id="website"> Website(s): </h7>
                                             <ul>
                                                 <li>
@@ -101,11 +101,92 @@ class fullprofile extends Component {
                                                 <a href="https://github.com/jiro1/Project-3">company</a>
                                                 </li>
                                             </ul>
-                                            {/* SHARE */}
-                                            <p></p>
+                                            
                                             <h7 className="h7"> Sharing Options: </h7>
                                             <div class="addthis_inline_share_toolbox_e8kh"></div>
 
+                                        </div>
+                                          
+                                    </div>
+                                </div> */}
+                                {/* DUMMY CARD 2 */}
+                                <div className=" col-lg-12 col-xl-12" id="user-card">
+                                    <div className="card" style={{maxWidth: "600px"}}>
+                                        <div className="col-md-4 justify-content-center card-image waves-effect waves-block waves-light">
+                                        <br />
+                                        <img className="align-center" src={image2} alt="" style={{width: "100px", height: "100px"}} />
+                                        </div>
+                                        <hr />
+                                        <div className="card-content">
+                                            {/* NAME */}
+                                            <h3 className=" grey-text text-darken-4" id="name">Ferat Imrak</h3>
+                                            {/* TITLE */}
+                                            <p className="card-title" id="title">Full-Stack Web developer</p>
+                                            {/* ACCORDION DROP */}
+                                                <div id="accordion">
+                                                {/* SKILLSET DROP */}
+                                                    <h5 className="card-header" id="headingOne" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                                    Skill set: 
+                                                    </h5>
+                                                        <div id="collapseOne" className="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
+                                                        <div class="card-body">
+                                                            <ul>
+                                                                <li id="skill1">
+                                                                <p>HTML</p>
+                                                                </li>
+                                                                <li id="skill2">
+                                                                <p>CSS</p>
+                                                                </li>
+                                                                <li id="skill3">
+                                                                <p>Javascript</p>
+                                                                </li>
+                                                                <li id="skill4">
+                                                                <p>Node.js</p>
+                                                                </li>
+                                                                <li id="skill5">
+                                                                <p>React.js</p>
+                                                                </li>
+                                                            </ul>
+                                                        </div>
+                                                        </div>
+                                                {/* PHONE  */}
+                                                    <h5 className="card-header" id="headingTwo" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                                                        Phone:
+                                                    </h5>
+                                                    <div id="collapseTwo" className="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
+                                                        <div className="card-body">
+                                                            (708) 123-4567
+                                                        </div>
+                                                    </div>
+                                                {/* ADDRESS  */}
+                                                    <h5 className="card-header" id="headingThree" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                                                        Address:
+                                                    </h5>
+                                                    <div id="collapseThree" className="collapse" aria-labelledby="headingThree" data-parent="#accordion">
+                                                        <div className="card-body">
+                                                             405 Church St, Evanston, IL 60201
+                                                        </div>
+                                                    </div>
+
+                                                 {/* WEBSITE */}
+                                                 <h5 className="card-header" id="headingFour" data-toggle="collapse" data-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+                                                        Website:
+                                                    </h5>
+                                                    <div id="collapseFour" className="collapse" aria-labelledby="headingFour" data-parent="#accordion">
+                                                        <div className="card-body">
+                                                            <a href="https://github.com/jiro1/Project-3">github</a>
+                                                        </div>
+                                                    </div>
+                                                 {/* SHARING OPTIONS */}
+                                                 <h5 className="card-header" id="headingFive" data-toggle="collapse" data-target="#collapseFive" aria-expanded="false" aria-controls="collapseFive">
+                                                        Sharing Options:
+                                                    </h5>
+                                                    <div id="collapseFive" className="collapse" aria-labelledby="headingFive" data-parent="#accordion">
+                                                        <div className="card-body">
+                                                            <div class="addthis_inline_share_toolbox_e8kh"></div>
+                                                        </div>
+                                                    </div>
+                                            </div>
                                         </div>
                                           
                                     </div>
