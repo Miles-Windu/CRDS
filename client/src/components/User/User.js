@@ -1,7 +1,7 @@
 import React, {Component} from "react";
 import "../css/user.css";
 import CRDS from "../images/Crds_white.png";
-// import Placeholder from "../images/image-placeholder.png";
+import Placeholder from "../images/image-placeholder.png";
 import axios from "axios";
 
 
@@ -15,15 +15,17 @@ class User extends Component {
         this.onChangeTitle = this.onChangeTitle.bind(this);
         this.onChangeCategory = this.onChangeCategory.bind(this);
         this.onChangeSkills = this.onChangeSkills.bind(this);
+        this.onChangeAddress = this.onChangeAddress.bind(this)
         this.onSubmit = this.onSubmit.bind(this);
         
         this.state = {
+            imgpath: '',
             name: '',
             email: '',
             phone: '',
             title: '',
             category: '',
-
+            address: '',
             skills: []
 
         };
@@ -71,6 +73,12 @@ class User extends Component {
         });
     };
 
+    onChangeAddress(e) {
+        this.setState({
+            address: e.target.value
+        });
+    };
+
 
     onSubmit(e) {
         e.preventDefault();
@@ -89,11 +97,9 @@ class User extends Component {
             email: this.state.email,
             phone: this.state.phone,
             title: this.state.title,
+            address: this.state.address,
             category: this.state.category,
-
-        
             imgpath: 'public/cardImg/',
-
             skills: this.state.skills.split(", ")
         }
 
@@ -107,6 +113,7 @@ class User extends Component {
             title: '',
             category: '',
             skills: '',
+            address: '',
             imgpath:'',
         })
         
@@ -151,10 +158,10 @@ class User extends Component {
                 <div className="user-photo text-center">
                 {/* <!-- SUBMIT PHOTO TO A DIFFERENT FOLDER --> */}
                    <form className="mx-auto" encType="multipart/form-data" action="/cardPics" method="POST">
-                       <img src={this.state.imgpath} alt="Place Holder" height="200" width="200"/>
-                       <div className="text-center " >
+                       <img src={Placeholder} alt="Place Holder" height="200" width="200"/>
+                       <div className="text-center p-2" >
                            <label for="userPhoto">Upload User Photo</label>
-                           <input type="file" className="form-control-file text-center" id="userPhoto" name="image"/>
+                           <input type="file" className="form-control-file col-7" id="userPhoto" name="image"/>
                        </div>
                    </form>
                </div>
@@ -187,7 +194,7 @@ class User extends Component {
                 {/* <!-- SKILLS --> */}
                 <label for="skillInput">Skills</label>
 
-                <input onChange={this.onChangeSkills} name="skills" type="text" className="form-control" value={this.state.skill} placeholder="Example: JavaScript, MySQL, HTML..." required />
+                <input onChange={this.onChangeSkills} name="skills" type="text" className="form-control" value={this.state.skills} placeholder="Example: JavaScript, MySQL, HTML..." required />
                  {/* <!-- ADDRESS--> */}
                  <label for="titleInput">Address</label>
                 <input onChange={this.onChangeAddress} name="title" type="text" className="form-control" value={this.state.address} placeholder="Street address, City / Town, State, Zip" required placeholderTextColor/>
