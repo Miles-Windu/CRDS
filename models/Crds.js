@@ -27,7 +27,7 @@ const crdSchema = new Schema({
   imgpath: {
     type: String,
     //required: false
-  }
+  },
 
   skills: []
 
