@@ -19,7 +19,6 @@ if (process.env.NODE_ENV === "production") {
   app.use(express.static("client/build"));
 }
 
-
 let db = mongoose.connection;
 
 // Connect to the Mongo DB
@@ -228,7 +227,7 @@ app.use('/api', router)
 // END ROUTES
 // =========================================================================================
 app.get("*", function(req, res) {
-  res.sendFile(path.join(__dirname, "./client/public/index.html"));
+  res.sendFile(path.join(__dirname, "./client/build/index.html"));
 });
 
 app.listen(PORT, function() {
