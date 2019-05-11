@@ -91,9 +91,9 @@ router.route('/crds/update/:id').post(function(req, res) {
       res.status(404).send('Data is not found')
     } else {
       crds.name = req.body.name;
-      crds.emial = req.body.emial;
+      crds.email = req.body.email;
       crds.phone = req.body.phone;
-      crds.titel = req.body.title;
+      crds.title = req.body.title;
       crds.category = req.body.category;
       crds.skills = req.body.skills
     }
@@ -145,9 +145,9 @@ router.route('/users/update/:id').post(function(req, res) {
       res.status(404).send('Data is not found')
     } else {
       users.name = req.body.name;
-      users.emial = req.body.emial;
+      users.email = req.body.email;
       users.phone = req.body.phone;
-      users.titel = req.body.title;
+      users.title = req.body.title;
       users.category = req.body.category;
       users.skills = req.body.skills
     }
