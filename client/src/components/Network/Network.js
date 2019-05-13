@@ -98,7 +98,7 @@ class Network extends Component {
                             <div className="row">
                             {/* INSERT CARDS HERE ***************************************************/}
 
-                            {this.state.crdInfo.map(crd => 
+                            {this.state.crdInfo.filter((crd) => crd.category === 'Web/Technology').map(crd =>
                                     <Card 
                                     key={crd.id}
                                     name={crd.name}
@@ -108,8 +108,8 @@ class Network extends Component {
                                     site={crd.site}
                                     address={crd.address}
                                     id={crd.id} />
-                                )}
-                            
+                                )
+                            }
 
                             </div>
 
@@ -117,35 +117,113 @@ class Network extends Component {
 
                             <div className="row">
                             {/* INSERT CARDS HERE ***************************************************/}
+                            {this.state.crdInfo.filter((crd) => crd.category === 'Media/Marketing').map(crd =>
+                                    <Card 
+                                    key={crd.id}
+                                    name={crd.name}
+                                    title={crd.title}
+                                    skills={crd.skills.map(skill => skill.split(","))}
+                                    category={crd.category}
+                                    phone={crd.phone}
+                                    site={crd.site}
+                                    address={crd.address}
+                                    id={crd.id} />
+                                )
+                            }
                             </div>
                             
                             <Construction />
                             
                             <div className="row">
                                  {/* INSERT CARDS HERE ***************************************************/}
+                                 {this.state.crdInfo.filter((crd) => crd.category === 'Household').map(crd =>
+                                    <Card 
+                                    key={crd.id}
+                                    name={crd.name}
+                                    title={crd.title}
+                                    skills={crd.skills.map(skill => skill.split(","))}
+                                    phone={crd.phone}
+                                    category={crd.category}
+                                    site={crd.site}
+                                    address={crd.address}
+                                    id={crd.id} />
+                                )
+                            }
                             </div>
 
                              <Legal />
 
                             <div className="row">
                                  {/* INSERT CARDS HERE ***************************************************/}
+                                 {this.state.crdInfo.filter((crd) => crd.category === 'Law/Legal').map(crd =>
+                                    <Card 
+                                    key={crd.id}
+                                    name={crd.name}
+                                    title={crd.title}
+                                    category={crd.category}
+                                    skills={crd.skills.map(skill => skill.split(","))}
+                                    phone={crd.phone}
+                                    site={crd.site}
+                                    address={crd.address}
+                                    id={crd.id} />
+                                )
+                            }
                             </div>
 
                              <Medical />
 
                             <div className="row">
                                  {/* INSERT CARDS HERE ***************************************************/}
+                                 {this.state.crdInfo.filter((crd) => crd.category === 'Medical/Health').map(crd =>
+                                    <Card 
+                                    key={crd.id}
+                                    name={crd.name}
+                                    title={crd.title}
+                                    category={crd.category}
+                                    skills={crd.skills.map(skill => skill.split(","))}
+                                    phone={crd.phone}
+                                    site={crd.site}
+                                    address={crd.address}
+                                    id={crd.id} />
+                                )
+                            }
                             </div>
 
                              <Finance />
 
                             <div className="row">
                                  {/* INSERT CARDS HERE ***************************************************/}
+                                 {this.state.crdInfo.filter((crd) => crd.category === 'Accounting/Finance').map(crd =>
+                                    <Card 
+                                    key={crd.id}
+                                    name={crd.name}
+                                    title={crd.title}
+                                    category={crd.category}
+                                    skills={crd.skills.map(skill => skill.split(","))}
+                                    phone={crd.phone}
+                                    site={crd.site}
+                                    address={crd.address}
+                                    id={crd.id} />
+                                )
+                            }
                             </div>
                             <Food />
 
                             <div className="row">
                                  {/* INSERT CARDS HERE ****************************************************/}
+                                 {this.state.crdInfo.filter((crd) => crd.category === 'Food/Service').map(crd =>
+                                    <Card 
+                                    key={crd.id}
+                                    name={crd.name}
+                                    title={crd.title}
+                                    category={crd.category}
+                                    skills={crd.skills.map(skill => skill.split(","))}
+                                    phone={crd.phone}
+                                    site={crd.site}
+                                    address={crd.address}
+                                    id={crd.id} />
+                                )
+                            }
                             </div>
 
                         

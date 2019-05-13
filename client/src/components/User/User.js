@@ -19,7 +19,7 @@ class User extends Component {
         this.onSubmit = this.onSubmit.bind(this);
         
         this.state = {
-            imgpath: '',
+            imgpath: {Placeholder},
             name: '',
             email: '',
             phone: '',
@@ -114,7 +114,7 @@ class User extends Component {
             category: '',
             skills: '',
             address: '',
-            imgpath:'',
+            imgpath: {Placeholder},
         })
         
     }
@@ -161,7 +161,7 @@ class User extends Component {
                 <div className="user-photo text-center">
                 {/* <!-- SUBMIT PHOTO TO A DIFFERENT FOLDER --> */}
                    <form className="mx-auto" encType="multipart/form-data" action="/cardPics" method="POST">
-                       <img src={Placeholder} alt="Place Holder" height="200" width="200"/>
+                       <img src={this.state.imgpath} alt="Place Holder" height="200" width="200"/>
                        <div className="text-center p-2" >
                            <label for="userPhoto">Upload User Photo</label>
                            <input type="file" className="form-control-file col-7" id="userPhoto" name="image"/>
@@ -186,7 +186,7 @@ class User extends Component {
                 {/* <!-- CATEGORY --> */}
                 <label for="titleInput">Category</label>
                 <select onChange={this.onChangeCategory} value={this.state.category} name="category" className="form-control"  required>
-                        <option >Web/Technology</option>
+                        <option>Web/Technology</option>
                         <option>Media/Marketing</option>
                         <option>Household</option>
                         <option>Law/Legal</option>
