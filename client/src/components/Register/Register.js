@@ -1,4 +1,5 @@
 import React, {Component} from "react";
+import { Redirect } from "react-router-dom";
 import "react-bootstrap";
 import "../css/register.css";
 import CRDS from "../images/Crds_white.png";
@@ -20,7 +21,8 @@ class Register extends Component {
             fullName: '',
             email: '',
             password: '',
-            isDeleted: false
+            isDeleted: false,
+            redirect: false
         }
     }
 
@@ -65,11 +67,17 @@ class Register extends Component {
             fullName: '',
             email: '',
             password: '',
-            isDeleted: false
+            isDeleted: false,
+            redirect: true 
         })
     }
 
     render(){
+        
+        if(this.state.redirect){
+            return <Redirect to="/user" />
+        }
+
         return (
             <div>
             <nav className="navbar navbar-expand-lg navbar-light navbar-fixed-top">
