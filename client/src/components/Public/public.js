@@ -1,15 +1,6 @@
 import React, {Component} from "react";
 import "../css/network.css";
 import Image from "../images/Crds_white.png";
-import image2 from "../images/Crds_black.png";
-import Web from "../Network/Categories/Web_Technology";
-import Construction from "../Network/Categories/Construction";
-import Legal from "../Network/Categories/Legal";
-import Medical from "../Network/Categories/Medical";
-import Finance from "../Network/Categories/Finance";
-import Food from "../Network/Categories/Food_Service";
-import Media from "../Network/Categories/Media_Marketing";
-import Card from "../BusinessCard/Card";
 import publicCard from "../BusinessCard/publicCard"
 import axios from "axios";
 
