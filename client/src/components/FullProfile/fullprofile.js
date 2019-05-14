@@ -3,9 +3,8 @@ import "../css/fullprofile.css";
 import Image from "../images/Crds_white.png";
 import image2 from "../images/Crds_black.png";
 
-class fullprofile extends Component {
-
-render(){
+function fullprofile (props) {
+    
     return (
         <div>
         <nav className="navbar navbar-expand-lg navbar-light navbar-fixed-top">
@@ -30,7 +29,7 @@ render(){
                     <ul className="nav navbar-nav flex-fill  justify-content-end">
                         <div className="login">
                             <li className="nav-item">
-                                <button id="myBtn" type="button" className="btn btn-outline-info  my-2 my-sm-0 mr-sm-2 " href="/user" tabindex="-1"> Logout </button>
+                            <a id="myBtn" type="a" className="btn btn-outline-info  my-2 my-sm-0 mr-sm-2 " href="/" tabindex="-1"> Logout </a>
                             </li>
                         </div>
                     </ul>
@@ -100,7 +99,7 @@ render(){
                                                 </h5>
                                                 <div id="collapseTwo" className="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
                                                     <div className="card-body">
-                                                        (708) 123-4567
+                                                        {props.phone}
                                                     </div>
                                                 </div>
                                             {/* ADDRESS  */}
@@ -144,7 +143,6 @@ render(){
 </div>
 </div>
         );
-    }
 }
 
 export default fullprofile

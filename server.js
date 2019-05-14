@@ -87,7 +87,7 @@ router.route('/crds/:id').get(function(req, res) {
   });
 });
 
-router.route('/crds').post(auth, function(req, res) {
+router.route('/crds').post(function(req, res) {
   console.log(req.body)
   let crd = new Crds(req.body);
   
