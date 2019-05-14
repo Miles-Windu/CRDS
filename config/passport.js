@@ -1,51 +1,80 @@
-const user = require("../models/User");
-let passport = require("passport");
-const LocalStrategy = require("passport-local");
-// Middleware to encrypt password
-const bcrypt = require("bcrypt");
+// const passport = require('passport');
+// const LocalStrategy = require('passport-local').Strategy;
 
-// Authentication 
-module.exports = function(passport) {
-    passport.serializeUser((user, done) => {
-        done(null, user.id);
-      });
+// function init(db) {
+//   var UserColl = db.collections('users');
+//   passport.use(
+//     new LocalStrategy({
+//       usernameField: "email",
+//       passwordField: "pswd"
+//     }),
+//     function(email, pswd, next) {
+//       var query = {"email": email}
+//       UserColl.findOne(query, function(err, user) {
+//         if(err) return next(err);
+//         if(user && user.pswd === pswd) {
+//           return next(null, user, );
+//         } else {
+//           return next(null, false);
+//         }
+//       })
+//     }
+//   )
+// }
+
+
+
+
+//++++++++++++++++++++++++++++++++++++++++++
+
+// const user = require("../models/User");
+// let passport = require("passport");
+// const LocalStrategy = require("passport-local");
+// // Middleware to encrypt password
+// const bcrypt = require("bcrypt");
+
+// // Authentication 
+// module.exports = function(passport) {
+//     passport.serializeUser((user, done) => {
+//         done(null, user.id);
+//       });
       
-      passport.deserializeUser(async (id, done) => {
-        const user = await User.findById(id);
-        done(null, user);
-      });
+//       passport.deserializeUser(async (id, done) => {
+//         const user = await User.findById(id);
+//         done(null, user);
+//       });
       
-      passport.use('local', new LocalStrategy({
-        usernameField: 'email',
-        passwordField: 'password',
-        passReqToCallback: true
-      }, async (req, email, password, done) => {
-        const user = await User.findOne({'email': email})
-        console.log(user)
-        if(user) {
-          return done(null, false, req.flash('signupMessage', 'The Email is already Taken.'));
-        } else {
-          const newUser = new User();
-          newUser.email = email;
-          newUser.password = newUser.encryptPassword(password);
-        console.log(newUser)
-          await newUser.save();
-          done(null, newUser);
-        }
-      }));
+//       passport.use('local', new LocalStrategy({
+//         usernameField: 'email',
+//         passwordField: 'password',
+//         passReqToCallback: true
+//       }, async (req, email, password, done) => {
+//         const user = await User.findOne({'email': email})
+//         console.log(user)
+//         if(user) {
+//           return done(null, false, req.flash('signupMessage', 'The Email is already Taken.'));
+//         } else {
+//           const newUser = new User();
+//           newUser.email = email;
+//           newUser.password = newUser.encryptPassword(password);
+//         console.log(newUser)
+//           await newUser.save();
+//           done(null, newUser);
+//         }
+//       }));
       
-      passport.use('local-signin', new LocalStrategy({
-        usernameField: 'email',
-        passwordField: 'password',
-        passReqToCallback: true
-      }, async (req, email, password, done) => {
-        const user = await User.findOne({email: email});
-        if(!user) {
-          return done(null, false, req.flash('signinMessage', 'No User Found'));
-        }
-        if(!user.comparePassword(password)) {
-          return done(null, false, req.flash('signinMessage', 'Incorrect Password'));
-        }
-        return done(null, user);
-      }));
-    }
+//       passport.use('local-signin', new LocalStrategy({
+//         usernameField: 'email',
+//         passwordField: 'password',
+//         passReqToCallback: true
+//       }, async (req, email, password, done) => {
+//         const user = await User.findOne({email: email});
+//         if(!user) {
+//           return done(null, false, req.flash('signinMessage', 'No User Found'));
+//         }
+//         if(!user.comparePassword(password)) {
+//           return done(null, false, req.flash('signinMessage', 'Incorrect Password'));
+//         }
+//         return done(null, user);
+//       }));
+//     }
