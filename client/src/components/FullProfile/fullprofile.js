@@ -158,7 +158,7 @@ class fullprofile extends Component {
                                                     </h5>
                                                     <div id="collapseTwo" className="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
                                                         <div className="card-body">
-                                                            (708) 123-4567
+                                                        <a href="tel: (708) 123-4567">(708) 123-4567</a>
                                                         </div>
                                                     </div>
                                                 {/* ADDRESS  */}
@@ -167,7 +167,7 @@ class fullprofile extends Component {
                                                     </h5>
                                                     <div id="collapseThree" className="collapse" aria-labelledby="headingThree" data-parent="#accordion">
                                                         <div className="card-body">
-                                                             405 Church St, Evanston, IL 60201
+                                                            <a href="https://goo.gl/maps/tZuh6ifCq4vibYZM9" target="_blank">405 Church St, Evanston, IL 60201</a> 
                                                         </div>
                                                     </div>
 
