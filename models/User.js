@@ -19,8 +19,9 @@ const userSchema = new Schema({
     isDeleted: {
         type: Boolean,
     }
-
 });
+
+
 
 userSchema.methods.encryptPassrword = (password) => {
     return bcrypt.hashSync(password, bcrypt.genSaltSync(10));
