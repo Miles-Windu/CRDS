@@ -9,6 +9,8 @@ const path = require('path');
 const fs = require('file-system');
 const multer = require('multer');
 const uuid = require('uuid/v4');
+const auth = require('./middleware/auth');
+const userCtrl = require('./controller/user');
 
 // const logger = require('logger')
 
@@ -85,7 +87,7 @@ router.route('/crds/:id').get(function(req, res) {
   });
 });
 
-router.route('/crds').post(function(req, res) {
+router.route('/crds').post(auth, function(req, res) {
   console.log(req.body)
   let crd = new Crds(req.body);
   
@@ -100,7 +102,7 @@ router.route('/crds').post(function(req, res) {
     })
 });
  
-router.route('/crds/update/:id').post(function(req, res) {
+router.route('/crds/update/:id').post(auth, function(req, res) {
   Crds.findById(req.params.id, function(err, crds) {
     if (!crds){
       res.status(404).send('Data is not found')
@@ -145,7 +147,8 @@ router.route('/users').post(function(req, res) {
   let user = new User(req.body); 
   user.save()
     .then(users => { 
-      res.status(200).json(users)
+      res.status(200).json(users);
+      // successRedirect: '/login'
     }) 
     .catch(err => {
       console.log(err)
@@ -153,8 +156,13 @@ router.route('/users').post(function(req, res) {
     })
 });
 
+router.route('/users/login').post(userCtrl.login, function(req, res) {
+  res.redirect
+
+})
+
 // will not need this route as user information will not change
-router.route('/users/update/:id').post(function(req, res) {
+router.route('/users/update/:id').post(auth, function(req, res) {
   User.findById(req.params.id, function(err, users) {
     if (!users){
       res.status(404).send('Data is not found')
@@ -177,40 +185,40 @@ router.route('/users/update/:id').post(function(req, res) {
 })
 
 // User Session route
-router.route('/session').get(function(req, res) {
-  Sesh.find(function(err, sesh) {
-    if (err) {
-      console.log(err)
-    } else {
-      res.json(sesh)
-    }
-  });
-});
+// router.route('/session').get(function(req, res) {
+//   Sesh.find(function(err, sesh) {
+//     if (err) {
+//       console.log(err)
+//     } else {
+//       res.json(sesh)
+//     }
+//   });
+// });
 
-router.route('/session').post(function(req, res) {
-  let sesh = new Sesh(req.body);
-  sesh.save()
-    .then(sesh => {
-      console.log(sesh)
-      res.status(200).json(sesh)
-    })
-    .catch(err => {
-      console.log(err)
-      res.status(400).send('adding user failed... you are a failure')
-    })
-});
+// router.route('/session').post(function(req, res) {
+//   let sesh = new Sesh(req.body);
+//   sesh.save()
+//     .then(sesh => {
+//       console.log(sesh)
+//       res.status(200).json(sesh)
+//     })
+//     .catch(err => {
+//       console.log(err)
+//       res.status(400).send('adding user failed... you are a failure')
+//     })
+// });
 
-router.route('/session/:id').get(function(req, res) {
-  let id = req.params.id;
-  Sesh.findById(id, function(err, sesh) {
-    if (err) {
-      console.log(err)
-    } else {
-      res.json(sesh)
-    }
+// router.route('/session/:id').get(function(req, res) {
+//   let id = req.params.id;
+//   Sesh.findById(id, function(err, sesh) {
+//     if (err) {
+//       console.log(err)
+//     } else {
+//       res.json(sesh)
+//     }
     
-  });
-});
+//   });
+// });
 
 // Card Routes
 router.route('/message').get(function(req, res) {
@@ -236,6 +244,45 @@ router.route('/message').post(function(req, res) {
     })
 });
 
+router.route('/users/login').post(function(req, res) {
+  const { email, password } = req.body;
+  User.findOne({ email }, function(err, user) {
+    if (err) {
+      console.error(err);
+      res.status(500)
+        .json({
+        error: 'Internal error please try again'
+      });
+    } else if (!user) {
+      res.status(401)
+        .json({
+          error: 'Incorrect email or password'
+        });
+    } else {
+      user.isCorrectPassword(password, function(err, same) {
+        if (err) {
+          res.status(500)
+            .json({
+              error: 'Internal error please try again'
+          });
+        } else if (!same) {
+          res.status(401)
+            .json({
+              error: 'Incorrect email or password'
+          });
+        } else {
+          // Issue token
+          const payload = { email };
+          const token = jwt.sign(payload, secret, {
+            expiresIn: '1h'
+          });
+          res.cookie('token', token, { httpOnly: true })
+            .sendStatus(200);
+        }
+      });
+    }
+  });
+});
 
 app.use('/api', router)
 

@@ -3,17 +3,21 @@ const bcrypt = require('bcrypt');
 
 const { Schema } = mongoose;
 
-const userSchema = new Schema({
-    fullName: {
+const saltRounds = 10;
+
+const UserSchema = new Schema({
+    name: {
         type: String,
         
     },
     email: {
         type: String,
+        unique: true,
 
     },
     password: {
         type: String,
+        select: false
 
     },
     isDeleted: {
@@ -22,14 +26,38 @@ const userSchema = new Schema({
 
 });
 
-userSchema.methods.encryptPassrword = (password) => {
-    return bcrypt.hashSync(password, bcrypt.genSaltSync(10));
-};
+// Password Comparison
 
-userSchema.methods.validPassword = function (password) {
-    return bcrypt.compareSync(password, this.password);
-  };
-  
-  const User = mongoose.model('User', userSchema);
+UserSchema.methods.isCorrectPassword = function(password, callback){
+    bcrypt.compare(password, this.password, function(err, same) {
+      if (err) {
+        callback(err);
+      } else {
+        callback(err, same);
+      }
+    });
+  }
+
+// Encrypt password
+
+UserSchema.pre('save', function(next) {
+    // Check if document is new or a new password has been set
+    if (this.isNew || this.isModified('password')) {
+      // Saving reference to this because of changing scopes
+      const document = this;
+      bcrypt.hash(document.password, saltRounds,
+        function(err, hashedPassword) {
+        if (err) {
+          next(err);
+        }
+        else {
+          document.password = hashedPassword;
+          next();
+        }
+      });
+    } else {
+      next();
+    }
+  });  const User = mongoose.model('User', UserSchema);
 
   module.exports = User

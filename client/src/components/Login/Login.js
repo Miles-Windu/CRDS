@@ -41,11 +41,10 @@ class Login extends Component {
         console.log(`Email: ${this.state.email}`)
         console.log(`Password: ${this.state.password}`)
 
-        axios.get('http://localhost:3000/api/users')
+        axios.post('http://localhost:3000/api/users/login')
             .then(res => console.log(res.data));
         
         this.setState({
-            name: '',
             email: '',
             password: '',
             isDeleted: false

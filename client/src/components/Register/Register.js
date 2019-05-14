@@ -5,6 +5,7 @@ import CRDS from "../images/Crds_white.png";
 // import "./index";
 import floatingCards from "../images/floating-diagonal.png";
 import axios from "axios";
+// const userCtrl = require("../controller/user")
 
 class Register extends Component {
    
@@ -17,7 +18,7 @@ class Register extends Component {
         this.onSubmit = this.onSubmit.bind(this)
 
         this.state = {
-            fullName: '',
+            name: '',
             email: '',
             password: '',
             isDeleted: false
@@ -26,7 +27,7 @@ class Register extends Component {
 
     onChangeName(e){
         this.setState({
-            fullName: e.target.value
+            name: e.target.value
         })
     }
 
@@ -47,22 +48,23 @@ class Register extends Component {
 
         // console log form
         console.log('Form Submitted:')
-        console.log(`Name: ${this.state.fullName}`)
+        console.log(`Name: ${this.state.name}`)
         console.log(`Email: ${this.state.email}`)
         console.log(`Password: ${this.state.password}`)
 
         const newUser = {
-            fullName: this.state.fullName,
+            name: this.state.name,
             email: this.state.email,
             password: this.state.password,
             isDeleted: false
         }
 
         axios.post('http://localhost:3000/api/users', newUser)
-            .then(res => console.log(res.data));
+            .then(res => console.log(res.data))
+            // .then(res => res.redirect('/login'))
         
         this.setState({
-            fullName: '',
+            name: '',
             email: '',
             password: '',
             isDeleted: false
@@ -93,7 +95,7 @@ class Register extends Component {
     <br />
     <br />
     <br />
-    <form id="register">
+    <form id="register" action="/users" method="POST">
         <div className="row justify-content-center align-items-center">      
             <div className="card col-lg-4 mx-auto ">
                 <br />
@@ -102,7 +104,7 @@ class Register extends Component {
                 <form onSubmit={this.onSubmit} action="/api/uers/add" method="POST">
                     {/* Name */}
                     <label  for="nameInput">Name</label>
-                    <input onChange={this.onChangeName} value={this.state.fullName} className="form-control"  id="nameInput" aria-describedby="emailHelp" placeholder="Full Name" required/>
+                    <input onChange={this.onChangeName} value={this.state.name} className="form-control"  id="nameInput" aria-describedby="emailHelp" placeholder="Full Name" required/>
                     {/* <!-- EMAIL --> */}
                     <label for="emailInput">Email</label>
                     <input onChange={this.onChangeEmail} value={this.state.email} className="form-control"  aria-describedby="emailHelp" placeholder="Enter email" required/>

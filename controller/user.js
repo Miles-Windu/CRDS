@@ -1,37 +1,37 @@
-// const db = require("../models/User");
+const mongoose = require('mongoose');
+const User = require('../models/User');
+const service = require('../services')
 
-// // Defining methods for the UserController
-// module.exports = {
-//   findAll: function(req, res) {
-//     db.User
-//       .find(req.query)
-//       .sort({ date: -1 })
-//       .then(dbModel => res.json(dbModel))
-//       .catch(err => res.status(422).json(err));
-//   },
-//   findById: function(req, res) {
-//     db.User
-//       .findById(req.params.id)
-//       .then(dbModel => res.json(dbModel))
-//       .catch(err => res.status(422).json(err));
-//   },
-//   create: function(req, res) {
-//     db.User
-//       .create(req.body)
-//       .then(dbModel => res.json(dbModel))
-//       .catch(err => res.status(422).json(err));
-//   },
-//   update: function(req, res) {
-//     db.User
-//       .findOneAndUpdate({ _id: req.params.id }, req.body)
-//       .then(dbModel => res.json(dbModel))
-//       .catch(err => res.status(422).json(err));
-//   },
-//   remove: function(req, res) {
-//     db.User
-//       .findById({ _id: req.params.id })
-//       .then(dbModel => dbModel.remove())
-//       .then(dbModel => res.json(dbModel))
-//       .catch(err => res.status(422).json(err));
-//   }
-// };
+function signup(req, res) { 
+    const user = new User({
+        name: req.body.name,
+        email: req.body.email,
+        password: req.body.password
+    })
+    user.save((err) => {
+        if(err) res.status(500).send({ message: `Error creating user: ${err}`})
+
+        return res.status(200).send({ token: service.createToken(user) })
+        console.log(token)
+
+    });
+};
+
+function login(req, res) {
+    User.find({ email: req.body.email }, (err, user) =>{
+        if(err) return res.status(500).send({ message: err});
+        if(!user) return res.status(404).send({ message: 'No user in database'});
+
+        req.user = user;
+        res.status(200).send({
+            messge: 'Logged in',
+            token: service.createToken(user),
+        })
+        // res.redirect('')
+    })
+};
+
+module.exports = {
+    login,
+    signup
+}
