@@ -22,8 +22,12 @@ const UserSchema = new Schema({
     },
     isDeleted: {
         type: Boolean,
+        default: false
+    },
+    signUpDate: {
+        type: Date,
+        default: Date.now()
     }
-
 });
 
 // Password Comparison
@@ -59,5 +63,6 @@ UserSchema.pre('save', function(next) {
       next();
     }
   });  const User = mongoose.model('User', UserSchema);
+
 
   module.exports = User

@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import {BrowserRouter as Router, Route, Link, Redirect} from "react-router-dom";
-import Register from "./components/Register/Register.js"
+import Register from "./components/Register/Register.js";
+
 import User from "./components/User/User";
 import Network from './components/Network/Network.js';
 import fullprofile from './components/FullProfile/fullprofile.js';
@@ -8,6 +9,7 @@ import fullprofile from './components/FullProfile/fullprofile.js';
 import Landing from "./components/Landing/Landing"
 import Login from './components/Login/Login.js';
 import Public from './components/Public/public.js'
+import Home from './components/Register/signUp.js';
 
 class App extends Component {
 

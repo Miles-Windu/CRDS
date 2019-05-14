@@ -1,16 +1,7 @@
 import React, {Component} from "react";
 import "../css/network.css";
 import Image from "../images/Crds_white.png";
-import image2 from "../images/Crds_black.png";
-import Web from "../Network/Categories/Web_Technology";
-import Construction from "../Network/Categories/Construction";
-import Legal from "../Network/Categories/Legal";
-import Medical from "../Network/Categories/Medical";
-import Finance from "../Network/Categories/Finance";
-import Food from "../Network/Categories/Food_Service";
-import Media from "../Network/Categories/Media_Marketing";
-import Card from "../BusinessCard/Card";
-import publicCard from "../BusinessCard/publicCard"
+import PublicCard from "../BusinessCard/publicCard"
 import axios from "axios";
 
 class Public extends Component {
@@ -73,25 +64,32 @@ class Public extends Component {
         {/* <!-- MY NETWORKS --> */}
 
        <br />
-       <div className="container overflow-auto justify-content-center container-fluid">
+       <div className="overflow-auto justify-content-center container-fluid">
            <div className="card">
             <br />
 
             {/* SEARCH BAR */}
             <div className="row">
-                <div className="col-sm-12">
+                <div className="col-sm-12 col-xl-12">
                     <input class="form-control" type="text" placeholder="Search" aria-label="Search"></input>
                 </div>
             </div>
-       
+
+            <div className="row">
              {/* <!-- CARD CONTAINER--> */}
                 {this.state.crdInfo.map(crd => 
-                    <publicCard
+                    <PublicCard
                     key={crd.id}
-                    name={crd.name} />
+                    name={crd.name} 
+                    category={crd.category}
+                    skills={crd.skills}
+                    phone={crd.phone}
+                    email={crd.email}
+                    title={crd.title}
+                    />
                     
                     )}
-
+            </div>
         </div>
     </div>
 </div>

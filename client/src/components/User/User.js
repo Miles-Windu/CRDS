@@ -1,4 +1,5 @@
 import React, {Component} from "react";
+import {Redirect} from "react-router-dom"
 import "../css/user.css";
 import CRDS from "../images/Crds_white.png";
 import Placeholder from "../images/image-placeholder.png";
@@ -10,6 +11,7 @@ class User extends Component {
         super(props);
 
         this.onChangeName = this.onChangeName.bind(this);
+        this.onChangeImg = this.onChangeImg.bind(this)
         this.onChangeEmail = this.onChangeEmail.bind(this);
         this.onChangePhone = this.onChangePhone.bind(this);
         this.onChangeTitle = this.onChangeTitle.bind(this);
@@ -19,14 +21,15 @@ class User extends Component {
         this.onSubmit = this.onSubmit.bind(this);
         
         this.state = {
-            imgpath: '',
+            imgpath: Placeholder,
             name: '',
             email: '',
             phone: '',
             title: '',
-            category: '',
+            category: 'Web/Technology',
             address: '',
-            skills: []
+            skills: [],
+            redirect: false 
 
         };
     };
@@ -79,6 +82,8 @@ class User extends Component {
         });
     };
 
+    
+
 
     onSubmit(e) {
         e.preventDefault();
@@ -111,15 +116,25 @@ class User extends Component {
             email: '',
             phone: '',
             title: '',
-            category: '',
+            category: 'Web/Technology',
             skills: '',
             address: '',
-            imgpath:'',
+            imgpath: Placeholder,
+            redirect: true
         })
+
+        if (this.state.redirect) {
+            return <Redirect to='/network' />
+        }
         
     }
 
     render(){
+        
+        if (this.state.redirect === true){
+           return <Redirect to='/network' />
+        }
+
         return (
             <div>
             <nav className="navbar navbar-expand-lg navbar-light navbar-fixed-top">
@@ -161,10 +176,10 @@ class User extends Component {
                 <div className="user-photo text-center">
                 {/* <!-- SUBMIT PHOTO TO A DIFFERENT FOLDER --> */}
                    <form className="mx-auto" encType="multipart/form-data" action="/cardPics" method="POST">
-                       <img src={Placeholder} alt="Place Holder" height="200" width="200"/>
+                       <img src={this.state.imgpath}  alt="Place Holder" height="200" width="200"/>
                        <div className="text-center p-2" >
                            <label for="userPhoto">Upload User Photo</label>
-                           <input type="file" className="form-control-file col-7" id="userPhoto" name="image"/>
+                           <input type="file" onChange={this.handleChangeImg} className="form-control-file col-7" id="userPhoto" name="image"/>
                        </div>
                    </form>
                </div>
@@ -186,7 +201,7 @@ class User extends Component {
                 {/* <!-- CATEGORY --> */}
                 <label for="titleInput">Category</label>
                 <select onChange={this.onChangeCategory} value={this.state.category} name="category" className="form-control"  required>
-                        <option >Web/Technology</option>
+                        <option>Web/Technology</option>
                         <option>Media/Marketing</option>
                         <option>Household</option>
                         <option>Law/Legal</option>
@@ -202,7 +217,7 @@ class User extends Component {
                  <label for="titleInput">Address</label>
                 <input onChange={this.onChangeAddress} name="title" type="text" className="form-control" value={this.state.address} placeholder="Street address, City / Town, State, Zip" required placeholderTextColor/>
                 {/* <!-- SUBMIT --> */}
-                <button type="submit" value="Your Card" className="btn">Create Your Card!</button>
+                <button onClick={this.setRedirect} type="submit" value="Your Card" className="btn">Create Your Card!</button>
                </form> 
             </div>
             <br />

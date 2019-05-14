@@ -28,7 +28,7 @@ if (process.env.NODE_ENV === "production") {
 let db = mongoose.connection;
 
 // Connect to the Mongo DB
-mongoose.connect("mongodb://localhost/crdsDB", { useNewUrlParser: true }); 
+mongoose.connect("mongodb://localhost/crdsDB" || "mongodb://<iKnow_Music>:<Phyllis21>@ds039441.mlab.com:39441/heroku_cpbwq7nv", { useNewUrlParser: true }); 
 db.once("open", () => console.log("connected to the database successfully!"));
 
 // checks if connection with the database is successful
@@ -163,16 +163,12 @@ router.route('/users/login').post(userCtrl.login, function(req, res) {
 
 // will not need this route as user information will not change
 router.route('/users/update/:id').post(auth, function(req, res) {
+
   User.findById(req.params.id, function(err, users) {
     if (!users){
       res.status(404).send('Data is not found')
     } else {
-      users.name = req.body.name;
-      users.email = req.body.email;
-      users.phone = req.body.phone;
-      users.title = req.body.title;
-      users.category = req.body.category;
-      users.skills = req.body.skills
+      res.json(users)
     }
 
     users.save().then(crds => {
