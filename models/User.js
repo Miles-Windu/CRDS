@@ -18,18 +18,24 @@ const userSchema = new Schema({
     },
     isDeleted: {
         type: Boolean,
+        default: false
+    },
+    signUpDate: {
+        type: Date,
+        default: Date.now()
     }
 });
 
 
 
-userSchema.methods.encryptPassrword = (password) => {
-    return bcrypt.hashSync(password, bcrypt.genSaltSync(10));
-};
+userSchema.methods.generateHash = function(password) {
+    return bcrypt.hashSync(password, bcrypt.genSaltSync(8), null);
+  };
 
-userSchema.methods.validPassword = function (password) {
+userSchema.methods.validPassword = function(password) {
     return bcrypt.compareSync(password, this.password);
   };
+  
   
   const User = mongoose.model('User', userSchema);
 
