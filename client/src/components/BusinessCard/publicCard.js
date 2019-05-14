@@ -1,14 +1,14 @@
 import React from "react";
 import image2 from "../images/Crds_black.png";
 
-function publicCard(props) {
-    return <div className="container">
+function PublicCard(props) {
+    return <div className="container-fluid">
         <div className="row">
-            <div className=" col-lg-4 col-xl-6" id="user-card">
-                <div className="card" style={{maxWidth: "600px"}}>
-                    <div className="col-md-4 justify-content-center card-image waves-effect waves-block waves-light">
+            <div className=" col-lg-6 col-xl-12" id="user-card">
+                <div className="card" style={{maxWidth: "300px"}}>
+                    <div className="col-md-3 justify-content-center card-image waves-effect waves-block waves-light">
                         <br />
-                        <img className="activator" src={image2} alt="" style={{width: "100px", height: "100px"}} />
+                        <img className="activator" src={image2} alt="" style={{width: "50px", height: "50px"}} />
                     </div>
                         <hr />
                     <div className="card-content">
@@ -19,9 +19,10 @@ function publicCard(props) {
                     <div className="card-reveal">
                         <span className="card-title grey-text text-darken-4">{props.name}
                         <i className="material-icons right">close</i></span>
-                        <p className="card-text"><small className="text-muted">Proficient in: {props.skills}
+                        <p className="card-text"><small className="text-muted">Proficient in: {props.skills.map(skill => {return <li>{skill}</li>})}
                         </small></p>
                         <p className="card-text" > Category: {props.category}</p>
+                        <p className="card-text">Email: {props.email}</p>
                         <p className="card-text"> {props.address}</p>
                         <a href={props.site}>{props.site}</a>
                     </div>
@@ -31,4 +32,4 @@ function publicCard(props) {
     </div>
 }
 
-export default publicCard
+export default PublicCard
