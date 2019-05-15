@@ -20,10 +20,7 @@ const UserSchema = new Schema({
         select: false
 
     },
-    isDeleted: {
-        type: Boolean,
-        default: false
-    },
+
     signUpDate: {
         type: Date,
         default: Date.now()
