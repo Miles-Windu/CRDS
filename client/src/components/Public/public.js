@@ -75,7 +75,7 @@ class Public extends Component {
                 </div>
             </div>
 
-            <div className="row">
+            <div className="card-deck">
              {/* <!-- CARD CONTAINER--> */}
                 {this.state.crdInfo.map(crd => 
                     <PublicCard
