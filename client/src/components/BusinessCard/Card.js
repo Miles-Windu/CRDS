@@ -2,13 +2,18 @@ import React from "react";
 import image2 from "../images/Crds_black.png";
 
 function Card(props) {
+
+
     return <div className="container-fluid">
-        <div className="row">
+       
             <div className=" col-md-12 col-sm-12 col-xs-12 col-lg-12 col-xl-6" id="user-card">
                 <div className="card" style={{maxWidth: "600px"}}>
                     <div className="col-md-4 justify-content-center card-image waves-effect waves-block waves-light">
                         <br />
                         <img className="activator" src={image2} alt="" style={{width: "75px", height: "75px"}} />
+                    </div>
+                    <div className="col-md-4 justify-content-right">
+                    {/* <button className="btn btn-primary btn-lg btn-block" type="button" href="/fullprofile">View Full Profile</button> */}
                     </div>
                         <hr />
                     <div className="card-content">
@@ -28,7 +33,7 @@ function Card(props) {
                     </div>
                 </div>
             </div>
-        </div>
+        
     </div>
 }
 

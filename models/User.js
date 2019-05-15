@@ -1,5 +1,6 @@
 const mongoose = require('mongoose');
 const bcrypt = require('bcrypt');
+const crd = require('./Crds')
 
 const { Schema } = mongoose;
 
@@ -24,7 +25,10 @@ const UserSchema = new Schema({
     signUpDate: {
         type: Date,
         default: Date.now()
-    }
+    }, 
+
+    network: []
+
 });
 
 // Password Comparison

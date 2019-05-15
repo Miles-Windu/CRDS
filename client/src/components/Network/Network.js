@@ -100,14 +100,14 @@ class Network extends Component {
 
                             {this.state.crdInfo.filter((crd) => crd.category === 'Web/Technology').map(crd =>
                                     <Card 
-                                    key={crd.id}
+                                    key={crd._id}
                                     name={crd.name}
                                     title={crd.title}
                                     skills={crd.skills.map(skill => skill.split(","))}
                                     phone={crd.phone}
                                     site={crd.site}
                                     address={crd.address}
-                                    id={crd.id} />
+                                    id={crd._id} />
                                 )
                             }
 
@@ -119,7 +119,7 @@ class Network extends Component {
                             {/* INSERT CARDS HERE ***************************************************/}
                             {this.state.crdInfo.filter((crd) => crd.category === 'Media/Marketing').map(crd =>
                                     <Card 
-                                    key={crd.id}
+                                    key={crd._id}
                                     name={crd.name}
                                     title={crd.title}
                                     skills={crd.skills.map(skill => skill.split(","))}
@@ -127,7 +127,7 @@ class Network extends Component {
                                     phone={crd.phone}
                                     site={crd.site}
                                     address={crd.address}
-                                    id={crd.id} />
+                                    id={crd._id} />
                                 )
                             }
                             </div>
@@ -138,7 +138,7 @@ class Network extends Component {
                                  {/* INSERT CARDS HERE ***************************************************/}
                                  {this.state.crdInfo.filter((crd) => crd.category === 'Household').map(crd =>
                                     <Card 
-                                    key={crd.id}
+                                    key={crd._id}
                                     name={crd.name}
                                     title={crd.title}
                                     skills={crd.skills.map(skill => skill.split(","))}
@@ -146,7 +146,7 @@ class Network extends Component {
                                     category={crd.category}
                                     site={crd.site}
                                     address={crd.address}
-                                    id={crd.id} />
+                                    id={crd._id} />
                                 )
                             }
                             </div>
@@ -157,7 +157,7 @@ class Network extends Component {
                                  {/* INSERT CARDS HERE ***************************************************/}
                                  {this.state.crdInfo.filter((crd) => crd.category === 'Law/Legal').map(crd =>
                                     <Card 
-                                    key={crd.id}
+                                    key={crd._id}
                                     name={crd.name}
                                     title={crd.title}
                                     category={crd.category}
@@ -165,7 +165,7 @@ class Network extends Component {
                                     phone={crd.phone}
                                     site={crd.site}
                                     address={crd.address}
-                                    id={crd.id} />
+                                    id={crd._id} />
                                 )
                             }
                             </div>
@@ -176,7 +176,7 @@ class Network extends Component {
                                  {/* INSERT CARDS HERE ***************************************************/}
                                  {this.state.crdInfo.filter((crd) => crd.category === 'Medical/Health').map(crd =>
                                     <Card 
-                                    key={crd.id}
+                                    key={crd._id}
                                     name={crd.name}
                                     title={crd.title}
                                     category={crd.category}
@@ -184,7 +184,7 @@ class Network extends Component {
                                     phone={crd.phone}
                                     site={crd.site}
                                     address={crd.address}
-                                    id={crd.id} />
+                                    id={crd._id} />
                                 )
                             }
                             </div>
@@ -195,7 +195,7 @@ class Network extends Component {
                                  {/* INSERT CARDS HERE ***************************************************/}
                                  {this.state.crdInfo.filter((crd) => crd.category === 'Accounting/Finance').map(crd =>
                                     <Card 
-                                    key={crd.id}
+                                    key={crd._id}
                                     name={crd.name}
                                     title={crd.title}
                                     category={crd.category}
@@ -203,7 +203,7 @@ class Network extends Component {
                                     phone={crd.phone}
                                     site={crd.site}
                                     address={crd.address}
-                                    id={crd.id} />
+                                    id={crd._id} />
                                 )
                             }
                             </div>
@@ -213,7 +213,7 @@ class Network extends Component {
                                  {/* INSERT CARDS HERE ****************************************************/}
                                  {this.state.crdInfo.filter((crd) => crd.category === 'Food/Service').map(crd =>
                                     <Card 
-                                    key={crd.id}
+                                    key={crd._id}
                                     name={crd.name}
                                     title={crd.title}
                                     category={crd.category}
@@ -221,7 +221,7 @@ class Network extends Component {
                                     phone={crd.phone}
                                     site={crd.site}
                                     address={crd.address}
-                                    id={crd.id} />
+                                    id={crd._id} />
                                 )
                             }
                             </div>
