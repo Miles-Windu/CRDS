@@ -28,7 +28,7 @@ if (process.env.NODE_ENV === "production") {
 let db = mongoose.connection;
 
 // Connect to the Mongo DB
-mongoose.connect("mongodb://localhost/crdsDB" || "mongodb://<iKnow_Music>:<Phyllis21>@ds039441.mlab.com:39441/heroku_cpbwq7nv", { useNewUrlParser: true }); 
+mongoose.connect("mongodb://miles:password1@ds039441.mlab.com:39441/heroku_cpbwq7nv", { useNewUrlParser: true }); 
 db.once("open", () => console.log("connected to the database successfully!"));
 
 // checks if connection with the database is successful
@@ -65,7 +65,7 @@ app.use(bodyParser.json({limit: "500mb"}));
 const router = express.Router();
 let Crds = require('./models/Crds');
 let User = require('./models/User');
-let Sesh = require('./models/userSession');
+// let Sesh = require('./models/userSession');
 let Message = require('./models/Message') 
 
 

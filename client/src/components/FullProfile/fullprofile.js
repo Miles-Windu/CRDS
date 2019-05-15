@@ -2,10 +2,34 @@ import React, {Component} from "react";
 import "../css/fullprofile.css";
 import Image from "../images/Crds_white.png";
 import image2 from "../images/Crds_black.png";
+import axios from "axios";
 
-function fullprofile (props) {
-    
-    return (
+class fullprofile extends Component {
+
+    constructor(props){
+        super(props)
+
+        this.state = {
+            crdInfo: []
+        }
+    }
+
+    componentDidMount() {
+        axios.get('http://localhost:3000/api/crds')
+            .then(response => {
+                console.log(response.data)
+                this.setState({
+                    crdInfo: response.data
+                });
+            })
+            .catch(function (error){
+                console.log(error)
+            })
+    }
+
+
+    render(){
+        return (
         <div>
         <nav className="navbar navbar-expand-lg navbar-light navbar-fixed-top">
         <div className="container justify-content-center">
@@ -40,7 +64,6 @@ function fullprofile (props) {
 
 
     {/* <!-- MY NETWORKS --> */}
-
     <br />
     <div className="container overflow-auto justify-content-center container-fluid">
         <div className="card">
@@ -63,7 +86,7 @@ function fullprofile (props) {
                                     <hr />
                                     <div className="card-content">
                                         {/* NAME */}
-                                        <h3 className=" grey-text text-darken-4" id="name">Ferat Imrak</h3>
+                                        <h3 className=" grey-text text-darken-4" id="name"></h3>
                                         {/* TITLE */}
                                         <p className="card-title" id="title">Full-Stack Web developer</p>
                                         {/* ACCORDION DROP */}
@@ -75,21 +98,7 @@ function fullprofile (props) {
                                                     <div id="collapseOne" className="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
                                                     <div class="card-body">
                                                         <ul>
-                                                            <li id="skill1">
-                                                            <p>HTML</p>
-                                                            </li>
-                                                            <li id="skill2">
-                                                            <p>CSS</p>
-                                                            </li>
-                                                            <li id="skill3">
-                                                            <p>Javascript</p>
-                                                            </li>
-                                                            <li id="skill4">
-                                                            <p>Node.js</p>
-                                                            </li>
-                                                            <li id="skill5">
-                                                            <p>React.js</p>
-                                                            </li>
+                                                        {/* {props.skills} */}
                                                         </ul>
                                                     </div>
                                                     </div>
@@ -99,7 +108,7 @@ function fullprofile (props) {
                                                 </h5>
                                                 <div id="collapseTwo" className="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
                                                     <div className="card-body">
-                                                        {props.phone}
+                                                       {/* <a href={props.phone}>{props.phone}</a>  */}
                                                     </div>
                                                 </div>
                                             {/* ADDRESS  */}
@@ -108,7 +117,7 @@ function fullprofile (props) {
                                                 </h5>
                                                 <div id="collapseThree" className="collapse" aria-labelledby="headingThree" data-parent="#accordion">
                                                     <div className="card-body">
-                                                            405 Church St, Evanston, IL 60201
+                                                            {/* {props.address} */}
                                                     </div>
                                                 </div>
 
@@ -143,6 +152,8 @@ function fullprofile (props) {
 </div>
 </div>
         );
+    }
+    
 }
 
 export default fullprofile
