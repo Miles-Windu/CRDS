@@ -4,9 +4,9 @@ import image2 from "../images/Crds_black.png";
 function Card(props) {
     return <div className="container-fluid">
         <div className="row">
-            <div className=" col-md-12 col-sm-12 col-xs-12 col-lg-12 col-xl-6" id="user-card">
+            <div className="col-md-12 col-sm-12 col-xs-12 col-lg-6 col-xl-6" id="user-card">
                 <div className="card" style={{maxWidth: "600px"}}>
-                    <div className="col-md-4 justify-content-center card-image waves-effect waves-block waves-light">
+                    <div className="col-md-4 justify-content-center card-image waves-effect waves-block waves-info">
                         <br />
                         <img className="activator" src={image2} alt="" style={{width: "75px", height: "75px"}} />
                     </div>
@@ -24,6 +24,7 @@ function Card(props) {
                         <a className="card-text" href={props.phone} > Phone Number: {props.phone}</a>
                         <p className="card-text" > Category: {props.category}</p>
                         <p className="card-text"> {props.address}</p>
+                        <a className="waves-effect waves-light btn-small">View Full Profile</a>
                         <a href={props.site}>{props.site}</a>
                     </div>
                 </div>
