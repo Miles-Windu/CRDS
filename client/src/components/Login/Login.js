@@ -17,7 +17,7 @@ class Login extends Component {
         this.state = {
             email: '',
             password: '',
-            isDeleted: false
+            id: ''
         }
     }
 
@@ -36,18 +36,14 @@ class Login extends Component {
     onSubmit(e){
         e.preventDefault();
 
-        // console log form
-        console.log('Form Submitted:')
-        console.log(`Email: ${this.state.email}`)
-        console.log(`Password: ${this.state.password}`)
-
         axios.post('http://localhost:3000/api/users/login')
             .then(res => console.log(res.data));
         
         this.setState({
             email: '',
             password: '',
-            isDeleted: false
+            isDeleted: false,
+            id: ''
         })
     }
 

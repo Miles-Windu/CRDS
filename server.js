@@ -11,6 +11,7 @@ const multer = require('multer');
 const uuid = require('uuid/v4');
 const auth = require('./middleware/auth');
 const userCtrl = require('./controller/user');
+const cors = require('cors')
 
 // const logger = require('logger')
 
@@ -60,6 +61,7 @@ app.use(passport.session());
 // Middleware
 app.use(bodyParser.urlencoded({ limit: "500mb", extended: false }));
 app.use(bodyParser.json({limit: "500mb"}));
+app.use(cors());
 // app.use(logger("dev"));
 
 const router = express.Router();
@@ -156,10 +158,10 @@ router.route('/users').post(function(req, res) {
     })
 });
 
-router.route('/users/login').post(userCtrl.login, function(req, res) {
-  res.redirect
+// router.route('/users/login').post(userCtrl.login, function(req, res) {
+//   res.redirect
 
-})
+// })
 
 // will not need this route as user information will not change
 router.route('/users/update/:id').post(auth, function(req, res) {
