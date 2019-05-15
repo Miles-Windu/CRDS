@@ -22,7 +22,7 @@ function Card(props) {
                         <p className="card-text"><small className="text-muted">Proficient in: {props.skills.map(skill => {return <li>{skill}</li>})}
                         </small></p>
                         <a className="card-text" href={props.phone} > Phone Number: {props.phone}</a>
-                        <p className="card-text" > Category: {props.category}</p>
+                        {/* <p className="card-text" > Category: {props.category}</p> */}
                         <p className="card-text"> {props.address}</p>
                         <a href={props.site}>{props.site}</a>
                     </div>
