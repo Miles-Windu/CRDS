@@ -115,7 +115,7 @@ class Network extends Component {
 
                             <Media />
 
-                            <div className="row">
+                            <div className="row card-deck">
                             {/* INSERT CARDS HERE ***************************************************/}
                             {this.state.crdInfo.filter((crd) => crd.category === 'Media/Marketing').map(crd =>
                                     <Card 
@@ -134,7 +134,7 @@ class Network extends Component {
                             
                             <Construction />
                             
-                            <div className="row">
+                            <div className="row card-deck">
                                  {/* INSERT CARDS HERE ***************************************************/}
                                  {this.state.crdInfo.filter((crd) => crd.category === 'Household').map(crd =>
                                     <Card 
@@ -153,7 +153,7 @@ class Network extends Component {
 
                              <Legal />
 
-                            <div className="row">
+                            <div className="row card-deck">
                                  {/* INSERT CARDS HERE ***************************************************/}
                                  {this.state.crdInfo.filter((crd) => crd.category === 'Law/Legal').map(crd =>
                                     <Card 
@@ -172,7 +172,7 @@ class Network extends Component {
 
                              <Medical />
 
-                            <div className="row">
+                            <div className="row card-deck">
                                  {/* INSERT CARDS HERE ***************************************************/}
                                  {this.state.crdInfo.filter((crd) => crd.category === 'Medical/Health').map(crd =>
                                     <Card 
@@ -191,7 +191,7 @@ class Network extends Component {
 
                              <Finance />
 
-                            <div className="row">
+                            <div className="row card-deck">
                                  {/* INSERT CARDS HERE ***************************************************/}
                                  {this.state.crdInfo.filter((crd) => crd.category === 'Accounting/Finance').map(crd =>
                                     <Card 
@@ -209,7 +209,7 @@ class Network extends Component {
                             </div>
                             <Food />
 
-                            <div className="row">
+                            <div className="row card-deck">
                                  {/* INSERT CARDS HERE ****************************************************/}
                                  {this.state.crdInfo.filter((crd) => crd.category === 'Food/Service').map(crd =>
                                     <Card 
