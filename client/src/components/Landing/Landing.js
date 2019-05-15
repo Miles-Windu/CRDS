@@ -178,7 +178,7 @@ class Landing extends Component {
             <div className="row featurette">
                 <div className="col-lg-5 col-sm-12">
                     <div className="card mb-3" style={{maxwWdth: "540px"}}>
-                        <div className="col-md-4 justify-content-center card-image waves-effect waves-block waves-light">
+                        <div className="col-md-4 justify-content-center card-image waves-effect waves-block waves-info">
                           <br />
                           <img className="activator" src={image4} alt="" style={{width: "150px", height: "100px"}} />
                         </div>
@@ -193,7 +193,7 @@ class Landing extends Component {
                             </small></p>
                             <p className="card-text"> Phone Number: 1 (708) 123-4567</p>
                             <p className="card-text"> 405 Church St, Evanston, IL 60201</p>
-                            <a href="https://github.com/jiro1/Project-3">Check out my website!</a>
+                            <a href="https://github.com/Miles-Windu/CRDS">Check out my website!</a>
                         </div>
                       </div>
                 </div>

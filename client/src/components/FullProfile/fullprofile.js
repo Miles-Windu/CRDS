@@ -139,6 +139,17 @@ class fullprofile extends Component {
                                                         <div class="addthis_inline_share_toolbox_e8kh"></div>
                                                     </div>
                                                 </div>
+                                                {/* ADD TO MY NETWORK */}
+                                                <h5 className="card-header" id="headingFive" data-toggle="collapse" data-target="#collapseFive" aria-expanded="false" aria-controls="collapseFive">
+                                                    Add To My Network
+                                                </h5>
+                                                <div id="collapseFive" className="collapse" aria-labelledby="headingFive" data-parent="#accordion">
+                                                    <div className="card-body">
+                                                         {/* ADD TO MY NETWORK BUTTON*/}
+                                                        <a class="btn-floating btn-large waves-effect waves-light red content-center"><i class="material-icons">add</i></a>
+                                                    </div>
+                                                </div>
+                                                
                                         </div>
                                     </div>
                                         
