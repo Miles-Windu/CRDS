@@ -15,7 +15,7 @@ class fullprofile extends Component {
     }
 
     componentDidMount() {
-        axios.get('http://localhost:3000/api/crds')
+        axios.get('http://localhost:3000/api/crds/5cdb5fc3c8e6df0e1e322078')
             .then(response => {
                 console.log(response.data)
                 this.setState({
@@ -86,9 +86,9 @@ class fullprofile extends Component {
                                     <hr />
                                     <div className="card-content">
                                         {/* NAME */}
-                                        <h3 className=" grey-text text-darken-4" id="name"></h3>
+                                        <h3 className=" grey-text text-darken-4" id="name">{this.state.crdInfo.name}</h3>
                                         {/* TITLE */}
-                                        <p className="card-title" id="title">Full-Stack Web developer</p>
+                                        <p className="card-title" id="title">{this.state.crdInfo.title}</p>
                                         {/* ACCORDION DROP */}
                                             <div id="accordion">
                                             {/* SKILLSET DROP */}
@@ -98,7 +98,7 @@ class fullprofile extends Component {
                                                     <div id="collapseOne" className="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
                                                     <div class="card-body">
                                                         <ul>
-                                                        {/* {props.skills} */}
+                                                            {/* {this.state.crdInfo.skills.map(skill => {return <li>{skill}</li> })} */}
                                                         </ul>
                                                     </div>
                                                     </div>
@@ -108,7 +108,7 @@ class fullprofile extends Component {
                                                 </h5>
                                                 <div id="collapseTwo" className="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
                                                     <div className="card-body">
-                                                       {/* <a href={props.phone}>{props.phone}</a>  */}
+                                                       <a href={this.state.crdInfo.phone}>{this.state.crdInfo.phone}</a>
                                                     </div>
                                                 </div>
                                             {/* ADDRESS  */}
@@ -117,7 +117,7 @@ class fullprofile extends Component {
                                                 </h5>
                                                 <div id="collapseThree" className="collapse" aria-labelledby="headingThree" data-parent="#accordion">
                                                     <div className="card-body">
-                                                            {/* {props.address} */}
+                                                            {this.state.crdInfo.address}
                                                     </div>
                                                 </div>
 
@@ -127,7 +127,7 @@ class fullprofile extends Component {
                                                 </h5>
                                                 <div id="collapseFour" className="collapse" aria-labelledby="headingFour" data-parent="#accordion">
                                                     <div className="card-body">
-                                                        <a href="https://github.com/jiro1/Project-3">github</a>
+                                                        <a href="https://github.com/miles-windu/CRDS">{this.state.crdInfo.site}</a>
                                                     </div>
                                                 </div>
                                                 {/* SHARING OPTIONS */}

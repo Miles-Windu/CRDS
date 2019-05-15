@@ -67,7 +67,6 @@ app.use(cors());
 const router = express.Router();
 let Crds = require('./models/Crds');
 let User = require('./models/User');
-// let Sesh = require('./models/userSession');
 let Message = require('./models/Message') 
 
 
@@ -158,12 +157,11 @@ router.route('/users').post(function(req, res) {
     })
 });
 
-// router.route('/users/login').post(userCtrl.login, function(req, res) {
-//   res.redirect
+router.route('/users/login').post(userCtrl.login, function(req, res) {
+  res.redirect
 
-// })
+})
 
-// will not need this route as user information will not change
 router.route('/users/update/:id').post(auth, function(req, res) {
 
   User.findById(req.params.id, function(err, users) {
@@ -181,42 +179,6 @@ router.route('/users/update/:id').post(auth, function(req, res) {
     })
   })
 })
-
-// User Session route
-// router.route('/session').get(function(req, res) {
-//   Sesh.find(function(err, sesh) {
-//     if (err) {
-//       console.log(err)
-//     } else {
-//       res.json(sesh)
-//     }
-//   });
-// });
-
-// router.route('/session').post(function(req, res) {
-//   let sesh = new Sesh(req.body);
-//   sesh.save()
-//     .then(sesh => {
-//       console.log(sesh)
-//       res.status(200).json(sesh)
-//     })
-//     .catch(err => {
-//       console.log(err)
-//       res.status(400).send('adding user failed... you are a failure')
-//     })
-// });
-
-// router.route('/session/:id').get(function(req, res) {
-//   let id = req.params.id;
-//   Sesh.findById(id, function(err, sesh) {
-//     if (err) {
-//       console.log(err)
-//     } else {
-//       res.json(sesh)
-//     }
-    
-//   });
-// });
 
 // Card Routes
 router.route('/message').get(function(req, res) {
