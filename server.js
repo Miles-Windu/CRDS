@@ -30,8 +30,8 @@ if (process.env.NODE_ENV === "production") {
 let db = mongoose.connection;
 
 // Connect to the Mongo DB
-mongoose.connect("mongodb://localhost/crdsDB") //Local test DB
-// mongoose.connect("mongodb://miles:password1@ds039441.mlab.com:39441/heroku_cpbwq7nv", { useNewUrlParser: true }); 
+// mongoose.connect("mongodb://localhost/crdsDB", { useNewUrlParser: true }) //Local test DB
+mongoose.connect("mongodb://miles:password1@ds039441.mlab.com:39441/heroku_cpbwq7nv", { useNewUrlParser: true }); 
 db.once("open", () => console.log("connected to the database successfully!"));
 
 // checks if connection with the database is successful
