@@ -51,7 +51,8 @@ app.use(multer({storage}).single('image'));
 app.use(session({
   secret: 'C@rd$_S3cr3t_Se$$10n',
   resave: false,
-  saveUninitialized: false
+  saveUninitialized: true,
+  cookie: {secure: true}
 }));
 app.use(flash());
 app.use(passport.initialize());
@@ -59,13 +60,16 @@ app.use(passport.session());
 
 app.use((req, res, next) => {
   app.locals.user = req.user;
-  console.log(app.locals);
+  console.log("locals user");
+  console.log(app.locals.user);
   next();
 })
+
 
 // Session validator 
 function isAuthenticated(req, res, next) {
   if(req.isAuthenticated()) {
+    console.log('Authenticated');
     return next();
   }
   res.redirect('/');
@@ -171,9 +175,12 @@ router.route('/users/:id').get(function(req, res) {
 });
 
 
-router.route('/users/login').post(passport.authenticate('local-login', {
-  failureRedirect: '/users',
-  failureFlash: true
+router.route('/users/login').post(passport.authenticate('local-login', (req, res) => {
+  res.redirect( '/users/' + req.user.id);
+  // failureRedirect: '/login',
+  // failureFlash: true
+  // console.log(req.user)
+  successRedirect: '/'
 }))
 
 router.route('/users/update/:id').post(isAuthenticated, function(req, res) {
@@ -236,58 +243,4 @@ app.get("*", function(req, res) {
 app.listen(PORT, function() {
     console.log(`🌎 ==> API server now on port ${PORT}!`);
   });
-
-  // router.route('/users/login').post(function(req, res) {
-//   const { email, password } = req.body;
-//   User.findOne({ email }, function(err, user) {
-//     if (err) {
-//       console.error(err);
-//       res.status(500)
-//         .json({
-//         error: 'Internal error please try again'
-//       });
-//     } else if (!user) {
-//       res.status(401)
-//         .json({
-//           error: 'Incorrect email or password'
-//         });
-//     } else {
-//       user.isCorrectPassword(password, function(err, same) {
-//         if (err) {
-//           res.status(500)
-//             .json({
-//               error: 'Internal error please try again'
-//           });
-//         } else if (!same) {
-//           res.status(401)
-//             .json({
-//               error: 'Incorrect email or password'
-//           });
-//         } else {
-//           // Issue token
-//           const payload = { email };
-//           const token = jwt.sign(payload, secret, {
-//             expiresIn: '1h'
-//           });
-//           res.cookie('token', token, { httpOnly: true })
-//             .sendStatus(200);
-//         }
-//       });
-//     }
-//   });
-// });
-
-// router.route('/users').post(function(req, res) {
-//   console.log(req.body)
-//   let user = new User(req.body); 
-//   user.save()
-//     .then(users => { 
-//       res.status(200).json(users);
-//       // successRedirect: '/login'
-//     }) 
-//     .catch(err => {
-//       console.log(err)
-//       res.status(400).send('adding user failed... you are a failure')
-//     })
-// });
 
