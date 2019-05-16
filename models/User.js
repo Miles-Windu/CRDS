@@ -1,10 +1,10 @@
 const mongoose = require('mongoose');
 const bcrypt = require('bcrypt');
-const crd = require('./Crds')
+const crd = require('./Crds');
 
 const { Schema } = mongoose;
 
-const saltRounds = 10;
+// const saltRounds = 10;
 
 const UserSchema = new Schema({
     name: {
@@ -49,21 +49,23 @@ UserSchema.pre('save', function(next) {
     // Check if document is new or a new password has been set
     if (this.isNew || this.isModified('password')) {
       // Saving reference to this because of changing scopes
-      const document = this;
-      bcrypt.hash(document.password, saltRounds,
-        function(err, hashedPassword) {
+      const user = this;
+      bcrypt.hash(user.password, 10, function(err, hash) {
         if (err) {
           next(err);
         }
         else {
-          document.password = hashedPassword;
+          user.password = hash;
           next();
         }
       });
-    } else {
+    }
+     else {
       next();
     }
-  });  const User = mongoose.model('User', UserSchema);
+  });
+  
+  const User = mongoose.model('User', UserSchema);
 
 
   module.exports = User
