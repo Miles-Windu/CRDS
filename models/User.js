@@ -1,6 +1,5 @@
 const mongoose = require('mongoose');
 const bcrypt = require('bcrypt');
-const crd = require('./Crds');
 
 const { Schema } = mongoose;
 

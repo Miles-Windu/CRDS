@@ -15,9 +15,14 @@ class fullprofile extends Component {
     }
 
     componentDidMount() {
-        axios.get('http://localhost:3000/api/crds/')
+        
+        const id = this.props.location.pathname.split('/')
+        
+        axios.get(`http://localhost:3000/api/crds/${id[2]}`)
             .then(response => {
-                console.log(response.data)
+
+                // const name = response.data.filter((item) => item.name === 'Patrick Star')
+                // console.log(name)
                 this.setState({
                     crdInfo: response.data
                 });

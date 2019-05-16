@@ -36,13 +36,12 @@ class Login extends Component {
     onSubmit(e){
         e.preventDefault();
 
-        axios.post('http://localhost:3000/api/users/login')
+        axios.post('http://localhost:3000/api/users')
             .then(res => console.log(res.data));
         
         this.setState({
             email: '',
             password: '',
-            isDeleted: false,
             id: ''
         })
     }
