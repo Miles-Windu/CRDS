@@ -22,7 +22,7 @@ class Network extends Component {
     }
 
     componentDidMount() {
-        axios.get('http://localhost:3000/api/crds')
+        axios.get('http://localhost:3000/api/crds/')
             .then(response => {
                 console.log(response.data)
                 this.setState({
@@ -33,6 +33,7 @@ class Network extends Component {
                 console.log(error)
             })
     }
+
 
     render(){
         return (
@@ -107,7 +108,8 @@ class Network extends Component {
                                     phone={crd.phone}
                                     site={crd.site}
                                     address={crd.address}
-                                    id={crd._id} />
+                                    id={crd._id} 
+                                    />
                                 )
                             }
 

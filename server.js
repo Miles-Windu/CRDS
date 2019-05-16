@@ -88,6 +88,13 @@ router.route('/crds/:id').get(function(req, res) {
   });
 });
 
+router.route('/crds/:name').get(function(req, res) {
+  let name = req.params.name;
+  Crds.findById(name, function(err, crds) {
+    res.json(crds)
+  });
+});
+
 router.route('/crds').post(function(req, res) {
   console.log(req.body)
   let crd = new Crds(req.body);
@@ -103,7 +110,7 @@ router.route('/crds').post(function(req, res) {
     })
 });
  
-router.route('/crds/update/:id').post(auth, function(req, res) {
+router.route('/crds/update/:id').post(function(req, res) {
   Crds.findById(req.params.id, function(err, crds) {
     if (!crds){
       res.status(404).send('Data is not found')
@@ -249,7 +256,7 @@ app.use('/api', router)
 // END ROUTES
 // =========================================================================================
 app.get("*", function(req, res) {
-  res.sendFile(path.join(__dirname, "./client/build/index.html"));
+  res.sendFile(path.join(__dirname, "./client/build"));
 });
 
 app.listen(PORT, function() {

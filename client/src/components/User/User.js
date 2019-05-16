@@ -88,15 +88,6 @@ class User extends Component {
     onSubmit(e) {
         e.preventDefault();
 
-        // console log the forms
-        console.log('Form Submitted:');
-        console.log(`Name: ${this.state.name}`);
-        console.log(`Email: ${this.state.email}`);
-        console.log(`Phone Number: ${this.state.phone}`);
-        console.log(`Title: ${this.state.title}`);
-        console.log(`Category: ${this.state.category}`);
-        console.log(`Skills Include: ${this.state.skills}`);
-
         const newCrd = {
             name: this.state.name,
             email: this.state.email,

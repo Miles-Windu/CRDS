@@ -3,7 +3,6 @@ import image2 from "../images/Crds_black.png";
 
 function Card(props) {
 
-
     return <div className="container-fluid">
         <div className="row">
             <div className="col-md-12 col-sm-12 col-xs-12 col-lg-6 col-xl-6" id="user-card">
@@ -26,15 +25,15 @@ function Card(props) {
                         <i className="material-icons right">close</i></span>
                         <p className="card-text"><small className="text-muted">Proficient in: {props.skills.map(skill => {return <li>{skill}</li>})}
                         </small></p>
-                        <a className="card-text" href={props.phone} > Phone Number: {props.phone}</a>
+                        <p className="card-text" > Phone Number: <a href={props.phone} >{props.phone}</a></p>
                         {/* <p className="card-text" > Category: {props.category}</p> */}
                         <p className="card-text"> {props.address}</p>
-                        <a className="waves-effect waves-light btn-small">View Full Profile</a>
+                        <a className="waves-effect waves-light btn-small" href={`profile/${props.id}`}>View Full Profile</a>
                         <a href={props.site}>{props.site}</a>
                     </div>
                 </div>
             </div>
-        
+        </div>
     </div>
 }
 
