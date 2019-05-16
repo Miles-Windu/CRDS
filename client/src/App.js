@@ -19,7 +19,7 @@ class App extends Component {
         <Route path="/user" component={User} />
         <Route path="/network" component={Network} />
         <Route path="/register" component={Register} />
-        <Route path="/fullprofile/:id" component={fullprofile} />
+        <Route path="/profile/:id" component={fullprofile} />
         <Route path="/public" component={Public} />
       </Router>
     </div>

@@ -106,6 +106,13 @@ router.route('/crds/:id').get(function(req, res) {
   });
 });
 
+router.route('/crds/:name').get(function(req, res) {
+  let name = req.params.name;
+  Crds.findById(name, function(err, crds) {
+    res.json(crds)
+  });
+});
+
 router.route('/crds').post(function(req, res) {
   console.log(req.body)
   let crd = new Crds(req.body);
@@ -230,7 +237,7 @@ app.use('/api', router)
 // =========================================================================================
 
 app.get("*", function(req, res) {
-  res.sendFile(path.join(__dirname, "./client/build/index.html"));
+  res.sendFile(path.join(__dirname, "./client/build"));
 });
 
 app.listen(PORT, function() {

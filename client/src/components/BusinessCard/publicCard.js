@@ -25,10 +25,10 @@ function PublicCard(props) {
                         <p className="card-text">Email: {props.email}</p>
                         <p className="card-text"> {props.address}</p>
                         {/* VIEW FULL PROFILE BUTTON */}
-                        <a className="waves-effect waves-light btn-small">View Full Profile</a>
+                        <a className="waves-effect waves-light btn-small" href=" ">View Full Profile</a>
                         <hr></hr>
                         {/* ADD TO MY NETWORK */}
-                        <a class="btn-floating btn-large waves-effect waves-light red"><i class="material-icons">add</i></a>
+                        <a class="btn-floating btn-large waves-effect waves-light red" href=" "><i class="material-icons">add</i></a>
                         <a href={props.site}>{props.site}</a>
                     </div>
                 </div>

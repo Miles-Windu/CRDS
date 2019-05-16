@@ -15,7 +15,7 @@ class fullprofile extends Component {
     }
 
     componentDidMount() {
-        axios.get('http://localhost:3000/api/crds/5cdb5fc3c8e6df0e1e322078')
+        axios.get('http://localhost:3000/api/crds/')
             .then(response => {
                 console.log(response.data)
                 this.setState({
@@ -26,7 +26,6 @@ class fullprofile extends Component {
                 console.log(error)
             })
     }
-
 
     render(){
         return (
@@ -146,7 +145,7 @@ class fullprofile extends Component {
                                                 <div id="collapseFive" className="collapse" aria-labelledby="headingFive" data-parent="#accordion">
                                                     <div className="card-body">
                                                          {/* ADD TO MY NETWORK BUTTON*/}
-                                                        <a class="btn-floating btn-large waves-effect waves-light red content-center"><i class="material-icons">add</i></a>
+                                                        <a class="btn-floating btn-large waves-effect waves-light red content-center" href=" "><i class="material-icons">add</i></a>
                                                     </div>
                                                 </div>
                                                 

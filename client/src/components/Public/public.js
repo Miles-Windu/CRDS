@@ -9,7 +9,10 @@ class Public extends Component {
     constructor(props){
         super(props)
 
+        this.handleChangeSearch = this.handleChangeSearch.bind(this)
+
         this.state = {
+            search: '',
             crdInfo: []
         }
     }
@@ -25,6 +28,13 @@ class Public extends Component {
                 console.log(error)
             })
     }
+
+    handleChangeSearch(e){
+        this.setState({
+            search: e.target.value
+        })
+    }
+
 
     render(){
         return (
@@ -70,16 +80,22 @@ class Public extends Component {
 
             {/* SEARCH BAR */}
             <div className="row">
-                <div className="col-sm-12 col-xl-12">
-                    <input class="form-control" type="text" placeholder="Search" aria-label="Search"></input>
-                </div>
+                <form onSubmit={this.handleSearch}>
+                    <div className="col-sm-12 col-xl-12">
+                        <input ctype="text" class="form-control" placeholder="Search" aria-label="Search" aria-describedby="button-addon2"value={this.state.search} onChange={this.handleChangeSearch} />
+                        <div class="input-group-append">
+                            <button class="btn btn-outline-secondary" type="submit" id="button-addon2">Search</button>
+                        </div>
+                    </div>
+                </form>
             </div>
+            <br />
 
-            <div className="card-deck">
+            <div className="card-deck mx-auto my-auto">
              {/* <!-- CARD CONTAINER--> */}
                 {this.state.crdInfo.map(crd => 
                     <PublicCard
-                    key={crd.id}
+                    key={crd._id}
                     name={crd.name} 
                     category={crd.category}
                     skills={crd.skills}
