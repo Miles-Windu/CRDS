@@ -48,12 +48,6 @@ class Register extends Component {
     onSubmit(e){
         e.preventDefault();
 
-        // console log form
-        console.log('Form Submitted:')
-        console.log(`Name: ${this.state.name}`)
-        console.log(`Email: ${this.state.email}`)
-        console.log(`Password: ${this.state.password}`)
-
         const newUser = {
             name: this.state.name,
             email: this.state.email,

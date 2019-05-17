@@ -24,14 +24,13 @@ const crdSchema = new Schema({
   
   },
 
-  imgpath: {
-    type: String,
-    //required: false
-  },
-
   address: {
     type: String
   },
+
+  description: {
+    type: String
+  }, 
 
   skills: []
 
