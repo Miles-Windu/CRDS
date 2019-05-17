@@ -59,10 +59,12 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 app.use((req, res, next) => {
-  app.locals.user = req.user;
-  console.log("locals user");
-  console.log(app.locals.user);
-  next();
+
+  console.log('req.session', req.session);
+  // app.locals.user = req.user;
+  console.log(req.user);
+  next()
+
 })
 
 
@@ -81,8 +83,10 @@ function isAuthenticated(req, res, next) {
 // ========================================================================================
 
 // Middleware
-app.use(bodyParser.urlencoded({ limit: "500mb", extended: true }));
-app.use(bodyParser.json({ limit: "500mb" }));
+
+app.use(bodyParser.urlencoded({ limit: "500mb", extended: false }));
+app.use(bodyParser.json({limit: "500mb"}));
+
 app.use(cors());
 // app.use(logger("dev"));
 
@@ -185,14 +189,29 @@ router.route('/users/:id').get(function (req, res) {
   });
 });
 
+router.route('/users/login').post(passport.authenticate('local-signin', {failureRedirect: '/login'}),
+function(req, res) {
+  console.log('passed auth')
+  res.redirect('/')
+})
 
-router.route('/users/login').post(passport.authenticate('local-login', (req, res) => {
-  res.redirect('/users/' + req.user.id);
-  // failureRedirect: '/login',
-  // failureFlash: true
-  // console.log(req.user)
-  successRedirect: '/'
-}))
+
+// router.route('/login').post(
+//   function (req, res, next) {
+//   console.log("Route, login req.body")
+//   console.log(req.body)
+//   next()
+// }, 
+// passport.authenticate(('local-signin'), (req, res) => {
+//   console.log('logged in ');
+//   // console.log('session info: \n' + req.session)
+//   // var userInfo = {
+//   //   email: req.user.email
+//   // };
+//   // res.send(userInfo);
+//   res.redirect('/')
+// }))
+
 
 router.route('/users/update/:id').post(isAuthenticated, function (req, res) {
 
@@ -213,8 +232,15 @@ router.route('/users/update/:id').post(isAuthenticated, function (req, res) {
 })
 
 router.route('/logout', (req, res, next) => {
-  req.logout();
-  res.resdirect('/');
+  // req.logout();
+  // res.resdirect('/');
+if(user) {
+  req.session.destroy()
+  res.clearCookie('connect.sid')
+  return res.json({ msg: 'logging you out'})
+} else {
+  return res.json({ msg: 'no user to log out'})
+}
 });
 
 // Message  Routes
@@ -282,4 +308,3 @@ app.get("*", function(req, res) {
 app.listen(PORT, function () {
   console.log(`🌎 ==> API server now on port ${PORT}!`);
 });
-

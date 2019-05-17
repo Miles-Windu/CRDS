@@ -38,8 +38,27 @@ class Login extends Component {
     onSubmit(e){
         e.preventDefault();
 
-        axios.post('http://localhost:3000/api/users')
-            .then(res => console.log(res.data));
+        const loginPost = {
+            email: this.state.email,
+            password: this.state.password
+        }
+
+        axios.post('http://localhost:3000/api/users/login', loginPost)
+            .then(response => {
+                console.log(response)
+                if (response.status === 200) {
+                    this.props.updateUSer({
+                        loggedIn: true,
+                        email: response.data.email
+                    })
+                    this.setState({
+                        redirectTo: '/'
+                    })
+                }
+            }).catch(error => {
+                console.log('login error: \n' + error)
+            })
+        
 
         this.setState({
             email: '',
@@ -49,7 +68,6 @@ class Login extends Component {
     }
 
     
-
     render(){
         
         const responseFacebook = (response) => {
