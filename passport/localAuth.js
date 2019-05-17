@@ -29,22 +29,38 @@ passport.use('local-signup', new LocalStrategy({
         user.signUpDate = Date.now()
         console.log(user);
         await user.save();
-        done(null, user)
+        // done(null, user)
     }
 }));
 
-passport.use('local-login', new LocalStrategy({
-    usernameField: 'email',
-    passwordField: 'password',
-    passReqToCallback: true
-}, async (req, email, password, done) => {
-    const user = await User.findOne({email: email});
-    if(!user) {
-        return done(null, false, req.flash('loginMessage', 'No user found'));
-    }
-    if(!user.isCorrectPassword(password)) {
-        return done(null, false, req.flash('loginMessage', 'Incorrect pasword'))
-    }
-    return done(null, user)
-}
+passport.use('local-signin', new LocalStrategy(
+    ({
+        usernameField: 'email',
+        passwordField: 'password',
+        passReqToCallback: true
+    }, async (email, password, done) => {
+        User.findOne({email: email}, function (err, user) {
+            if(err) {return done(err); }
+            if(!user) {return done(null, false);}
+            if(!user.isCorrectPassword(password)) {return done(null, false); }
+            return done(null, user);
+        })
+    })
 ))
+
+
+// passport.use('local-signin', new LocalStrategy({
+//     usernameField: 'email',
+//     passwordField: 'password',
+//     passReqToCallback: true
+// }, async (email, password, done) => {
+//     const user = await User.findOne({email: remail});
+//     if(!user) {
+//         return done(null, false, req.flash('signinMessage', 'No User Found'));
+//         }
+//     if(!user.isCorrectPassword(password)) {
+//         console.log('user: ' + user)
+//         return done(null, false, req.flash('signinMessage', 'Incorrect Password'));
+//     }
+//     return done(null, user)
+// }));

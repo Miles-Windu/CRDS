@@ -33,14 +33,8 @@ const UserSchema = new Schema({
 
 // Password Comparison
 
-UserSchema.methods.isCorrectPassword = function(password, callback){
-    bcrypt.compare(password, this.password, function(err, same) {
-      if (err) {
-        callback(err);
-      } else {
-        callback(err, same);
-      }
-    });
+UserSchema.methods.isCorrectPassword = function(password){
+    return bcrypt.compare(password, this.password);
   }
 
 // Encrypt password
@@ -63,8 +57,24 @@ UserSchema.pre('save', function(next) {
      else {
       next();
     }
+    // if(!this.password) {
+    //   console.log('models/User.js =========No password provided=========')
+    //   next()
+    // } else {
+    //   console.log('models/user.js =========Has password in pre save=========')
+    //   this.password = this.hashPassword(this.password)
+    // }
   });
-  
+
+  // UserSchema.methods = {
+  //   isCorrectPassword: function (inputPassword) {
+  //     return bcrypt.compareSync(inputPassword, this.password)
+  //   },
+  //   hashPassword: plainTexPassword => {
+  //     return bcrypt.hashSync(plainTexPassword, 10)
+  //   }
+  // }
+
   const User = mongoose.model('User', UserSchema);
 
 
