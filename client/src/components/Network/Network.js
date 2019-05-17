@@ -24,7 +24,7 @@ class Network extends Component {
     componentDidMount() {
         axios.get('http://localhost:3000/api/crds/')
             .then(response => {
-                console.log(response.data)
+        
                 this.setState({
                     crdInfo: response.data
                 });
