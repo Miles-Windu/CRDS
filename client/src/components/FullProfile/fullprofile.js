@@ -48,7 +48,7 @@ class fullprofile extends Component {
                                 <a className="nav-link" id="myBtn" href="/public">Public Network</a>
                             </li>
                             <li className="nav-item">
-                                <a className="nav-link" id="myBtn" href="/user">Edit My CRDS</a>
+                                <a className="nav-link" id="myBtn" href="/user">Create New CRDS</a>
                             </li>
                         </ul>
                     <ul className="nav navbar-nav flex-fill  justify-content-end">
@@ -141,15 +141,15 @@ class fullprofile extends Component {
                                                     </div>
                                                 </div>
                                                 {/* ADD TO MY NETWORK */}
-                                                <h5 className="card-header" id="headingFive" data-toggle="collapse" data-target="#collapseFive" aria-expanded="false" aria-controls="collapseFive">
+                                                {/* <h5 className="card-header" id="headingFive" data-toggle="collapse" data-target="#collapseFive" aria-expanded="false" aria-controls="collapseFive">
                                                     Add To My Network
                                                 </h5>
                                                 <div id="collapseFive" className="collapse" aria-labelledby="headingFive" data-parent="#accordion">
-                                                    <div className="card-body">
+                                                    <div className="card-body"> */}
                                                          {/* ADD TO MY NETWORK BUTTON*/}
-                                                        <a class="btn-floating btn-large waves-effect waves-light red content-center" href=" "><i class="material-icons">add</i></a>
+                                                        {/* <a class="btn-floating btn-large waves-effect waves-light red content-center" href=" "><i class="material-icons">add</i></a>
                                                     </div>
-                                                </div>
+                                                </div> */}
                                                 
                                         </div>
                                     </div>
