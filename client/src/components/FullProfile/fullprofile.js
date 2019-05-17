@@ -20,9 +20,8 @@ class fullprofile extends Component {
         
         axios.get(`http://localhost:3000/api/crds/${id[2]}`)
             .then(response => {
-
-                // const name = response.data.filter((item) => item.name === 'Patrick Star')
-                // console.log(name)
+                console.log(response.data)
+                
                 this.setState({
                     crdInfo: response.data
                 });
@@ -101,9 +100,9 @@ class fullprofile extends Component {
                                                 </h5>
                                                     <div id="collapseOne" className="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
                                                     <div class="card-body">
-                                                        <ul>
-                                                            {/* {this.state.crdInfo.skills.map(skill => {return <li>{skill}</li> })} */}
-                                                        </ul>
+                                                        
+                                                            {/* {this.state.crdInfo.skills.map(skill => {return <li>{skill}</li>})} */}
+                                                        
                                                     </div>
                                                     </div>
                                             {/* PHONE  */}
