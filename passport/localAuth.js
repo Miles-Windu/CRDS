@@ -3,11 +3,11 @@ const LocalStrategy = require('passport-local').Strategy;
 const User = require('../models/User');
 
 passport.serializeUser((user, done) => {
-    done(null, user._id);
+    done(null, user.id);
 })
 
-passport.deserializeUser(async (_id, done) => {
-    const user = await User.findById(_id);
+passport.deserializeUser(async (id, done) => {
+    const user = await User.findById(id);
     done(null, user)
 })
 
@@ -20,8 +20,10 @@ passport.use('local-signup', new LocalStrategy({
     // Unique validation
     const user = await User.findOne({email: req.body.email});
     if(user) {
+        console.log('Validation new user \n' + user);
         return done(null, false, req.flash('signupMessage', 'The email is already in use'));
     } else{
+
         const user = new User();
         user.name = req.body.name;
         user.email = req.body.email

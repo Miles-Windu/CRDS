@@ -15,9 +15,11 @@ class fullprofile extends Component {
     }
 
     componentDidMount() {
-        axios.get('http://localhost:3000/api/crds/')
-            .then(response => {
-                console.log(response.data)
+        
+        const id = this.props.location.pathname.split('/')
+        
+        axios.get(`http://localhost:3000/api/crds/${id[2]}`)
+            .then(response => {                
                 this.setState({
                     crdInfo: response.data
                 });
@@ -96,9 +98,9 @@ class fullprofile extends Component {
                                                 </h5>
                                                     <div id="collapseOne" className="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
                                                     <div class="card-body">
-                                                        <ul>
-                                                            {/* {this.state.crdInfo.skills.map(skill => {return <li>{skill}</li> })} */}
-                                                        </ul>
+                                                        
+                                                            {/* {this.state.crdInfo.skills.map(skill => {return <li>{skill}</li>})} */}
+                                                        
                                                     </div>
                                                     </div>
                                             {/* PHONE  */}
@@ -122,11 +124,11 @@ class fullprofile extends Component {
 
                                                 {/* WEBSITE */}
                                                 <h5 className="card-header" id="headingFour" data-toggle="collapse" data-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
-                                                    Website:
+                                                    Description:
                                                 </h5>
                                                 <div id="collapseFour" className="collapse" aria-labelledby="headingFour" data-parent="#accordion">
                                                     <div className="card-body">
-                                                        <a href="https://github.com/miles-windu/CRDS">{this.state.crdInfo.site}</a>
+                                                        <p>{this.state.crdInfo.description}</p>
                                                     </div>
                                                 </div>
                                                 {/* SHARING OPTIONS */}

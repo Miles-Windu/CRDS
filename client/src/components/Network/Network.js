@@ -211,7 +211,7 @@ class Network extends Component {
                             </div>
                             <Food />
 
-                            <div className="row card-deck">
+                            <div className="col card-deck">
                                  {/* INSERT CARDS HERE ****************************************************/}
                                  {this.state.crdInfo.filter((crd) => crd.category === 'Food/Service').map(crd =>
                                     <Card 

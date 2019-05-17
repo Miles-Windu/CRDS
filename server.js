@@ -20,7 +20,7 @@ const cors = require('cors')
 let app = express();
 
 // establish port on 1993 
-let PORT = process.env.PORT || 1993; 
+let PORT = process.env.PORT || 1993;
 
 // Serve up static assets (usually on heroku)
 if (process.env.NODE_ENV === "production") {
@@ -30,8 +30,8 @@ if (process.env.NODE_ENV === "production") {
 let db = mongoose.connection;
 
 // Connect to the Mongo DB
-mongoose.connect("mongodb://localhost/crdsDB") //Local test DB
-// mongoose.connect("mongodb://miles:password1@ds039441.mlab.com:39441/heroku_cpbwq7nv", { useNewUrlParser: true }); 
+// mongoose.connect("mongodb://localhost/crdsDB", { useNewUrlParser: true }) //Local test DB
+mongoose.connect("mongodb://miles:password1@ds039441.mlab.com:39441/heroku_cpbwq7nv", { useNewUrlParser: true });
 db.once("open", () => console.log("connected to the database successfully!"));
 
 // checks if connection with the database is successful
@@ -45,28 +45,33 @@ const storage = multer.diskStorage({
     cb(null, uuid() + path.extname(file.originalname));
   }
 });
-app.use(multer({storage}).single('image'));
+app.use(multer({ storage }).single('image'));
 
 // Session authentication 
 app.use(session({
   secret: 'C@rd$_S3cr3t_Se$$10n',
   resave: false,
-  saveUninitialized: false
+  saveUninitialized: true,
+  cookie: { secure: true }
 }));
 app.use(flash());
 app.use(passport.initialize());
 app.use(passport.session());
 
 app.use((req, res, next) => {
+
   console.log('req.session', req.session);
   // app.locals.user = req.user;
   console.log(req.user);
   next()
+
 })
+
 
 // Session validator 
 function isAuthenticated(req, res, next) {
-  if(req.isAuthenticated()) {
+  if (req.isAuthenticated()) {
+    console.log('Authenticated');
     return next();
   }
   res.redirect('/');
@@ -78,20 +83,22 @@ function isAuthenticated(req, res, next) {
 // ========================================================================================
 
 // Middleware
+
 app.use(bodyParser.urlencoded({ limit: "500mb", extended: false }));
 app.use(bodyParser.json({limit: "500mb"}));
+
 app.use(cors());
 // app.use(logger("dev"));
 
 const router = express.Router();
 let Crds = require('./models/Crds');
 let User = require('./models/User');
-let Message = require('./models/Message') 
+let Message = require('./models/Message')
 
 
 // Card Routes
-router.route('/crds').get(function(req, res) {
-  Crds.find(function(err, crds) {
+router.route('/crds').get(function (req, res) {
+  Crds.find(function (err, crds) {
     if (err) {
       console.log(err)
     } else {
@@ -100,24 +107,28 @@ router.route('/crds').get(function(req, res) {
   });
 });
 
-router.route('/crds/:id').get(function(req, res) {
+router.route('/crds/:id').get(function (req, res) {
   let id = req.params.id;
-  Crds.findById(id, function(err, crds) {
+  Crds.findById(id, function (err, crds) {
     res.json(crds)
   });
 });
 
-router.route('/crds/:name').get(function(req, res) {
+router.route('/crds/:name').get(function (req, res) {
   let name = req.params.name;
-  Crds.findById(name, function(err, crds) {
+  Crds.findById(name, function (err, crds) {
     res.json(crds)
   });
 });
 
-router.route('/crds').post(function(req, res) {
+router.route('/crds').post(upload.single('file'), function (req, res) {
+
   console.log(req.body)
   let crd = new Crds(req.body);
-  
+
+  crd.img.data = fs.readFileSync(req.file.path)
+  crd.img.contentType = 'image/jpeg';  // or 'image/png'    
+
   crd.save()
     .then(crds => {
       console.log(crds)
@@ -128,10 +139,10 @@ router.route('/crds').post(function(req, res) {
       res.status(400).send('adding crd failed... you are a failure')
     })
 });
- 
-router.route('/crds/update/:id').post(isAuthenticated, function(req, res) {
-  Crds.findById(req.params.id, function(err, crds) {
-    if (!crds){
+
+router.route('/crds/update/:id').post(isAuthenticated, function (req, res) {
+  Crds.findById(req.params.id, function (err, crds) {
+    if (!crds) {
       res.status(404).send('Data is not found')
     } else {
       crds.name = req.body.name;
@@ -145,9 +156,9 @@ router.route('/crds/update/:id').post(isAuthenticated, function(req, res) {
     crds.save().then(crds => {
       res.json('card saved')
     })
-    .catch(err => {
-      res.status(404).send('Error on card update')
-    })
+      .catch(err => {
+        res.status(404).send('Error on card update')
+      })
   })
 })
 
@@ -155,8 +166,8 @@ router.route('/crds/update/:id').post(isAuthenticated, function(req, res) {
 
 require('./passport/localAuth');
 
-router.route('/users').get(function(req, res) {
-  User.find(function(err, users) {
+router.route('/users').get(function (req, res) {
+  User.find(function (err, users) {
     if (err) {
       console.log(err)
     } else {
@@ -171,9 +182,9 @@ router.route('/users').post(passport.authenticate('local-signup', {
   passReqToCallback: true
 }))
 
-router.route('/users/:id').get(function(req, res) {
+router.route('/users/:id').get(function (req, res) {
   let id = req.params.id;
-  User.findById(id, function(err, users) {
+  User.findById(id, function (err, users) {
     res.json(users)
   });
 });
@@ -183,6 +194,7 @@ function(req, res) {
   console.log('passed auth')
   res.redirect('/')
 })
+
 
 // router.route('/login').post(
 //   function (req, res, next) {
@@ -200,10 +212,11 @@ function(req, res) {
 //   res.redirect('/')
 // }))
 
-router.route('/users/update/:id').post(isAuthenticated, function(req, res) {
 
-  User.findById(req.params.id, function(err, users) {
-    if (!users){
+router.route('/users/update/:id').post(isAuthenticated, function (req, res) {
+
+  User.findById(req.params.id, function (err, users) {
+    if (!users) {
       res.status(404).send('Data is not found')
     } else {
       res.json(users)
@@ -212,9 +225,9 @@ router.route('/users/update/:id').post(isAuthenticated, function(req, res) {
     users.save().then(crds => {
       res.json('card saved')
     })
-    .catch(err => {
-      res.status(404).send('Error on card update')
-    })
+      .catch(err => {
+        res.status(404).send('Error on card update')
+      })
   })
 })
 
@@ -231,8 +244,8 @@ if(user) {
 });
 
 // Message  Routes
-router.route('/message').get(function(req, res) {
-  Message.find(function(err, message) {
+router.route('/message').get(function (req, res) {
+  Message.find(function (err, message) {
     if (err) {
       console.log(err)
     } else {
@@ -241,7 +254,7 @@ router.route('/message').get(function(req, res) {
   });
 });
 
-router.route('/message').post(function(req, res) {
+router.route('/message').post(function (req, res) {
   let message = new Message(req.body);
   message.save()
     .then(msg => {
@@ -254,16 +267,44 @@ router.route('/message').post(function(req, res) {
     })
 });
 
+// Image upload route
+
+const storage = multer.diskStorage({
+  destination: function (req, res, cb) {
+    cb(null, 'uploads/')
+  }
+});
+const multer = require('multer');
+const upload = multer({ storage: storage });
+router.route('/img_data')
+  .post(upload.single('file'), function (req, res) {
+    var new_img = new Img;
+    new_img.img.data = fs.readFileSync(req.file.path)
+    new_img.img.contentType = 'image/jpeg';  // or 'image/png'
+    new_img.save();
+    res.json({ message: 'New image added to the db!' });
+  })
+  .get(function (req, res) {
+    Img.findOne({}, 'img createdAt', function (err, img) {
+      if (err)
+        res.send(err);
+      res.contentType('json');
+      res.send(img);
+    }).sort({ createdAt: 'desc' });
+  });
+
 app.use('/api', router)
 
 // END ROUTES
 // =========================================================================================
 // =========================================================================================
 
+
 app.get("*", function(req, res) {
-  res.sendFile(path.join(__dirname, "./client/public"));
+  res.sendFile(path.join(__dirname, "./client/build/index.html"));
+
 });
 
-app.listen(PORT, function() {
-    console.log(`🌎 ==> API server now on port ${PORT}!`);
-  });
+app.listen(PORT, function () {
+  console.log(`🌎 ==> API server now on port ${PORT}!`);
+});

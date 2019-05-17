@@ -1,6 +1,5 @@
 const mongoose = require('mongoose');
 const bcrypt = require('bcrypt');
-const crd = require('./Crds');
 
 const { Schema } = mongoose;
 
@@ -14,7 +13,7 @@ const UserSchema = new Schema({
     email: {
         type: String,
         unique: true,
-
+      
     },
     password: {
         type: String,
@@ -26,8 +25,7 @@ const UserSchema = new Schema({
         type: Date,
         default: Date.now()
     }, 
-
-    network: []
+    img: { data: Buffer, contentType: String}
 
 });
 

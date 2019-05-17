@@ -18,6 +18,7 @@ class User extends Component {
         this.onChangeCategory = this.onChangeCategory.bind(this);
         this.onChangeSkills = this.onChangeSkills.bind(this);
         this.onChangeAddress = this.onChangeAddress.bind(this)
+        this.onChangeDescription = this.onChangeDescription.bind(this)
         this.onSubmit = this.onSubmit.bind(this);
         
         this.state = {
@@ -29,7 +30,9 @@ class User extends Component {
             category: 'Web/Technology',
             address: '',
             skills: [],
-            redirect: false 
+            description: '',
+            redirect: false,
+            img: ''
 
         };
     };
@@ -82,8 +85,11 @@ class User extends Component {
         });
     };
 
-    
-
+    onChangeDescription(e){
+        this.setState({
+            description: e.target.value
+        })
+    }
 
     onSubmit(e) {
         e.preventDefault();
@@ -96,7 +102,9 @@ class User extends Component {
             address: this.state.address,
             category: this.state.category,
             imgpath: 'public/cardImg/',
-            skills: this.state.skills.split(", ")
+            description: this.state.description, 
+            skills: this.state.skills.split(", "),
+            img: this.state.img
         }
 
         axios.post('http://localhost:3000/api/crds', newCrd)
@@ -111,6 +119,7 @@ class User extends Component {
             skills: '',
             address: '',
             imgpath: Placeholder,
+            description: '',
             redirect: true
         })
 
@@ -143,9 +152,9 @@ class User extends Component {
                             <li className="nav-item">
                                 <a className="nav-link" id="myBtn" href="/public">Public Network</a>
                             </li>
-                            <li className="nav-item">
+                            {/* <li className="nav-item">
                                 <a className="nav-link" id="myBtn" href="/user">Edit My CRDS</a>
-                            </li>
+                            </li> */}
                          </ul>
                     <ul className="nav navbar-nav flex-fill  justify-content-end">
                         <div className="login">
@@ -170,7 +179,7 @@ class User extends Component {
                        <img src={this.state.imgpath}  alt="Place Holder" height="200" width="200"/>
                        <div className="text-center p-2" >
                            <label for="userPhoto">Upload User Photo</label>
-                           <input type="file" onChange={this.handleChangeImg} className="form-control-file col-7" id="userPhoto" name="image"/>
+                           <input type="file" onChange={this.onChangeImg} className="form-control-file col-7" id="userPhoto" name="image"/>
                        </div>
                    </form>
                </div>
@@ -207,6 +216,9 @@ class User extends Component {
                  {/* <!-- ADDRESS--> */}
                  <label for="titleInput">Address</label>
                 <input onChange={this.onChangeAddress} name="title" type="text" className="form-control" value={this.state.address} placeholder="Street address, City / Town, State, Zip" required placeholderTextColor/>
+                {/* Description */}
+                <label for="titleInput">Description</label>
+                <textarea onChange={this.onChangeDescription} name="description" type="text" className="form-control" value={this.state.description} placeholder="Tell us about what you do!" required placeholderTextColor></textarea>
                 {/* <!-- SUBMIT --> */}
                 <button onClick={this.setRedirect} type="submit" value="Your Card" className="btn">Create Your Card!</button>
                </form> 
