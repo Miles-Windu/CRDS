@@ -1,4 +1,4 @@
-# The Conneectors presents a business card sharing app CRDS
+# The Connectors presents a business card sharing app CRDS
 
 ## Our Why
 > How many of us use business cards?
@@ -18,11 +18,25 @@ No need for taking down trees, everything is digital
 * Easy to share/Hard to lose
 Organize and keep your cards within app, through text/email threads or share on social media!
 * Can hold a lot more info than a 3.5 x 2 card
-Most business cards are limited to name, email, phone number and address. With our cards you're able to hold all of the above as well as:
-website link
-social media links
-location
-and summarize the specific need/value of business!
+Most business cards are limited to name, email, phone number and address.
+
+## Using our App!
+1. After viewing our landing page, create an account by clicking the "sign up" then login!
+1. You will be directed to creating your own business card, next fill out any applicable information you'd like to share and click "Create new CRDS!"
+1. From there your own card will appear on the "My Networks" tab where you can view a mini-version of your created card with a small amount of info displayed, where you can click "View Full Profile" to see the expanded version of your card.
+1. Cards are sharable via webpage link 
+1. Click on the "Public Network" to view other user's brief card
+1. User info is displayed on the card where access to their:
+* business location
+* viewable skills
+* a personal description that's not limited to the space of the card
+
+## When you Git Clone into your machine
+1. git clone
+1. yarn install
+1. yarn start 
+1. run  - mongod
+1. have fun with our app!
 
 ## Deployment
 This app is deployed using Heroku(https://crds.herokuapp.com/). Click here to check out our app!
@@ -30,18 +44,22 @@ This app is deployed using Heroku(https://crds.herokuapp.com/). Click here to ch
 ## Tools/Technologies Used
 * React.js
 * Bootstrap
-* DotEnv Express.js
-* Express-Handlebars
+* Materialize CSS
 * Font Awesome
 * Google Fonts
 * MongoDB
 * Node.js
 * Passport
 * Path
-* Sequelize
+* Mongoose
+* Yarn
+* Axios
+* Nodemon
+* if-env
+* canva
 
-## Team Members
-@jiro1
-@Miles-Windu
-@didachos24
-@estevansta
+## Authors Members
+Ferat Imrak (https://github.com/jiro1)
+Miles Kenner (https://github.com/Miles-Windu)
+Diego Francisco Montealegre Silva (https://github.com/didachos24)
+Estevan Cruz (https://github.com/estevansta)
