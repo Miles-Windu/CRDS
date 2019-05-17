@@ -5,7 +5,6 @@ import CRDS from "../images/Crds_white.png";
 // import "./index";
 import floatingCards from "../images/floating-diagonal.png";
 import axios from "axios";
-import FacebookLogin from 'react-facebook-login';
 
 
 class Login extends Component {
@@ -70,10 +69,6 @@ class Login extends Component {
     
     render(){
         
-        const responseFacebook = (response) => {
-        console.log(response);
-        }
-        
         return (
             <div>
             <nav className="navbar navbar-expand-lg navbar-light navbar-fixed-top">
@@ -102,15 +97,7 @@ class Login extends Component {
                     <input onChange={this.onChangePassword} value={this.state.password} type="password" className="form-control"  placeholder="Password" required />
                     {/* <!-- SUBMIT --> */}
                     <br />
-
-                <FacebookLogin
-                    appId="1088597931155576"
-                    autoLoad={true}
-                    fields="name,email,picture"
-                    callback={responseFacebook}
-                    cssClass="my-facebook-button-class"
-                    icon="fa-facebook"
-                />
+                    <button className="btn btn-primary">Login</button>
 
                 </form>
                 </div>       
