@@ -31,13 +31,6 @@ Most business cards are limited to name, email, phone number and address.
 * viewable skills
 * a personal description that's not limited to the space of the card
 
-## When you Git Clone into your machine
-1. git clone
-1. yarn install
-1. yarn start 
-1. run  - mongod
-1. have fun with our app!
-
 ## Deployment
 This app is deployed using Heroku(https://crds.herokuapp.com/). Click here to check out our app!
 
