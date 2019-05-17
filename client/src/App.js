@@ -16,10 +16,10 @@ class App extends Component {
       <Router>
         <Route exact path="/" component={Landing} />
         <Route path ="/login" component={Login} />
-        <Route path="/user" component={User} />
+        <Route path="/user/create" component={User} />
         <Route path="/network" component={Network} />
         <Route path="/register" component={Register} />
-        <Route path="/profile" component={fullprofile} />
+        <Route path="/profile/:id" component={fullprofile} />
         <Route path="/public" component={Public} />
       </Router>
     </div>

@@ -26,8 +26,6 @@ const UserSchema = new Schema({
         default: Date.now()
     }, 
 
-    network: []
-
 });
 
 // Password Comparison

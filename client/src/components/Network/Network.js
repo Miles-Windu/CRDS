@@ -24,7 +24,7 @@ class Network extends Component {
     componentDidMount() {
         axios.get('http://localhost:3000/api/crds/')
             .then(response => {
-        
+                console.log(response.data)
                 this.setState({
                     crdInfo: response.data
                 });
@@ -211,7 +211,7 @@ class Network extends Component {
                             </div>
                             <Food />
 
-                            <div className="row card-deck">
+                            <div className="col card-deck">
                                  {/* INSERT CARDS HERE ****************************************************/}
                                  {this.state.crdInfo.filter((crd) => crd.category === 'Food/Service').map(crd =>
                                     <Card 

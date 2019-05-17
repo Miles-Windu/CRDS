@@ -20,6 +20,7 @@ class Public extends Component {
     componentDidMount() {
         axios.get('http://localhost:3000/api/crds')
             .then(response => {
+                console.log(response.data)
                 this.setState({
                     crdInfo: response.data
                 });
@@ -55,7 +56,7 @@ class Public extends Component {
                                     <a className="nav-link" id="myBtn" href="/public">Public Network</a>
                                 </li>
                                 <li className="nav-item">
-                                    <a className="nav-link" id="myBtn" href="/user/update/">Edit My CRDS</a>
+                                    <a className="nav-link" id="myBtn" href="/user/create">Create New CRDS</a>
                                 </li>
                             </ul>
                         <ul className="nav navbar-nav flex-fill  justify-content-end">
@@ -98,10 +99,11 @@ class Public extends Component {
                     key={crd._id}
                     name={crd.name} 
                     category={crd.category}
-                    skills={crd.skills}
+                    skills={crd.skills.map(skill => skill.split(","))}
                     phone={crd.phone}
                     email={crd.email}
                     title={crd.title}
+                    id={crd._id}
                     />
                     
                     )}

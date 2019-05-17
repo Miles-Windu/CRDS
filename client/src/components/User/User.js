@@ -18,6 +18,7 @@ class User extends Component {
         this.onChangeCategory = this.onChangeCategory.bind(this);
         this.onChangeSkills = this.onChangeSkills.bind(this);
         this.onChangeAddress = this.onChangeAddress.bind(this)
+        this.onChangeDescription = this.onChangeDescription.bind(this)
         this.onSubmit = this.onSubmit.bind(this);
         
         this.state = {
@@ -29,6 +30,7 @@ class User extends Component {
             category: 'Web/Technology',
             address: '',
             skills: [],
+            description: '',
             redirect: false 
 
         };
@@ -82,8 +84,11 @@ class User extends Component {
         });
     };
 
-    
-
+    onChangeDescription(e){
+        this.setState({
+            description: e.target.value
+        })
+    }
 
     onSubmit(e) {
         e.preventDefault();
@@ -96,6 +101,7 @@ class User extends Component {
             address: this.state.address,
             category: this.state.category,
             imgpath: 'public/cardImg/',
+            description: this.state.description, 
             skills: this.state.skills.split(", ")
         }
 
@@ -111,6 +117,7 @@ class User extends Component {
             skills: '',
             address: '',
             imgpath: Placeholder,
+            description: '',
             redirect: true
         })
 
@@ -207,6 +214,9 @@ class User extends Component {
                  {/* <!-- ADDRESS--> */}
                  <label for="titleInput">Address</label>
                 <input onChange={this.onChangeAddress} name="title" type="text" className="form-control" value={this.state.address} placeholder="Street address, City / Town, State, Zip" required placeholderTextColor/>
+                {/* Description */}
+                <label for="titleInput">Description</label>
+                <textarea onChange={this.onChangeDescription} name="description" type="text" className="form-control" value={this.state.description} placeholder="Tell us about what you do!" required placeholderTextColor></textarea>
                 {/* <!-- SUBMIT --> */}
                 <button onClick={this.setRedirect} type="submit" value="Your Card" className="btn">Create Your Card!</button>
                </form> 
