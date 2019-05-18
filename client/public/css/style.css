@@ -1,9 +1,16 @@
-.navbar-light .navbar-brand, .navbar-light .navbar-nav .nav-link, .navbar-light .navbar-nav .active .nav-link {
+.navbar-light, .navbar-brand, .navbar-light, .navbar-nav, .navbar-light, .navbar-nav, .active {
     color: white;
 }
 
 .navbar {
     background-color: #6e363f;
+    z-index: 9999;
+}
+
+.navbar-toggle, .icon-bar, .nav-link{
+ background-color: #6e363f;
+ border: 1px solid transparent;
+ z-index: 9999;
 }
 
 #marketing {

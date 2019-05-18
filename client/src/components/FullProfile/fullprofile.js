@@ -92,28 +92,28 @@ class fullprofile extends Component {
                                         <p className="card-title" id="title">{this.state.crdInfo.title}</p>
                                         {/* ACCORDION DROP */}
                                             <div id="accordion">
-                                            {/* SKILLSET DROP */}
-                                                <h5 className="card-header" id="headingOne" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                                                Skill set: 
-                                                </h5>
-                                                    <div id="collapseOne" className="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
-                                                    <div class="card-body">
-                                                        <ul>
-
-                                                        {/* {this.state.crdInfo.skills.map(skill => { return <li>{skill}</li>})} */}
-                                                        
-                                                        </ul>
-                                                    </div>
-                                                    </div>
+                                            
                                             {/* PHONE  */}
-                                                <h5 className="card-header" id="headingTwo" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                                                    Phone:
+                                                <h5 className="card-header" id="headingOne" data-toggle="collapse" data-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+                                                    Skills:
                                                 </h5>
-                                                <div id="collapseTwo" className="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
+                                                <div id="collapseOne" className="collapse" aria-labelledby="headingOne" data-parent="#accordion">
                                                     <div className="card-body">
-                                                       <a href={this.state.crdInfo.phone}>{this.state.crdInfo.phone}</a>
+                                                       {this.state.crdInfo.skills} 
                                                     </div>
                                                 </div>
+                                            {/* SKILLSET DROP */}
+                                                <h5 className="card-header" id="headingTwo" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                                                Phone:  
+                                                </h5>
+                                                    <div id="collapseTwo" className="collapse show" aria-labelledby="headingTwo" data-parent="#accordion">
+                                                    <div class="card-body">
+
+                                                        <a href={this.state.crdInfo.phone}>{this.state.crdInfo.phone}</a>
+                                                      
+                                                    </div>
+                                                    </div>
+                                            
                                             {/* ADDRESS  */}
                                                 <h5 className="card-header" id="headingThree" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
                                                     Address:

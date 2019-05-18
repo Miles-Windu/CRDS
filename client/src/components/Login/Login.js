@@ -98,7 +98,6 @@ class Login extends Component {
                     {/* <!-- SUBMIT --> */}
                     <br />
                     <a href="/public" className="btn btn-primary">Login</a>
-
                 </form>
                 </div>       
             </div>
