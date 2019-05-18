@@ -105,7 +105,7 @@ class User extends Component {
             skills: this.state.skills.split(", "),
         }
 
-        axios.post('http://localhost:3000/api/crds', newCrd)
+        axios.post('http://localhost:1993/api/crds', newCrd)
             .then(res => console.log(res.data));
 
         this.setState({

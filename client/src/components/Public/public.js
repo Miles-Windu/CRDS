@@ -39,9 +39,8 @@ class Public extends Component {
 
     handleSubmit(e){
         e.preventDefault()
-
         let name = this.state.search
-        console.log(name)
+        console.log(name);
         axios.get(`http://localhost:1993/api/crds/?name=${name}`)
             .then(response => {
                 console.log(response.data)
