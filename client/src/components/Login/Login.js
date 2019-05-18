@@ -97,7 +97,7 @@ class Login extends Component {
                     <input onChange={this.onChangePassword} value={this.state.password} type="password" className="form-control"  placeholder="Password" required />
                     {/* <!-- SUBMIT --> */}
                     <br />
-                    <button className="btn btn-primary">Login</button>
+                    <a href="/public" className="btn btn-primary">Login</a>
 
                 </form>
                 </div>       
