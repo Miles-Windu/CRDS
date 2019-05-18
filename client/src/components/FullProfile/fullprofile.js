@@ -98,9 +98,11 @@ class fullprofile extends Component {
                                                 </h5>
                                                     <div id="collapseOne" className="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
                                                     <div class="card-body">
+                                                        <ul>
+
+                                                        {/* {this.state.crdInfo.skills.map(skill => { return <li>{skill}</li>})} */}
                                                         
-                                                            {/* {this.state.crdInfo.skills.map(skill => {return <li>{skill}</li>})} */}
-                                                        
+                                                        </ul>
                                                     </div>
                                                     </div>
                                             {/* PHONE  */}
