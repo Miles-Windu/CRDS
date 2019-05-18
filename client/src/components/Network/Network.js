@@ -22,7 +22,7 @@ class Network extends Component {
     }
 
     componentDidMount() {
-        axios.get('http://localhost:3000/api/crds/')
+        axios.get('http://localhost:1993/api/crds/')
             .then(response => {
                 console.log(response.data)
                 this.setState({
@@ -54,7 +54,7 @@ class Network extends Component {
                                     <a className="nav-link" id="myBtn" href="/public">Public Network</a>
                                 </li>
                                 <li className="nav-item">
-                                    <a className="nav-link" id="myBtn" href="/user/update/">Edit My CRDS</a>
+                                    <a className="nav-link" id="myBtn" href="/user/create/">Create New CRDS</a>
                                 </li>
                             </ul>
                         <ul className="nav navbar-nav flex-fill  justify-content-end">

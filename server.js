@@ -8,13 +8,9 @@ const flash = require('connect-flash');
 const morgan = require('morgan');
 const path = require('path');
 const fs = require('file-system');
-const multer = require('multer');
 const uuid = require('uuid/v4');
 // const auth = require('./middleware/auth');
-// const User = require('./controller/user');
 const cors = require('cors')
-
-// const logger = require('logger')
 
 // dependency methods
 let app = express();
@@ -37,15 +33,6 @@ db.once("open", () => console.log("connected to the database successfully!"));
 // checks if connection with the database is successful
 db.on("error", console.error.bind(console, "MongoDB connection error:"));
 
-// Multer config
-const storage = multer.diskStorage({
-  destination: path.join(__dirname, 'client/public/cardImg'),
-  filename: (req, file, cb, filename) => {
-    console.log(file);
-    cb(null, uuid() + path.extname(file.originalname));
-  }
-});
-app.use(multer({ storage }).single('image'));
 
 // Session authentication 
 app.use(session({
@@ -59,9 +46,8 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 app.use((req, res, next) => {
-
   console.log('req.session', req.session);
-  // app.locals.user = req.user;
+  app.locals.user = req.user;
   console.log(req.user);
   next()
 
@@ -83,18 +69,18 @@ function isAuthenticated(req, res, next) {
 // ========================================================================================
 
 // Middleware
-
-app.use(bodyParser.urlencoded({ limit: "500mb", extended: false }));
-app.use(bodyParser.json({limit: "500mb"}));
-
+app.use(bodyParser.urlencoded({ limit: "900mb", extended: false }));
+app.use(bodyParser.json({limit: "900mb"}));
 app.use(cors());
-// app.use(logger("dev"));
+
+
 
 const router = express.Router();
 let Crds = require('./models/Crds');
 let User = require('./models/User');
 let Message = require('./models/Message')
 
+app.use('/api', router)
 
 // Card Routes
 router.route('/crds').get(function (req, res) {
@@ -121,12 +107,10 @@ router.route('/crds/:name').get(function (req, res) {
   });
 });
 
-router.route('/crds').post(function (req, res) {
 
+router.route('/crds').post(function (req, res) {
   console.log(req.body)
   let crd = new Crds(req.body);
-
-  
   crd.save()
     .then(crds => {
       console.log(crds)
@@ -150,7 +134,6 @@ router.route('/crds/update/:id').post(isAuthenticated, function (req, res) {
       crds.category = req.body.category;
       crds.skills = req.body.skills
     }
-
     crds.save().then(crds => {
       res.json('card saved')
     })
@@ -161,7 +144,6 @@ router.route('/crds/update/:id').post(isAuthenticated, function (req, res) {
 })
 
 // User Routes
-
 require('./passport/localAuth');
 
 router.route('/users').get(function (req, res) {
@@ -194,32 +176,30 @@ function(req, res) {
 })
 
 
-// router.route('/login').post(
-//   function (req, res, next) {
-//   console.log("Route, login req.body")
-//   console.log(req.body)
-//   next()
-// }, 
-// passport.authenticate(('local-signin'), (req, res) => {
-//   console.log('logged in ');
-//   // console.log('session info: \n' + req.session)
-//   // var userInfo = {
-//   //   email: req.user.email
-//   // };
-//   // res.send(userInfo);
-//   res.redirect('/')
-// }))
+router.route('/login').post(
+  function (req, res, next) {
+  console.log("Route, login req.body")
+  console.log(req.body)
+  next()
+}, 
+passport.authenticate(('local-signin'), (req, res) => {
+  console.log('logged in ');
+  console.log('session info: \n' + req.session)
+  var userInfo = {
+    email: req.user.email
+  };
+  res.send(userInfo);
+  res.redirect('/')
+}))
 
 
 router.route('/users/update/:id').post(isAuthenticated, function (req, res) {
-
   User.findById(req.params.id, function (err, users) {
     if (!users) {
       res.status(404).send('Data is not found')
     } else {
       res.json(users)
     }
-
     users.save().then(crds => {
       res.json('card saved')
     })
@@ -230,8 +210,8 @@ router.route('/users/update/:id').post(isAuthenticated, function (req, res) {
 })
 
 router.route('/logout', (req, res, next) => {
-  // req.logout();
-  // res.resdirect('/');
+  req.logout();
+  res.resdirect('/');
 if(user) {
   req.session.destroy()
   res.clearCookie('connect.sid')
@@ -265,33 +245,7 @@ router.route('/message').post(function (req, res) {
     })
 });
 
-// Image upload route
 
-// const storage = multer.diskStorage({
-//   destination: function (req, res, cb) {
-//     cb(null, 'uploads/')
-//   }
-// });
-// const multer = require('multer');
-// const upload = multer({ storage: storage });
-// router.route('/img_data')
-//   .post(upload.single('file'), function (req, res) {
-//     var new_img = new Img;
-//     new_img.img.data = fs.readFileSync(req.file.path)
-//     new_img.img.contentType = 'image/jpeg';  // or 'image/png'
-//     new_img.save();
-//     res.json({ message: 'New image added to the db!' });
-//   })
-//   .get(function (req, res) {
-//     Img.findOne({}, 'img createdAt', function (err, img) {
-//       if (err)
-//         res.send(err);
-//       res.contentType('json');
-//       res.send(img);
-//     }).sort({ createdAt: 'desc' });
-//   });
-
-app.use('/api', router)
 
 // END ROUTES
 // =========================================================================================

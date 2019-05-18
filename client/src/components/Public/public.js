@@ -10,6 +10,7 @@ class Public extends Component {
         super(props)
 
         this.handleChangeSearch = this.handleChangeSearch.bind(this)
+        this.handleSubmit = this.handleSubmit.bind(this)
 
         this.state = {
             search: '',
@@ -18,7 +19,7 @@ class Public extends Component {
     }
 
     componentDidMount() {
-        axios.get('http://localhost:3000/api/crds')
+        axios.get('http://localhost:1993/api/crds')
             .then(response => {
                 console.log(response.data)
                 this.setState({
@@ -36,6 +37,22 @@ class Public extends Component {
         })
     }
 
+    handleSubmit(e){
+        e.preventDefault()
+
+        let name = this.state.search
+        console.log(name)
+        axios.get(`http://localhost:1993/api/crds/?name=${name}`)
+            .then(response => {
+                console.log(response.data)
+                this.setState({
+                    crdInfo: response.data.filter((item) => item.name === name)
+                });
+            })
+            .catch(function (error){
+                console.log(error)
+            })
+    }
 
     render(){
         return (
@@ -81,7 +98,7 @@ class Public extends Component {
 
             {/* SEARCH BAR */}
             <div className="row">
-                <form onSubmit={this.handleSearch}>
+                <form onSubmit={this.handleSubmit}>
                     <div className="col-sm-12 col-xl-12">
                         <input ctype="text" class="form-control" placeholder="Search" aria-label="Search" aria-describedby="button-addon2"value={this.state.search} onChange={this.handleChangeSearch} />
                         <div class="input-group-append">

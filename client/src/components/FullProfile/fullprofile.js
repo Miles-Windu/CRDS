@@ -18,7 +18,7 @@ class fullprofile extends Component {
         
         const id = this.props.location.pathname.split('/')
         
-        axios.get(`http://localhost:3000/api/crds/${id[2]}`)
+        axios.get(`http://localhost:1993/api/crds/${id[2]}`)
             .then(response => {                
                 this.setState({
                     crdInfo: response.data
@@ -48,7 +48,7 @@ class fullprofile extends Component {
                                 <a className="nav-link" id="myBtn" href="/public">Public Network</a>
                             </li>
                             <li className="nav-item">
-                                <a className="nav-link" id="myBtn" href="/user">Edit My CRDS</a>
+                                <a className="nav-link" id="myBtn" href="/user/create">Create New CRDS</a>
                             </li>
                         </ul>
                     <ul className="nav navbar-nav flex-fill  justify-content-end">
