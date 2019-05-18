@@ -32,7 +32,6 @@ class User extends Component {
             skills: [],
             description: '',
             redirect: false,
-            img: ''
 
         };
     };
@@ -104,7 +103,6 @@ class User extends Component {
             imgpath: 'public/cardImg/',
             description: this.state.description, 
             skills: this.state.skills.split(", "),
-            img: this.state.img
         }
 
         axios.post('http://localhost:3000/api/crds', newCrd)
@@ -171,18 +169,18 @@ class User extends Component {
     {/* <!-- CREATE BUSINESS CARD FORM --> */}
     <div className="container justify-content-center">
         <div className="form-group card">
-                <h3 className="text-center">Create a Business Card</h3>
+                {/* <h3 className="text-center">Create a Business Card</h3> */}
                 {/* <!-- USER PHOTO UPLOAD --> */}
-                <div className="user-photo text-center">
+                {/* <div className="user-photo text-center"> */}
                 {/* <!-- SUBMIT PHOTO TO A DIFFERENT FOLDER --> */}
-                   <form className="mx-auto" encType="multipart/form-data" action="/cardPics" method="POST">
+                   {/* <form className="mx-auto" encType="multipart/form-data" action="/cardPics" method="POST">
                        <img src={this.state.imgpath}  alt="Place Holder" height="200" width="200"/>
                        <div className="text-center p-2" >
                            <label for="userPhoto">Upload User Photo</label>
                            <input type="file" onChange={this.onChangeImg} className="form-control-file col-7" id="userPhoto" name="image"/>
                        </div>
                    </form>
-               </div>
+               </div> */}
                 {/* <!-- INPUT FIELDS --> */}
             <div className="container">
                 <form onSubmit={this.onSubmit}>

@@ -121,14 +121,12 @@ router.route('/crds/:name').get(function (req, res) {
   });
 });
 
-router.route('/crds').post(upload.single('file'), function (req, res) {
+router.route('/crds').post(function (req, res) {
 
   console.log(req.body)
   let crd = new Crds(req.body);
 
-  crd.img.data = fs.readFileSync(req.file.path)
-  crd.img.contentType = 'image/jpeg';  // or 'image/png'    
-
+  
   crd.save()
     .then(crds => {
       console.log(crds)
@@ -269,29 +267,29 @@ router.route('/message').post(function (req, res) {
 
 // Image upload route
 
-const storage = multer.diskStorage({
-  destination: function (req, res, cb) {
-    cb(null, 'uploads/')
-  }
-});
-const multer = require('multer');
-const upload = multer({ storage: storage });
-router.route('/img_data')
-  .post(upload.single('file'), function (req, res) {
-    var new_img = new Img;
-    new_img.img.data = fs.readFileSync(req.file.path)
-    new_img.img.contentType = 'image/jpeg';  // or 'image/png'
-    new_img.save();
-    res.json({ message: 'New image added to the db!' });
-  })
-  .get(function (req, res) {
-    Img.findOne({}, 'img createdAt', function (err, img) {
-      if (err)
-        res.send(err);
-      res.contentType('json');
-      res.send(img);
-    }).sort({ createdAt: 'desc' });
-  });
+// const storage = multer.diskStorage({
+//   destination: function (req, res, cb) {
+//     cb(null, 'uploads/')
+//   }
+// });
+// const multer = require('multer');
+// const upload = multer({ storage: storage });
+// router.route('/img_data')
+//   .post(upload.single('file'), function (req, res) {
+//     var new_img = new Img;
+//     new_img.img.data = fs.readFileSync(req.file.path)
+//     new_img.img.contentType = 'image/jpeg';  // or 'image/png'
+//     new_img.save();
+//     res.json({ message: 'New image added to the db!' });
+//   })
+//   .get(function (req, res) {
+//     Img.findOne({}, 'img createdAt', function (err, img) {
+//       if (err)
+//         res.send(err);
+//       res.contentType('json');
+//       res.send(img);
+//     }).sort({ createdAt: 'desc' });
+//   });
 
 app.use('/api', router)
 

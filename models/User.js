@@ -25,7 +25,7 @@ const UserSchema = new Schema({
         type: Date,
         default: Date.now()
     }, 
-    img: { data: Buffer, contentType: String}
+    
 
 });
 
