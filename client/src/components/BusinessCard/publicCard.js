@@ -5,7 +5,7 @@ function PublicCard(props) {
     return <div className="card-deck col-lg-3">
         <div className="row">
             <div className=" col-lg-6 col-xl-12" id="user-card">
-                <div className="card col-md-4" style={{maxWidth: "300px"}}>
+                <div className="card col-md-4" style={{maxWidth: "300px", minWidth: "300px"}}>
                     <div className="col-md-3 justify-content-center card-image waves-effect waves-block waves-info">
                         <br />
                         <img className="activator" src={image2} alt="" style={{width: "50px", height: "50px"}} />
